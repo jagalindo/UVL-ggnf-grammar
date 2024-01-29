@@ -14,3 +14,49 @@ features
                     Ketchup
                     Mustard
             Cheese
+
+Example 3:
+Dell laptops
+
+you return:
+features
+	DellLaptop
+		mandatory
+			productcategory
+				alternative
+					mininotebooks
+					inspironlaptops
+					studiolaptops
+					xpslaptops
+					adamo
+					studioxpslaptops
+		mandatory
+			operatingsystem
+				alternative
+					windows10
+					windows11
+					ubuntu
+		mandatory
+			harddrive
+				alternative
+					hd500gb
+					hd320gb
+					hd250gb
+					hd160gb
+					hd128gbsolidstate
+					hd120gb
+					hd80gb
+		optional
+			opticaldrive
+				alternative
+					cddvdrw
+					dvdromdriveanddvdrw
+					dvdrwandcdrwcombo
+					bluraydisc
+		mandatory
+			laptopweight
+				alternative
+					ultralight
+					light
+					desktopreplacement
+Burgers
