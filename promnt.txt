@@ -1,0 +1,16 @@
+Output some text similar to this, maintaining the identation schema but using items from the domain I tell you, 
+
+Example 1: 
+Sandwiches
+
+you return:
+features
+    Sandwich
+        mandatory
+            Bread
+        optional
+            Sauce
+                alternative
+                    Ketchup
+                    Mustard
+            Cheese
