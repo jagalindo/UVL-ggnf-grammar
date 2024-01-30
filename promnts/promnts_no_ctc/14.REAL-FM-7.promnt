@@ -1,0 +1,30 @@
+Example:
+Jplug
+
+You return:
+features
+	jplug
+		mandatory
+			interface
+				alternative
+					sdi
+					mdi
+		optional
+			gui_builder
+				mandatory
+					java
+				optional
+					qt
+		optional
+			model_code_synch
+		optional
+			compiler
+				or
+					javac
+					mvc
+		optional
+			diagram_builder
+				mandatory
+					uml
+				optional
+					petri_net

@@ -1,0 +1,27 @@
+Example
+CFDP Library
+
+You return:
+features
+	CFDP_Library
+		or
+			send
+				optional
+					Send_Acknowledged_Mode
+				optional
+					send_fs_operations
+			receive
+				optional
+					Receive_Acknowledged_Mode
+				optional
+					receive_fs_operations
+			pus
+				optional
+					pus_rename
+				optional
+					pus_copy
+			Reboot
+				optional
+					Reboot_Entity
+				optional
+					reboot_pus

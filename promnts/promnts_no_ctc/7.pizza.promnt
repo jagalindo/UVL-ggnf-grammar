@@ -1,0 +1,14 @@
+Example: 
+Sandwiches
+
+You return:
+features
+    Sandwich
+        mandatory
+            Bread
+        optional
+            Sauce
+                alternative
+                    Ketchup
+                    Mustard
+            Cheese

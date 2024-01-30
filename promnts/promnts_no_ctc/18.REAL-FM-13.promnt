@@ -1,0 +1,25 @@
+Example:
+telecom
+
+You return:
+features
+	tecom
+		optional
+			ipvoice
+				mandatory
+					software
+						alternative
+							swpack1
+							swpack2
+		mandatory
+			rack
+				mandatory
+					sizes
+						alternative
+							large
+							medium
+							small
+		optional
+			messaging
+				optional
+					upgrade_swpack

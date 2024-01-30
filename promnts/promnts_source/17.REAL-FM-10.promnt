@@ -1,0 +1,25 @@
+Example:
+vof
+
+You return:
+features
+	vof
+		mandatory
+			follow_me
+				mandatory
+					user_localize
+						mandatory
+							user_pos_method
+								alternative
+									access_point
+									rfid
+				mandatory
+					logon
+		optional
+			virtual_printer
+				mandatory
+					printer_register
+				mandatory
+					file_upload
+				optional
+					file_converter
