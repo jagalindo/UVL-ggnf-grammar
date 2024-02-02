@@ -3,135 +3,136 @@ In a feature model, there are features which are represented by a string
 and relationships. Relationships have 1 child feature if they are mandatory or optional
 , also they have 2 or more if they are alternative or or. Follow the grammar in the examples. 
 Please, generate maintaining the indentation schema but using items from the domain I tell you:
-Example:
-vof
+
+Example
+CFDP Library
 
 You return:
 features
-	vof
-		mandatory
-			follow_me
-				mandatory
-					user_localize
-						mandatory
-							user_pos_method
-								alternative
-									access_point
-									rfid
-				mandatory
-					logon
-		optional
-			virtual_printer
-				mandatory
-					printer_register
-				mandatory
-					file_upload
+	CFDP_Library
+		or
+			send
 				optional
-					file_converter
+					Send_Acknowledged_Mode
+				optional
+					send_fs_operations
+			receive
+				optional
+					Receive_Acknowledged_Mode
+				optional
+					receive_fs_operations
+			pus
+				optional
+					pus_rename
+				optional
+					pus_copy
+			Reboot
+				optional
+					Reboot_Entity
+				optional
+					reboot_pus
+
 Example:
-Movies App
+Jplug
 
 You return:
 features
-	Movies_App
+	jplug
 		mandatory
-			GUI
+			interface
 				alternative
-					Thin
-					Rich
-		mandatory
-			DB
-				alternative
-					Local
-					Remote
-						mandatory
-							Cache_Policy
-		mandatory
-			Network
-				alternative
-					Wifi
-					Bluetooth
+					sdi
+					mdi
 		optional
-			GPS
-				optional
-					Built-In
-Example:
-Digital video system
-
-You return:
-features
-	dvs
-		mandatory
-			control
+			gui_builder
 				mandatory
-					remote
+					java
 				optional
-					telephone
-						optional
-							sms
-				optional
-					net
-						optional
-							web
-						optional
-							wap
-						mandatory
-							email
-				optional
-					edit
-						optional
-							add_music
-				mandatory
-					play
-						optional
-							slides
-						optional
-							audio
-						mandatory
-							video
+					qt
 		optional
-			network_hw
-				optional
-					modem
-				optional
-					ethernet
-		mandatory
-			server_pc
-				optional
-					network
-				optional
-					irda_port
-		mandatory
-			_play
-				optional
-					on_demand
+			model_code_synch
 		optional
-			client_pc
-				optional
-					_network
-		optional
-			handheld
-Example:
-Aircraft
-
-You return:
-features
-	Aircraft
-		mandatory
-			Wing
+			compiler
 				or
-					High
-					Shoulder
-					Low
+					javac
+					mvc
 		optional
-			Engine
-				alternative
-					Jet
-					Piston
+			diagram_builder
+				mandatory
+					uml
+				optional
+					petri_net
+
+Example:
+file compressor
+
+You return:
+features
+	kwic
 		mandatory
-			Materials
+			input_output
 				or
-					Metal
-					Wood
-					Cloth
-					Plastic
+					file
+					console
+		mandatory
+			circular_shift
+				mandatory
+					shift_data
+						alternative
+							implicit
+							explicit
+				optional
+					compression
+						mandatory
+							shift_processing
+						alternative
+							each_line
+							all_lines
+						optional
+							noise_words
+		mandatory
+			alpha_sort
+				mandatory
+					order
+						alternative
+							descendant
+							ascendant
+				mandatory
+					case_sensitivity
+						alternative
+							sensitive
+							insensitive
+		mandatory
+			arch_style
+				alternative
+					shared_data
+					adt
+					implicit_invocation
+					pipe_and_filter
+
+Example:
+telecom
+
+You return:
+features
+	tecom
+		optional
+			ipvoice
+				mandatory
+					software
+						alternative
+							swpack1
+							swpack2
+		mandatory
+			rack
+				mandatory
+					sizes
+						alternative
+							large
+							medium
+							small
+		optional
+			messaging
+				optional
+					upgrade_swpack
+

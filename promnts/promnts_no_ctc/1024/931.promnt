@@ -3,41 +3,95 @@ In a feature model, there are features which are represented by a string
 and relationships. Relationships have 1 child feature if they are mandatory or optional
 , also they have 2 or more if they are alternative or or. Follow the grammar in the examples. 
 Please, generate maintaining the indentation schema but using items from the domain I tell you:
+
 Example:
-monitor engine system
+Weather station
 
 You return:
 features
-	monitor_engine_system
+	weather_station
 		mandatory
-			engine_performance
-				mandatory
-					temperatures
-						optional
-							colant
-						mandatory
-							oil
-						mandatory
-							engine
-						mandatory
-							transmission
-				mandatory
-					rpm
-				mandatory
-					exhaust_level_temp
+			measurements
+				or
+					pressure
+					temperature
+					wind_speed
 		mandatory
-			fuel_consumption
+			data_source
+				alternative
+					internet
+					demo
+					external_services
+		mandatory
+			output_format
+				alternative
+					text
+					web_server
+					file
 				mandatory
-					measures
+					format
 						alternative
-							l_km
-							gallon_mile
+							xml
+							html
+							plain_text
 				mandatory
-					methods
-						or
-							distance
-							type_of_driving
-							drive
+					language
+						alternative
+							english
+							german
+		optional
+			alarm
+				or
+					freeze_point
+					storm_alert
+
+Example:
+file compressor
+
+You return:
+features
+	kwic
+		mandatory
+			input_output
+				or
+					file
+					console
+		mandatory
+			circular_shift
+				mandatory
+					shift_data
+						alternative
+							implicit
+							explicit
+				optional
+					compression
+						mandatory
+							shift_processing
+						alternative
+							each_line
+							all_lines
+						optional
+							noise_words
+		mandatory
+			alpha_sort
+				mandatory
+					order
+						alternative
+							descendant
+							ascendant
+				mandatory
+					case_sensitivity
+						alternative
+							sensitive
+							insensitive
+		mandatory
+			arch_style
+				alternative
+					shared_data
+					adt
+					implicit_invocation
+					pipe_and_filter
+
 Example: 
 Sandwiches
 
@@ -52,81 +106,29 @@ features
                     Ketchup
                     Mustard
             Cheese
+
 Example:
-Movies App
+Aircraft
 
 You return:
 features
-	Movies_App
+	Aircraft
 		mandatory
-			GUI
-				alternative
-					Thin
-					Rich
-		mandatory
-			DB
-				alternative
-					Local
-					Remote
-						mandatory
-							Cache_Policy
-		mandatory
-			Network
-				alternative
-					Wifi
-					Bluetooth
-		optional
-			GPS
-				optional
-					Built-In
-Example:
-Car
-
-You return:
-features
-	Car
-		optional
-			support
-				mandatory
-					avoidance
-						alternative
-							normal_avoidance
-							enhanced_avoidance
-				optional
-					parallel_parking
-		mandatory
-			range_finder
-				optional
-					lateral_range_finder
-				optional
-					forward_range_finder
-		optional
-			gps
-		optional
-			audio
-				alternative
-					cd
-					mp3
-					video
-Example:
-Cellphone
-
-You return:
-features
-	cellphone
-		optional
-			wireless
+			Wing
 				or
-					infrared
-					bluetooth
-		mandatory
-			accu_cell
+					High
+					Shoulder
+					Low
+		optional
+			Engine
 				alternative
-					li_ion
-					ni_mh
-					ni_ca
+					Jet
+					Piston
 		mandatory
-			display
-				alternative
-					color
-					monochrome
+			Materials
+				or
+					Metal
+					Wood
+					Cloth
+					Plastic
+

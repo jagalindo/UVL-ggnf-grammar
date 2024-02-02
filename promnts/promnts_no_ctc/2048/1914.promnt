@@ -3,248 +3,7 @@ In a feature model, there are features which are represented by a string
 and relationships. Relationships have 1 child feature if they are mandatory or optional
 , also they have 2 or more if they are alternative or or. Follow the grammar in the examples. 
 Please, generate maintaining the indentation schema but using items from the domain I tell you:
-Example:
-Weather station
 
-You return:
-features
-	weather_station
-		mandatory
-			measurements
-				or
-					pressure
-					temperature
-					wind_speed
-		mandatory
-			data_source
-				alternative
-					internet
-					demo
-					external_services
-		mandatory
-			output_format
-				alternative
-					text
-					web_server
-					file
-				mandatory
-					format
-						alternative
-							xml
-							html
-							plain_text
-				mandatory
-					language
-						alternative
-							english
-							german
-		optional
-			alarm
-				or
-					freeze_point
-					storm_alert
-Example: 
-Sandwiches
-
-You return:
-features
-    Sandwich
-        mandatory
-            Bread
-        optional
-            Sauce
-                alternative
-                    Ketchup
-                    Mustard
-            Cheese
-Example:
-Digital video system
-
-You return:
-features
-	dvs
-		mandatory
-			control
-				mandatory
-					remote
-				optional
-					telephone
-						optional
-							sms
-				optional
-					net
-						optional
-							web
-						optional
-							wap
-						mandatory
-							email
-				optional
-					edit
-						optional
-							add_music
-				mandatory
-					play
-						optional
-							slides
-						optional
-							audio
-						mandatory
-							video
-		optional
-			network_hw
-				optional
-					modem
-				optional
-					ethernet
-		mandatory
-			server_pc
-				optional
-					network
-				optional
-					irda_port
-		mandatory
-			_play
-				optional
-					on_demand
-		optional
-			client_pc
-				optional
-					_network
-		optional
-			handheld
-Example
-CFDP Library
-
-You return:
-features
-	CFDP_Library
-		or
-			send
-				optional
-					Send_Acknowledged_Mode
-				optional
-					send_fs_operations
-			receive
-				optional
-					Receive_Acknowledged_Mode
-				optional
-					receive_fs_operations
-			pus
-				optional
-					pus_rename
-				optional
-					pus_copy
-			Reboot
-				optional
-					Reboot_Entity
-				optional
-					reboot_pus
-Example:
-Aircraft
-
-You return:
-features
-	Aircraft
-		mandatory
-			Wing
-				or
-					High
-					Shoulder
-					Low
-		optional
-			Engine
-				alternative
-					Jet
-					Piston
-		mandatory
-			Materials
-				or
-					Metal
-					Wood
-					Cloth
-					Plastic
-Example:
-Insurance products
-
-You return:
-features
-	insurance_product
-		mandatory
-			insured_object
-				alternative
-					corporation
-					realty
-					movable_property
-					person
-		mandatory
-			coverage
-				or
-					illness
-					life
-					unemployment
-					damage
-					loss
-		mandatory
-			payment
-				alternative
-					service
-					ammount
-				optional
-					own_risk
-		mandatory
-			conditions
-				mandatory
-					acceptance
-				mandatory
-					exception
-		mandatory
-			premium
-				alternative
-					direct
-					periodical
-		mandatory
-			payee
-				or
-					_person
-					payee_corporation
-Example:
-Connector
-
-You return:
-features
-	Connector
-		mandatory
-			Paradigm
-				alternative
-					Client/Server
-						alternative
-							Synchronous
-								optional
-									Timeout
-							Asynchronous
-								alternative
-									Polling
-										alternative
-											Blocking
-											Non-blocking
-									Callback
-					Message-Based
-						mandatory
-							Sender
-						mandatory
-							Receiver
-								alternative
-									Pull
-										or
-											Queued
-											Non-Queued
-									Push
-		mandatory
-			Technology
-				alternative
-					CAN
-					Local
 Example:
 Cellphone
 
@@ -267,3 +26,209 @@ features
 				alternative
 					color
 					monochrome
+
+Example:
+Programming stack
+
+You return:
+features
+	Stack
+		optional
+			Size
+				alternative
+					Fixed
+						mandatory
+							Value
+					Dynamic
+		mandatory
+			Element_Type
+				alternative
+					Integer
+					Float
+					String
+		optional
+			Optimization
+				alternative
+					Speed
+					Memory_Usage
+		optional
+			Counter
+		optional
+			Additional_Features
+				or
+					Thread_Safety
+					Bounds_Check
+					Type_Check
+
+Example:
+james cms
+
+You return:
+features
+	james
+		mandatory
+			user_mngt
+				alternative
+					db
+					ldap
+		optional
+			ws_interface
+		mandatory
+			gui
+				or
+					pc
+					pda
+		mandatory
+			core
+		mandatory
+			modules
+				or
+					calendar
+					forum
+					congress_mngt
+					repository
+
+Example: 
+Sandwiches
+
+You return:
+features
+    Sandwich
+        mandatory
+            Bread
+        optional
+            Sauce
+                alternative
+                    Ketchup
+                    Mustard
+            Cheese
+
+Example:
+Car
+
+You return:
+features
+	Car
+		optional
+			support
+				mandatory
+					avoidance
+						alternative
+							normal_avoidance
+							enhanced_avoidance
+				optional
+					parallel_parking
+		mandatory
+			range_finder
+				optional
+					lateral_range_finder
+				optional
+					forward_range_finder
+		optional
+			gps
+		optional
+			audio
+				alternative
+					cd
+					mp3
+					video
+
+Example:
+Arcade_Game
+
+You return:
+features
+	Arcade_Game
+		mandatory
+			Use_Cases
+				optional
+					check_previous_best_score
+				optional
+					save_score
+				mandatory
+					Save_Game
+				mandatory
+					Exit_Game
+				mandatory
+					Install_Game
+				mandatory
+					Uninstall_Game
+				mandatory
+					List_Game
+				mandatory
+					Play_Game
+						or
+							play_brickles
+							play_pong
+							play_bowling
+						mandatory
+							Initialization
+								mandatory
+									Animation_Loop
+		mandatory
+			Class_Diagram
+				mandatory
+					game_sprite
+						optional
+							sprite_pair
+						mandatory
+							Rectangle
+								mandatory
+									Size
+								mandatory
+									Point
+						or
+							Movable_Sprite
+								mandatory
+									Velocity
+								or
+									Paddle
+										or
+											top_paddle_pong
+											bottom_paddle_pong
+									puck_core_assets
+									ball_bowling
+									pin_bowling
+							Stationary_Sprite
+								optional
+									Wall
+										or
+											left_wall_pong
+											right_wall_pong
+											left_brickles
+											right_brickles
+								or
+									brick_brickles
+									brick_pile_brickles
+									ceiling_brickles
+									floor_brickles
+									lane_bowling
+									gutter_bowling
+									edge_bowling
+									alley_bowling
+									rack_pins_bowling
+									score_board_pong
+									floor_pong
+									ceiling_pong
+									dividing_line_pong
+				optional
+					puck_supply_brickles
+				mandatory
+					Board
+						or
+							board_pong
+							board_brickles
+							board_bowling
+				mandatory
+					Menu
+						or
+							menu_pong
+							menu_brickles
+							menu_bowling
+				mandatory
+					Game_Menu
+						or
+							pong_game_menu
+							brickles_game_menu
+							bowling_game_menu
+

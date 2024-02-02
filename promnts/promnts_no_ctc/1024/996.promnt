@@ -3,131 +3,143 @@ In a feature model, there are features which are represented by a string
 and relationships. Relationships have 1 child feature if they are mandatory or optional
 , also they have 2 or more if they are alternative or or. Follow the grammar in the examples. 
 Please, generate maintaining the indentation schema but using items from the domain I tell you:
-Example:
-Programming stack
+
+Example
+CFDP Library
 
 You return:
 features
-	Stack
-		optional
-			Size
-				alternative
-					Fixed
-						mandatory
-							Value
-					Dynamic
+	CFDP_Library
+		or
+			send
+				optional
+					Send_Acknowledged_Mode
+				optional
+					send_fs_operations
+			receive
+				optional
+					Receive_Acknowledged_Mode
+				optional
+					receive_fs_operations
+			pus
+				optional
+					pus_rename
+				optional
+					pus_copy
+			Reboot
+				optional
+					Reboot_Entity
+				optional
+					reboot_pus
+
+Example:
+james cms
+
+You return:
+features
+	james
 		mandatory
-			Element_Type
+			user_mngt
 				alternative
-					Integer
-					Float
-					String
+					db
+					ldap
 		optional
-			Optimization
-				alternative
-					Speed
-					Memory_Usage
-		optional
-			Counter
-		optional
-			Additional_Features
+			ws_interface
+		mandatory
+			gui
 				or
-					Thread_Safety
-					Bounds_Check
-					Type_Check
-Example:
-Jplug
-
-You return:
-features
-	jplug
+					pc
+					pda
 		mandatory
-			interface
-				alternative
-					sdi
-					mdi
-		optional
-			gui_builder
-				mandatory
-					java
-				optional
-					qt
-		optional
-			model_code_synch
-		optional
-			compiler
+			core
+		mandatory
+			modules
 				or
-					javac
-					mvc
-		optional
-			diagram_builder
-				mandatory
-					uml
-				optional
-					petri_net
+					calendar
+					forum
+					congress_mngt
+					repository
+
 Example:
-Car
+telecom
 
 You return:
 features
-	Car
+	tecom
 		optional
-			support
+			ipvoice
 				mandatory
-					avoidance
+					software
 						alternative
-							normal_avoidance
-							enhanced_avoidance
-				optional
-					parallel_parking
+							swpack1
+							swpack2
 		mandatory
-			range_finder
-				optional
-					lateral_range_finder
-				optional
-					forward_range_finder
+			rack
+				mandatory
+					sizes
+						alternative
+							large
+							medium
+							small
 		optional
-			gps
-		optional
-			audio
-				alternative
-					cd
-					mp3
-					video
+			messaging
+				optional
+					upgrade_swpack
+
 Example:
-Connector
+Digital video system
 
 You return:
 features
-	Connector
+	dvs
 		mandatory
-			Paradigm
-				alternative
-					Client/Server
-						alternative
-							Synchronous
-								optional
-									Timeout
-							Asynchronous
-								alternative
-									Polling
-										alternative
-											Blocking
-											Non-blocking
-									Callback
-					Message-Based
+			control
+				mandatory
+					remote
+				optional
+					telephone
+						optional
+							sms
+				optional
+					net
+						optional
+							web
+						optional
+							wap
 						mandatory
-							Sender
+							email
+				optional
+					edit
+						optional
+							add_music
+				mandatory
+					play
+						optional
+							slides
+						optional
+							audio
 						mandatory
-							Receiver
-								alternative
-									Pull
-										or
-											Queued
-											Non-Queued
-									Push
+							video
+		optional
+			network_hw
+				optional
+					modem
+				optional
+					ethernet
 		mandatory
-			Technology
-				alternative
-					CAN
-					Local
+			server_pc
+				optional
+					network
+				optional
+					irda_port
+		mandatory
+			_play
+				optional
+					on_demand
+		optional
+			client_pc
+				optional
+					_network
+		optional
+			handheld
+

@@ -3,76 +3,77 @@ In a feature model, there are features which are represented by a string
 and relationships. Relationships have 1 child feature if they are mandatory or optional
 , also they have 2 or more if they are alternative or or. Follow the grammar in the examples. 
 Please, generate maintaining the indentation schema but using items from the domain I tell you:
+
 Example:
-Weather station
+Cellphone
 
 You return:
 features
-	weather_station
-		mandatory
-			measurements
+	cellphone
+		optional
+			wireless
 				or
-					pressure
-					temperature
-					wind_speed
+					infrared
+					bluetooth
 		mandatory
-			data_source
+			accu_cell
 				alternative
-					internet
-					demo
-					external_services
+					li_ion
+					ni_mh
+					ni_ca
 		mandatory
-			output_format
+			display
 				alternative
-					text
-					web_server
+					color
+					monochrome
+
+Example:
+file compressor
+
+You return:
+features
+	kwic
+		mandatory
+			input_output
+				or
 					file
-				mandatory
-					format
-						alternative
-							xml
-							html
-							plain_text
-				mandatory
-					language
-						alternative
-							english
-							german
-		optional
-			alarm
-				or
-					freeze_point
-					storm_alert
-Example:
-Jplug
-
-You return:
-features
-	jplug
+					console
 		mandatory
-			interface
+			circular_shift
+				mandatory
+					shift_data
+						alternative
+							implicit
+							explicit
+				optional
+					compression
+						mandatory
+							shift_processing
+						alternative
+							each_line
+							all_lines
+						optional
+							noise_words
+		mandatory
+			alpha_sort
+				mandatory
+					order
+						alternative
+							descendant
+							ascendant
+				mandatory
+					case_sensitivity
+						alternative
+							sensitive
+							insensitive
+		mandatory
+			arch_style
 				alternative
-					sdi
-					mdi
-		optional
-			gui_builder
-				mandatory
-					java
-				optional
-					qt
-		optional
-			model_code_synch
-		optional
-			compiler
-				or
-					javac
-					mvc
-		optional
-			diagram_builder
-				mandatory
-					uml
-				optional
-					petri_net
+					shared_data
+					adt
+					implicit_invocation
+					pipe_and_filter
+
 Example: 
 Sandwiches
 
@@ -87,35 +88,33 @@ features
                     Ketchup
                     Mustard
             Cheese
+
 Example:
-Car
+telecom
 
 You return:
 features
-	Car
+	tecom
 		optional
-			support
+			ipvoice
 				mandatory
-					avoidance
+					software
 						alternative
-							normal_avoidance
-							enhanced_avoidance
-				optional
-					parallel_parking
+							swpack1
+							swpack2
 		mandatory
-			range_finder
-				optional
-					lateral_range_finder
-				optional
-					forward_range_finder
+			rack
+				mandatory
+					sizes
+						alternative
+							large
+							medium
+							small
 		optional
-			gps
-		optional
-			audio
-				alternative
-					cd
-					mp3
-					video
+			messaging
+				optional
+					upgrade_swpack
+
 Example:
 Aircraft
 
@@ -140,3 +139,4 @@ features
 					Wood
 					Cloth
 					Plastic
+

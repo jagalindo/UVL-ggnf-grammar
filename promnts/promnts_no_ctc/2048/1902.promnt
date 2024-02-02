@@ -3,120 +3,89 @@ In a feature model, there are features which are represented by a string
 and relationships. Relationships have 1 child feature if they are mandatory or optional
 , also they have 2 or more if they are alternative or or. Follow the grammar in the examples. 
 Please, generate maintaining the indentation schema but using items from the domain I tell you:
+
 Example:
-Programming stack
+Movies App
 
 You return:
 features
-	Stack
-		optional
-			Size
-				alternative
-					Fixed
-						mandatory
-							Value
-					Dynamic
+	Movies_App
 		mandatory
-			Element_Type
+			GUI
 				alternative
-					Integer
-					Float
-					String
-		optional
-			Optimization
+					Thin
+					Rich
+		mandatory
+			DB
 				alternative
-					Speed
-					Memory_Usage
+					Local
+					Remote
+						mandatory
+							Cache_Policy
+		mandatory
+			Network
+				alternative
+					Wifi
+					Bluetooth
 		optional
-			Counter
+			GPS
+				optional
+					Built-In
+
+Example:
+Cellphone
+
+You return:
+features
+	cellphone
 		optional
-			Additional_Features
+			wireless
 				or
-					Thread_Safety
-					Bounds_Check
-					Type_Check
+					infrared
+					bluetooth
+		mandatory
+			accu_cell
+				alternative
+					li_ion
+					ni_mh
+					ni_ca
+		mandatory
+			display
+				alternative
+					color
+					monochrome
+
 Example:
-Data base management system
+Jplug
 
 You return:
 features
-	FAME-DBMS
+	jplug
 		mandatory
-			OS
+			interface
 				alternative
-					Nut/OS
-					Win
-		mandatory
-			Buffer_Manager
-				alternative
-					Persistent
-						mandatory
-							Memory_Allocation
-								alternative
-									Static
-									Dynamic
-						mandatory
-							Page_Replication
-								alternative
-									LRU
-									LFU
-					In_Memory
+					sdi
+					mdi
 		optional
-			Debug_Logging
-		mandatory
-			Storage
+			gui_builder
 				mandatory
-					API
-						optional
-							Get
-						optional
-							Put
-						optional
-							Delete
-				alternative
-					B+_Tree
-					Unindexed
-Example: 
-Sandwiches
+					java
+				optional
+					qt
+		optional
+			model_code_synch
+		optional
+			compiler
+				or
+					javac
+					mvc
+		optional
+			diagram_builder
+				mandatory
+					uml
+				optional
+					petri_net
 
-You return:
-features
-    Sandwich
-        mandatory
-            Bread
-        optional
-            Sauce
-                alternative
-                    Ketchup
-                    Mustard
-            Cheese
-Example
-CFDP Library
-
-You return:
-features
-	CFDP_Library
-		or
-			send
-				optional
-					Send_Acknowledged_Mode
-				optional
-					send_fs_operations
-			receive
-				optional
-					Receive_Acknowledged_Mode
-				optional
-					receive_fs_operations
-			pus
-				optional
-					pus_rename
-				optional
-					pus_copy
-			Reboot
-				optional
-					Reboot_Entity
-				optional
-					reboot_pus
 Example:
 james cms
 
@@ -144,6 +113,118 @@ features
 					forum
 					congress_mngt
 					repository
+
+Example: 
+Sandwiches
+
+You return:
+features
+    Sandwich
+        mandatory
+            Bread
+        optional
+            Sauce
+                alternative
+                    Ketchup
+                    Mustard
+            Cheese
+
+Example:
+telecom
+
+You return:
+features
+	tecom
+		optional
+			ipvoice
+				mandatory
+					software
+						alternative
+							swpack1
+							swpack2
+		mandatory
+			rack
+				mandatory
+					sizes
+						alternative
+							large
+							medium
+							small
+		optional
+			messaging
+				optional
+					upgrade_swpack
+
+Example:
+Tex editor
+
+You return:
+features
+	editor_config
+		mandatory
+			backup
+				optional
+					autosave
+						mandatory
+							minutes
+				optional
+					backup_onchange
+				mandatory
+					backup_extension
+						alternative
+							file_bak
+							file_bak_ext
+							file_ext_bak
+		optional
+			document_class
+				mandatory
+					associated_file_ext
+						optional
+							ext
+				mandatory
+					commands
+						optional
+							remove_blank_lines
+						optional
+							spell_check
+						optional
+							dos_unix_conversion
+				optional
+					syntax_highlighting
+						mandatory
+							syntax_definition_file
+
+
+Example:
+Car
+
+You return:
+features
+	Car
+		optional
+			support
+				mandatory
+					avoidance
+						alternative
+							normal_avoidance
+							enhanced_avoidance
+				optional
+					parallel_parking
+		mandatory
+			range_finder
+				optional
+					lateral_range_finder
+				optional
+					forward_range_finder
+		optional
+			gps
+		optional
+			audio
+				alternative
+					cd
+					mp3
+					video
+
 Example:
 Aircraft
 
@@ -168,93 +249,49 @@ features
 					Wood
 					Cloth
 					Plastic
+
 Example:
-Cellphone
+Insurance products
 
 You return:
 features
-	cellphone
-		optional
-			wireless
+	insurance_product
+		mandatory
+			insured_object
+				alternative
+					corporation
+					realty
+					movable_property
+					person
+		mandatory
+			coverage
 				or
-					infrared
-					bluetooth
+					illness
+					life
+					unemployment
+					damage
+					loss
 		mandatory
-			accu_cell
+			payment
 				alternative
-					li_ion
-					ni_mh
-					ni_ca
+					service
+					ammount
+				optional
+					own_risk
 		mandatory
-			display
+			conditions
+				mandatory
+					acceptance
+				mandatory
+					exception
+		mandatory
+			premium
 				alternative
-					color
-					monochrome
-Example:
-Document generator
+					direct
+					periodical
+		mandatory
+			payee
+				or
+					_person
+					payee_corporation
 
-You return:
-features
-	doc_gen
-		mandatory
-			analysis
-				mandatory
-					language_analysis
-						or
-							cobol
-								alternative
-									ibm_cobol
-									microfocus_cobol
-							jcl
-							sql
-							delphi
-							progress
-				optional
-					version_mngt
-				optional
-					subsystems
-		mandatory
-			presentation
-				mandatory
-					localization
-						or
-							english
-							dutch
-				mandatory
-					interaction
-						alternative
-							static
-							dynamic
-				mandatory
-					main_pages
-						or
-							program_page
-								or
-									annotation_section
-									activation_section
-									entities_section
-									parameters_section
-							copybook_page
-							statistics_page
-								alternative
-									with_history
-									without_history
-							indexes
-							search_page
-							subsystem_page
-							source_page
-							source_difference
-				optional
-					visualizations
-						or
-							perform_graph
-							conditional_perform_graph
-							jcl_graph
-							subsystem_graph
-							overview_graph
-		mandatory
-			database
-				alternative
-					db2
-					oracle
-					mysql

@@ -3,31 +3,30 @@ In a feature model, there are features which are represented by a string
 and relationships. Relationships have 1 child feature if they are mandatory or optional
 , also they have 2 or more if they are alternative or or. Follow the grammar in the examples. 
 Please, generate maintaining the indentation schema but using items from the domain I tell you:
+
 Example:
-vof
+Cellphone
 
 You return:
 features
-	vof
-		mandatory
-			follow_me
-				mandatory
-					user_localize
-						mandatory
-							user_pos_method
-								alternative
-									access_point
-									rfid
-				mandatory
-					logon
+	cellphone
 		optional
-			virtual_printer
-				mandatory
-					printer_register
-				mandatory
-					file_upload
-				optional
-					file_converter
+			wireless
+				or
+					infrared
+					bluetooth
+		mandatory
+			accu_cell
+				alternative
+					li_ion
+					ni_mh
+					ni_ca
+		mandatory
+			display
+				alternative
+					color
+					monochrome
+
 Example:
 Weather station
 
@@ -68,76 +67,7 @@ features
 				or
 					freeze_point
 					storm_alert
-Example: 
-Sandwiches
 
-You return:
-features
-    Sandwich
-        mandatory
-            Bread
-        optional
-            Sauce
-                alternative
-                    Ketchup
-                    Mustard
-            Cheese
-Example:
-Digital video system
-
-You return:
-features
-	dvs
-		mandatory
-			control
-				mandatory
-					remote
-				optional
-					telephone
-						optional
-							sms
-				optional
-					net
-						optional
-							web
-						optional
-							wap
-						mandatory
-							email
-				optional
-					edit
-						optional
-							add_music
-				mandatory
-					play
-						optional
-							slides
-						optional
-							audio
-						mandatory
-							video
-		optional
-			network_hw
-				optional
-					modem
-				optional
-					ethernet
-		mandatory
-			server_pc
-				optional
-					network
-				optional
-					irda_port
-		mandatory
-			_play
-				optional
-					on_demand
-		optional
-			client_pc
-				optional
-					_network
-		optional
-			handheld
 Example
 CFDP Library
 
@@ -165,69 +95,6 @@ features
 					Reboot_Entity
 				optional
 					reboot_pus
-Example:
-telecom
-
-You return:
-features
-	tecom
-		optional
-			ipvoice
-				mandatory
-					software
-						alternative
-							swpack1
-							swpack2
-		mandatory
-			rack
-				mandatory
-					sizes
-						alternative
-							large
-							medium
-							small
-		optional
-			messaging
-				optional
-					upgrade_swpack
-Example:
-Tex editor
-
-You return:
-features
-	editor_config
-		mandatory
-			backup
-				optional
-					autosave
-						mandatory
-							minutes
-				optional
-					backup_onchange
-				mandatory
-					backup_extension
-						alternative
-							file_bak
-							file_bak_ext
-							file_ext_bak
-		optional
-			document_class
-				mandatory
-					associated_file_ext
-						optional
-							ext
-				mandatory
-					commands
-						optional
-							remove_blank_lines
-						optional
-							spell_check
-						optional
-							dos_unix_conversion
-				optional
-					syntax_highlighting
-						mandatory
-							syntax_definition_file
 
 Example:
 file compressor
@@ -275,3 +142,141 @@ features
 					adt
 					implicit_invocation
 					pipe_and_filter
+
+Example:
+james cms
+
+You return:
+features
+	james
+		mandatory
+			user_mngt
+				alternative
+					db
+					ldap
+		optional
+			ws_interface
+		mandatory
+			gui
+				or
+					pc
+					pda
+		mandatory
+			core
+		mandatory
+			modules
+				or
+					calendar
+					forum
+					congress_mngt
+					repository
+
+Example:
+Connector
+
+You return:
+features
+	Connector
+		mandatory
+			Paradigm
+				alternative
+					Client/Server
+						alternative
+							Synchronous
+								optional
+									Timeout
+							Asynchronous
+								alternative
+									Polling
+										alternative
+											Blocking
+											Non-blocking
+									Callback
+					Message-Based
+						mandatory
+							Sender
+						mandatory
+							Receiver
+								alternative
+									Pull
+										or
+											Queued
+											Non-Queued
+									Push
+		mandatory
+			Technology
+				alternative
+					CAN
+					Local
+
+Example:
+vof
+
+You return:
+features
+	vof
+		mandatory
+			follow_me
+				mandatory
+					user_localize
+						mandatory
+							user_pos_method
+								alternative
+									access_point
+									rfid
+				mandatory
+					logon
+		optional
+			virtual_printer
+				mandatory
+					printer_register
+				mandatory
+					file_upload
+				optional
+					file_converter
+
+Example:
+Insurance products
+
+You return:
+features
+	insurance_product
+		mandatory
+			insured_object
+				alternative
+					corporation
+					realty
+					movable_property
+					person
+		mandatory
+			coverage
+				or
+					illness
+					life
+					unemployment
+					damage
+					loss
+		mandatory
+			payment
+				alternative
+					service
+					ammount
+				optional
+					own_risk
+		mandatory
+			conditions
+				mandatory
+					acceptance
+				mandatory
+					exception
+		mandatory
+			premium
+				alternative
+					direct
+					periodical
+		mandatory
+			payee
+				or
+					_person
+					payee_corporation
+

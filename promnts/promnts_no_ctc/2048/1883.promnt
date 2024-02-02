@@ -3,86 +3,119 @@ In a feature model, there are features which are represented by a string
 and relationships. Relationships have 1 child feature if they are mandatory or optional
 , also they have 2 or more if they are alternative or or. Follow the grammar in the examples. 
 Please, generate maintaining the indentation schema but using items from the domain I tell you:
+
 Example:
-vof
+Movies App
 
 You return:
 features
-	vof
+	Movies_App
 		mandatory
-			follow_me
-				mandatory
-					user_localize
+			GUI
+				alternative
+					Thin
+					Rich
+		mandatory
+			DB
+				alternative
+					Local
+					Remote
 						mandatory
-							user_pos_method
-								alternative
-									access_point
-									rfid
-				mandatory
-					logon
+							Cache_Policy
+		mandatory
+			Network
+				alternative
+					Wifi
+					Bluetooth
 		optional
-			virtual_printer
-				mandatory
-					printer_register
-				mandatory
-					file_upload
+			GPS
 				optional
-					file_converter
+					Built-In
+
 Example:
-Data base management system
+Cellphone
 
 You return:
 features
-	FAME-DBMS
-		mandatory
-			OS
-				alternative
-					Nut/OS
-					Win
-		mandatory
-			Buffer_Manager
-				alternative
-					Persistent
-						mandatory
-							Memory_Allocation
-								alternative
-									Static
-									Dynamic
-						mandatory
-							Page_Replication
-								alternative
-									LRU
-									LFU
-					In_Memory
+	cellphone
 		optional
-			Debug_Logging
+			wireless
+				or
+					infrared
+					bluetooth
 		mandatory
-			Storage
-				mandatory
-					API
-						optional
-							Get
-						optional
-							Put
-						optional
-							Delete
+			accu_cell
 				alternative
-					B+_Tree
-					Unindexed
-Example: 
-Sandwiches
+					li_ion
+					ni_mh
+					ni_ca
+		mandatory
+			display
+				alternative
+					color
+					monochrome
+
+Example:
+Programming stack
 
 You return:
 features
-    Sandwich
-        mandatory
-            Bread
-        optional
-            Sauce
-                alternative
-                    Ketchup
-                    Mustard
-            Cheese
+	Stack
+		optional
+			Size
+				alternative
+					Fixed
+						mandatory
+							Value
+					Dynamic
+		mandatory
+			Element_Type
+				alternative
+					Integer
+					Float
+					String
+		optional
+			Optimization
+				alternative
+					Speed
+					Memory_Usage
+		optional
+			Counter
+		optional
+			Additional_Features
+				or
+					Thread_Safety
+					Bounds_Check
+					Type_Check
+
+Example
+CFDP Library
+
+You return:
+features
+	CFDP_Library
+		or
+			send
+				optional
+					Send_Acknowledged_Mode
+				optional
+					send_fs_operations
+			receive
+				optional
+					Receive_Acknowledged_Mode
+				optional
+					receive_fs_operations
+			pus
+				optional
+					pus_rename
+				optional
+					pus_copy
+			Reboot
+				optional
+					Reboot_Entity
+				optional
+					reboot_pus
+
 Example:
 james cms
 
@@ -110,133 +143,22 @@ features
 					forum
 					congress_mngt
 					repository
-Example:
-Aircraft
+
+Example: 
+Sandwiches
 
 You return:
 features
-	Aircraft
-		mandatory
-			Wing
-				or
-					High
-					Shoulder
-					Low
-		optional
-			Engine
-				alternative
-					Jet
-					Piston
-		mandatory
-			Materials
-				or
-					Metal
-					Wood
-					Cloth
-					Plastic
-Example:
-Insurance products
+    Sandwich
+        mandatory
+            Bread
+        optional
+            Sauce
+                alternative
+                    Ketchup
+                    Mustard
+            Cheese
 
-You return:
-features
-	insurance_product
-		mandatory
-			insured_object
-				alternative
-					corporation
-					realty
-					movable_property
-					person
-		mandatory
-			coverage
-				or
-					illness
-					life
-					unemployment
-					damage
-					loss
-		mandatory
-			payment
-				alternative
-					service
-					ammount
-				optional
-					own_risk
-		mandatory
-			conditions
-				mandatory
-					acceptance
-				mandatory
-					exception
-		mandatory
-			premium
-				alternative
-					direct
-					periodical
-		mandatory
-			payee
-				or
-					_person
-					payee_corporation
-Example:
-Connector
-
-You return:
-features
-	Connector
-		mandatory
-			Paradigm
-				alternative
-					Client/Server
-						alternative
-							Synchronous
-								optional
-									Timeout
-							Asynchronous
-								alternative
-									Polling
-										alternative
-											Blocking
-											Non-blocking
-									Callback
-					Message-Based
-						mandatory
-							Sender
-						mandatory
-							Receiver
-								alternative
-									Pull
-										or
-											Queued
-											Non-Queued
-									Push
-		mandatory
-			Technology
-				alternative
-					CAN
-					Local
-Example:
-Cellphone
-
-You return:
-features
-	cellphone
-		optional
-			wireless
-				or
-					infrared
-					bluetooth
-		mandatory
-			accu_cell
-				alternative
-					li_ion
-					ni_mh
-					ni_ca
-		mandatory
-			display
-				alternative
-					color
-					monochrome
 Example:
 telecom
 
@@ -262,3 +184,116 @@ features
 			messaging
 				optional
 					upgrade_swpack
+
+Example:
+Car
+
+You return:
+features
+	Car
+		optional
+			support
+				mandatory
+					avoidance
+						alternative
+							normal_avoidance
+							enhanced_avoidance
+				optional
+					parallel_parking
+		mandatory
+			range_finder
+				optional
+					lateral_range_finder
+				optional
+					forward_range_finder
+		optional
+			gps
+		optional
+			audio
+				alternative
+					cd
+					mp3
+					video
+
+Example:
+Aircraft
+
+You return:
+features
+	Aircraft
+		mandatory
+			Wing
+				or
+					High
+					Shoulder
+					Low
+		optional
+			Engine
+				alternative
+					Jet
+					Piston
+		mandatory
+			Materials
+				or
+					Metal
+					Wood
+					Cloth
+					Plastic
+
+Example:
+Digital video system
+
+You return:
+features
+	dvs
+		mandatory
+			control
+				mandatory
+					remote
+				optional
+					telephone
+						optional
+							sms
+				optional
+					net
+						optional
+							web
+						optional
+							wap
+						mandatory
+							email
+				optional
+					edit
+						optional
+							add_music
+				mandatory
+					play
+						optional
+							slides
+						optional
+							audio
+						mandatory
+							video
+		optional
+			network_hw
+				optional
+					modem
+				optional
+					ethernet
+		mandatory
+			server_pc
+				optional
+					network
+				optional
+					irda_port
+		mandatory
+			_play
+				optional
+					on_demand
+		optional
+			client_pc
+				optional
+					_network
+		optional
+			handheld
+

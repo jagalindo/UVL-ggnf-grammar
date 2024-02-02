@@ -3,6 +3,60 @@ In a feature model, there are features which are represented by a string
 and relationships. Relationships have 1 child feature if they are mandatory or optional
 , also they have 2 or more if they are alternative or or. Follow the grammar in the examples. 
 Please, generate maintaining the indentation schema but using items from the domain I tell you:
+
+Example:
+Connector
+
+You return:
+features
+	Connector
+		mandatory
+			Paradigm
+				alternative
+					Client/Server
+						alternative
+							Synchronous
+								optional
+									Timeout
+							Asynchronous
+								alternative
+									Polling
+										alternative
+											Blocking
+											Non-blocking
+									Callback
+					Message-Based
+						mandatory
+							Sender
+						mandatory
+							Receiver
+								alternative
+									Pull
+										or
+											Queued
+											Non-Queued
+									Push
+		mandatory
+			Technology
+				alternative
+					CAN
+					Local
+
+Example: 
+Sandwiches
+
+You return:
+features
+    Sandwich
+        mandatory
+            Bread
+        optional
+            Sauce
+                alternative
+                    Ketchup
+                    Mustard
+            Cheese
+
 Example:
 Aircraft
 
@@ -27,96 +81,49 @@ features
 					Wood
 					Cloth
 					Plastic
+
 Example:
-Web portal
+Insurance products
 
 You return:
 features
-	web_portal
-		optional
-			add_services
-				optional
-					site_stats
-						mandatory
-							basic
-						optional
-							advanced
-				optional
-					site_search
-						optional
-							images
-						optional
-							text
-								mandatory
-									html
-								optional
-									dynamic
-				optional
-					ad_server
-						mandatory
-							reports
-						optional
-							popups
-						mandatory
-							banners
-								mandatory
-									ban_img
-								optional
-									ban_flash
-						optional
-							keyword
+	insurance_product
 		mandatory
-			web_server
-				optional
-					logging
-						alternative
-							db
-							file
-				optional
-					protocol
-						or
-							nttp
-							ftp
-							https
-				mandatory
-					cont
-						mandatory
-							static
-						optional
-							active
-								or
-									asp
-									php
-									jsp
-									cgi
-		optional
-			persistence
+			insured_object
 				alternative
-					xml
-					database
-		optional
-			ri
+					corporation
+					realty
+					movable_property
+					person
+		mandatory
+			coverage
 				or
-					data_storage
-					data_transfer
-					user_auth
-		optional
-			performance
+					illness
+					life
+					unemployment
+					damage
+					loss
+		mandatory
+			payment
 				alternative
-					ms
-					sec
-					min
-Example: 
-Sandwiches
+					service
+					ammount
+				optional
+					own_risk
+		mandatory
+			conditions
+				mandatory
+					acceptance
+				mandatory
+					exception
+		mandatory
+			premium
+				alternative
+					direct
+					periodical
+		mandatory
+			payee
+				or
+					_person
+					payee_corporation
 
-You return:
-features
-    Sandwich
-        mandatory
-            Bread
-        optional
-            Sauce
-                alternative
-                    Ketchup
-                    Mustard
-            Cheese

@@ -3,225 +3,107 @@ In a feature model, there are features which are represented by a string
 and relationships. Relationships have 1 child feature if they are mandatory or optional
 , also they have 2 or more if they are alternative or or. Follow the grammar in the examples. 
 Please, generate maintaining the indentation schema but using items from the domain I tell you:
+
 Example:
-vof
+monitor engine system
 
 You return:
 features
-	vof
+	monitor_engine_system
 		mandatory
-			follow_me
+			engine_performance
 				mandatory
-					user_localize
+					temperatures
+						optional
+							colant
 						mandatory
-							user_pos_method
-								alternative
-									access_point
-									rfid
+							oil
+						mandatory
+							engine
+						mandatory
+							transmission
 				mandatory
-					logon
-		optional
-			virtual_printer
+					rpm
 				mandatory
-					printer_register
-				mandatory
-					file_upload
-				optional
-					file_converter
-Example:
-Web portal
-
-You return:
-features
-	web_portal
-		optional
-			add_services
-				optional
-					site_stats
-						mandatory
-							basic
-						optional
-							advanced
-				optional
-					site_search
-						optional
-							images
-						optional
-							text
-								mandatory
-									html
-								optional
-									dynamic
-				optional
-					ad_server
-						mandatory
-							reports
-						optional
-							popups
-						mandatory
-							banners
-								mandatory
-									ban_img
-								optional
-									ban_flash
-						optional
-							keyword
+					exhaust_level_temp
 		mandatory
-			web_server
-				optional
-					logging
+			fuel_consumption
+				mandatory
+					measures
 						alternative
-							db
-							file
-				optional
-					protocol
+							l_km
+							gallon_mile
+				mandatory
+					methods
 						or
-							nttp
-							ftp
-							https
-				mandatory
-					cont
+							distance
+							type_of_driving
+							drive
+
+Example:
+Programming stack
+
+You return:
+features
+	Stack
+		optional
+			Size
+				alternative
+					Fixed
 						mandatory
-							static
-						optional
-							active
-								or
-									asp
-									php
-									jsp
-									cgi
-		optional
-			persistence
+							Value
+					Dynamic
+		mandatory
+			Element_Type
 				alternative
-					xml
-					database
+					Integer
+					Float
+					String
 		optional
-			ri
+			Optimization
+				alternative
+					Speed
+					Memory_Usage
+		optional
+			Counter
+		optional
+			Additional_Features
 				or
-					data_storage
-					data_transfer
-					user_auth
-		optional
-			performance
-				alternative
-					ms
-					sec
-					min
-Example: 
-Sandwiches
+					Thread_Safety
+					Bounds_Check
+					Type_Check
 
-You return:
-features
-    Sandwich
-        mandatory
-            Bread
-        optional
-            Sauce
-                alternative
-                    Ketchup
-                    Mustard
-            Cheese
-Example
-CFDP Library
-
-You return:
-features
-	CFDP_Library
-		or
-			send
-				optional
-					Send_Acknowledged_Mode
-				optional
-					send_fs_operations
-			receive
-				optional
-					Receive_Acknowledged_Mode
-				optional
-					receive_fs_operations
-			pus
-				optional
-					pus_rename
-				optional
-					pus_copy
-			Reboot
-				optional
-					Reboot_Entity
-				optional
-					reboot_pus
 Example:
-james cms
+Jplug
 
 You return:
 features
-	james
+	jplug
 		mandatory
-			user_mngt
+			interface
 				alternative
-					db
-					ldap
+					sdi
+					mdi
 		optional
-			ws_interface
-		mandatory
-			gui
-				or
-					pc
-					pda
-		mandatory
-			core
-		mandatory
-			modules
-				or
-					calendar
-					forum
-					congress_mngt
-					repository
-Example:
-Cellphone
-
-You return:
-features
-	cellphone
-		optional
-			wireless
-				or
-					infrared
-					bluetooth
-		mandatory
-			accu_cell
-				alternative
-					li_ion
-					ni_mh
-					ni_ca
-		mandatory
-			display
-				alternative
-					color
-					monochrome
-Example:
-telecom
-
-You return:
-features
-	tecom
-		optional
-			ipvoice
+			gui_builder
 				mandatory
-					software
-						alternative
-							swpack1
-							swpack2
-		mandatory
-			rack
-				mandatory
-					sizes
-						alternative
-							large
-							medium
-							small
-		optional
-			messaging
+					java
 				optional
-					upgrade_swpack
+					qt
+		optional
+			model_code_synch
+		optional
+			compiler
+				or
+					javac
+					mvc
+		optional
+			diagram_builder
+				mandatory
+					uml
+				optional
+					petri_net
+
 Example:
 file compressor
 
@@ -268,3 +150,136 @@ features
 					adt
 					implicit_invocation
 					pipe_and_filter
+
+Example:
+james cms
+
+You return:
+features
+	james
+		mandatory
+			user_mngt
+				alternative
+					db
+					ldap
+		optional
+			ws_interface
+		mandatory
+			gui
+				or
+					pc
+					pda
+		mandatory
+			core
+		mandatory
+			modules
+				or
+					calendar
+					forum
+					congress_mngt
+					repository
+
+Example:
+Connector
+
+You return:
+features
+	Connector
+		mandatory
+			Paradigm
+				alternative
+					Client/Server
+						alternative
+							Synchronous
+								optional
+									Timeout
+							Asynchronous
+								alternative
+									Polling
+										alternative
+											Blocking
+											Non-blocking
+									Callback
+					Message-Based
+						mandatory
+							Sender
+						mandatory
+							Receiver
+								alternative
+									Pull
+										or
+											Queued
+											Non-Queued
+									Push
+		mandatory
+			Technology
+				alternative
+					CAN
+					Local
+
+Example: 
+Sandwiches
+
+You return:
+features
+    Sandwich
+        mandatory
+            Bread
+        optional
+            Sauce
+                alternative
+                    Ketchup
+                    Mustard
+            Cheese
+
+Example:
+telecom
+
+You return:
+features
+	tecom
+		optional
+			ipvoice
+				mandatory
+					software
+						alternative
+							swpack1
+							swpack2
+		mandatory
+			rack
+				mandatory
+					sizes
+						alternative
+							large
+							medium
+							small
+		optional
+			messaging
+				optional
+					upgrade_swpack
+
+Example:
+Aircraft
+
+You return:
+features
+	Aircraft
+		mandatory
+			Wing
+				or
+					High
+					Shoulder
+					Low
+		optional
+			Engine
+				alternative
+					Jet
+					Piston
+		mandatory
+			Materials
+				or
+					Metal
+					Wood
+					Cloth
+					Plastic
+

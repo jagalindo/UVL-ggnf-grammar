@@ -3,81 +3,40 @@ In a feature model, there are features which are represented by a string
 and relationships. Relationships have 1 child feature if they are mandatory or optional
 , also they have 2 or more if they are alternative or or. Follow the grammar in the examples. 
 Please, generate maintaining the indentation schema but using items from the domain I tell you:
+
 Example:
-Weather station
+Programming stack
 
 You return:
 features
-	weather_station
-		mandatory
-			measurements
-				or
-					pressure
-					temperature
-					wind_speed
-		mandatory
-			data_source
-				alternative
-					internet
-					demo
-					external_services
-		mandatory
-			output_format
-				alternative
-					text
-					web_server
-					file
-				mandatory
-					format
-						alternative
-							xml
-							html
-							plain_text
-				mandatory
-					language
-						alternative
-							english
-							german
+	Stack
 		optional
-			alarm
+			Size
+				alternative
+					Fixed
+						mandatory
+							Value
+					Dynamic
+		mandatory
+			Element_Type
+				alternative
+					Integer
+					Float
+					String
+		optional
+			Optimization
+				alternative
+					Speed
+					Memory_Usage
+		optional
+			Counter
+		optional
+			Additional_Features
 				or
-					freeze_point
-					storm_alert
-Example:
-monitor engine system
+					Thread_Safety
+					Bounds_Check
+					Type_Check
 
-You return:
-features
-	monitor_engine_system
-		mandatory
-			engine_performance
-				mandatory
-					temperatures
-						optional
-							colant
-						mandatory
-							oil
-						mandatory
-							engine
-						mandatory
-							transmission
-				mandatory
-					rpm
-				mandatory
-					exhaust_level_temp
-		mandatory
-			fuel_consumption
-				mandatory
-					measures
-						alternative
-							l_km
-							gallon_mile
-				mandatory
-					methods
-						or
-							distance
-							type_of_driving
-							drive
 Example: 
 Sandwiches
 
@@ -92,32 +51,72 @@ features
                     Ketchup
                     Mustard
             Cheese
+
 Example:
-Car
+Dell laptop
 
 You return:
 features
-	Car
-		optional
-			support
-				mandatory
-					avoidance
-						alternative
-							normal_avoidance
-							enhanced_avoidance
-				optional
-					parallel_parking
+	Dell_laptop
 		mandatory
-			range_finder
-				optional
-					lateral_range_finder
-				optional
-					forward_range_finder
-		optional
-			gps
-		optional
-			audio
+			productcategory
 				alternative
-					cd
-					mp3
-					video
+					mininotebooks
+					inspironlaptops
+					studiolaptops
+					xpslaptops
+					adamo
+					studioxpslaptops
+		mandatory
+			operatingsystem
+				alternative
+					windows10
+					windows11
+					ubuntu
+	
+		mandatory
+			harddrive
+				alternative
+					hd500gb
+					hd320gb
+					hd250gb
+					hd160gb
+					hd128gbsolidstate
+					hd120gb
+					hd80gb
+		optional
+			opticaldrive
+				alternative
+					cddvdrw
+					dvdromdriveanddvdrw
+					dvdrwandcdrwcombo
+					bluraydisc
+		mandatory
+			laptopweight
+				alternative
+					ultralight
+					light
+					desktopreplacement
+		mandatory
+			memory
+				alternative
+					morethan4g
+					mem4gb
+					mem3gb
+					mem2gb
+					mem1gb
+		mandatory
+			processor
+				alternative
+					intelcore2duo
+					intelpentiumdualcore
+					intelceleron
+					intelatom
+		mandatory
+			price
+				alternative
+					lessthanus400
+					us400us800
+					us800us1200
+					morethanus1200
+

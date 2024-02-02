@@ -3,142 +3,143 @@ In a feature model, there are features which are represented by a string
 and relationships. Relationships have 1 child feature if they are mandatory or optional
 , also they have 2 or more if they are alternative or or. Follow the grammar in the examples. 
 Please, generate maintaining the indentation schema but using items from the domain I tell you:
-Example:
-Weather station
+
+Example
+CFDP Library
 
 You return:
 features
-	weather_station
+	CFDP_Library
+		or
+			send
+				optional
+					Send_Acknowledged_Mode
+				optional
+					send_fs_operations
+			receive
+				optional
+					Receive_Acknowledged_Mode
+				optional
+					receive_fs_operations
+			pus
+				optional
+					pus_rename
+				optional
+					pus_copy
+			Reboot
+				optional
+					Reboot_Entity
+				optional
+					reboot_pus
+
+Example:
+james cms
+
+You return:
+features
+	james
 		mandatory
-			measurements
-				or
-					pressure
-					temperature
-					wind_speed
-		mandatory
-			data_source
+			user_mngt
 				alternative
-					internet
-					demo
-					external_services
-		mandatory
-			output_format
-				alternative
-					text
-					web_server
-					file
-				mandatory
-					format
-						alternative
-							xml
-							html
-							plain_text
-				mandatory
-					language
-						alternative
-							english
-							german
+					db
+					ldap
 		optional
-			alarm
+			ws_interface
+		mandatory
+			gui
 				or
-					freeze_point
-					storm_alert
+					pc
+					pda
+		mandatory
+			core
+		mandatory
+			modules
+				or
+					calendar
+					forum
+					congress_mngt
+					repository
+
 Example:
-monitor engine system
+Web portal
 
 You return:
 features
-	monitor_engine_system
-		mandatory
-			engine_performance
-				mandatory
-					temperatures
+	web_portal
+		optional
+			add_services
+				optional
+					site_stats
+						mandatory
+							basic
 						optional
-							colant
-						mandatory
-							oil
-						mandatory
-							engine
-						mandatory
-							transmission
-				mandatory
-					rpm
-				mandatory
-					exhaust_level_temp
-		mandatory
-			fuel_consumption
-				mandatory
-					measures
-						alternative
-							l_km
-							gallon_mile
-				mandatory
-					methods
-						or
-							distance
-							type_of_driving
-							drive
-Example:
-Graph operations
-
-You return:
-features
-	graph
-		mandatory
-			services
-				mandatory
-					graph_manipulation
-						mandatory
-							delete
-						mandatory
-							select
+							advanced
+				optional
+					site_search
+						optional
+							images
+						optional
+							text
 								mandatory
-									selection_mode
-										alternative
-											increment_selection
-											non_increment_selection
-						mandatory
-							add
-								mandatory
-									entity_add
-								mandatory
-									connector_add
-						mandatory
-							move
-								mandatory
-									moving_mode
-										alternative
-											outline_moving
-											content_moving
+									html
 								optional
-									moving_constraint
-										alternative
-											horizontal_constraint
-											vertical_constraint
-						optional
-							compose
-						optional
-							layer_adjust
-								mandatory
-									up_layer
-								mandatory
-									down_layer
+									dynamic
 				optional
-					do_undo_redo
+					ad_server
 						mandatory
-							select_do_undo_redo
-						mandatory
-							add_do_undo_redo
-						mandatory
-							delete__do_undo_redo
-						mandatory
-							move_do_undo_redo
+							reports
 						optional
-							compose_do_undo_redo
+							popups
+						mandatory
+							banners
+								mandatory
+									ban_img
+								optional
+									ban_flash
 						optional
-							layer_adjust_do_undo_redo
+							keyword
+		mandatory
+			web_server
 				optional
-					zoom_inout
+					logging
+						alternative
+							db
+							file
+				optional
+					protocol
+						or
+							nttp
+							ftp
+							https
+				mandatory
+					cont
+						mandatory
+							static
+						optional
+							active
+								or
+									asp
+									php
+									jsp
+									cgi
+		optional
+			persistence
+				alternative
+					xml
+					database
+		optional
+			ri
+				or
+					data_storage
+					data_transfer
+					user_auth
+		optional
+			performance
+				alternative
+					ms
+					sec
+					min
+
 Example:
 Car
 
@@ -168,82 +169,116 @@ features
 					cd
 					mp3
 					video
-Example
-CFDP Library
 
-You return:
-features
-	CFDP_Library
-		or
-			send
-				optional
-					Send_Acknowledged_Mode
-				optional
-					send_fs_operations
-			receive
-				optional
-					Receive_Acknowledged_Mode
-				optional
-					receive_fs_operations
-			pus
-				optional
-					pus_rename
-				optional
-					pus_copy
-			Reboot
-				optional
-					Reboot_Entity
-				optional
-					reboot_pus
 Example:
-james cms
+Aircraft
 
 You return:
 features
-	james
+	Aircraft
 		mandatory
-			user_mngt
+			Wing
+				or
+					High
+					Shoulder
+					Low
+		optional
+			Engine
 				alternative
-					db
-					ldap
-		optional
-			ws_interface
+					Jet
+					Piston
 		mandatory
-			gui
+			Materials
 				or
-					pc
-					pda
-		mandatory
-			core
-		mandatory
-			modules
-				or
-					calendar
-					forum
-					congress_mngt
-					repository
+					Metal
+					Wood
+					Cloth
+					Plastic
+
 Example:
-telecom
+Data base management system
 
 You return:
 features
-	tecom
-		optional
-			ipvoice
-				mandatory
-					software
-						alternative
-							swpack1
-							swpack2
+	FAME-DBMS
 		mandatory
-			rack
-				mandatory
-					sizes
-						alternative
-							large
-							medium
-							small
+			OS
+				alternative
+					Nut/OS
+					Win
+		mandatory
+			Buffer_Manager
+				alternative
+					Persistent
+						mandatory
+							Memory_Allocation
+								alternative
+									Static
+									Dynamic
+						mandatory
+							Page_Replication
+								alternative
+									LRU
+									LFU
+					In_Memory
 		optional
-			messaging
+			Debug_Logging
+		mandatory
+			Storage
+				mandatory
+					API
+						optional
+							Get
+						optional
+							Put
+						optional
+							Delete
+				alternative
+					B+_Tree
+					Unindexed
+
+Example:
+Insurance products
+
+You return:
+features
+	insurance_product
+		mandatory
+			insured_object
+				alternative
+					corporation
+					realty
+					movable_property
+					person
+		mandatory
+			coverage
+				or
+					illness
+					life
+					unemployment
+					damage
+					loss
+		mandatory
+			payment
+				alternative
+					service
+					ammount
 				optional
-					upgrade_swpack
+					own_risk
+		mandatory
+			conditions
+				mandatory
+					acceptance
+				mandatory
+					exception
+		mandatory
+			premium
+				alternative
+					direct
+					periodical
+		mandatory
+			payee
+				or
+					_person
+					payee_corporation
+

@@ -3,89 +3,7 @@ In a feature model, there are features which are represented by a string
 and relationships. Relationships have 1 child feature if they are mandatory or optional
 , also they have 2 or more if they are alternative or or. Follow the grammar in the examples. 
 Please, generate maintaining the indentation schema but using items from the domain I tell you:
-Example:
-Weather station
 
-You return:
-features
-	weather_station
-		mandatory
-			measurements
-				or
-					pressure
-					temperature
-					wind_speed
-		mandatory
-			data_source
-				alternative
-					internet
-					demo
-					external_services
-		mandatory
-			output_format
-				alternative
-					text
-					web_server
-					file
-				mandatory
-					format
-						alternative
-							xml
-							html
-							plain_text
-				mandatory
-					language
-						alternative
-							english
-							german
-		optional
-			alarm
-				or
-					freeze_point
-					storm_alert
-Example: 
-Sandwiches
-
-You return:
-features
-    Sandwich
-        mandatory
-            Bread
-        optional
-            Sauce
-                alternative
-                    Ketchup
-                    Mustard
-            Cheese
-Example:
-Car
-
-You return:
-features
-	Car
-		optional
-			support
-				mandatory
-					avoidance
-						alternative
-							normal_avoidance
-							enhanced_avoidance
-				optional
-					parallel_parking
-		mandatory
-			range_finder
-				optional
-					lateral_range_finder
-				optional
-					forward_range_finder
-		optional
-			gps
-		optional
-			audio
-				alternative
-					cd
-					mp3
-					video
 Example
 CFDP Library
 
@@ -113,65 +31,79 @@ features
 					Reboot_Entity
 				optional
 					reboot_pus
+
 Example:
-Connector
+Jplug
 
 You return:
 features
-	Connector
+	jplug
 		mandatory
-			Paradigm
+			interface
 				alternative
-					Client/Server
-						alternative
-							Synchronous
-								optional
-									Timeout
-							Asynchronous
-								alternative
-									Polling
-										alternative
-											Blocking
-											Non-blocking
-									Callback
-					Message-Based
-						mandatory
-							Sender
-						mandatory
-							Receiver
-								alternative
-									Pull
-										or
-											Queued
-											Non-Queued
-									Push
-		mandatory
-			Technology
-				alternative
-					CAN
-					Local
-Example:
-Cellphone
-
-You return:
-features
-	cellphone
+					sdi
+					mdi
 		optional
-			wireless
+			gui_builder
+				mandatory
+					java
+				optional
+					qt
+		optional
+			model_code_synch
+		optional
+			compiler
 				or
-					infrared
-					bluetooth
+					javac
+					mvc
+		optional
+			diagram_builder
+				mandatory
+					uml
+				optional
+					petri_net
+
+Example: 
+Sandwiches
+
+You return:
+features
+    Sandwich
+        mandatory
+            Bread
+        optional
+            Sauce
+                alternative
+                    Ketchup
+                    Mustard
+            Cheese
+
+Example:
+telecom
+
+You return:
+features
+	tecom
+		optional
+			ipvoice
+				mandatory
+					software
+						alternative
+							swpack1
+							swpack2
 		mandatory
-			accu_cell
-				alternative
-					li_ion
-					ni_mh
-					ni_ca
-		mandatory
-			display
-				alternative
-					color
-					monochrome
+			rack
+				mandatory
+					sizes
+						alternative
+							large
+							medium
+							small
+		optional
+			messaging
+				optional
+					upgrade_swpack
+
 Example:
 Tex editor
 
@@ -211,49 +143,129 @@ features
 						mandatory
 							syntax_definition_file
 
+
 Example:
-file compressor
+Digital video system
 
 You return:
 features
-	kwic
+	dvs
 		mandatory
-			input_output
-				or
-					file
-					console
-		mandatory
-			circular_shift
+			control
 				mandatory
-					shift_data
-						alternative
-							implicit
-							explicit
+					remote
 				optional
-					compression
-						mandatory
-							shift_processing
-						alternative
-							each_line
-							all_lines
+					telephone
 						optional
-							noise_words
-		mandatory
-			alpha_sort
+							sms
+				optional
+					net
+						optional
+							web
+						optional
+							wap
+						mandatory
+							email
+				optional
+					edit
+						optional
+							add_music
 				mandatory
-					order
-						alternative
-							descendant
-							ascendant
-				mandatory
-					case_sensitivity
-						alternative
-							sensitive
-							insensitive
+					play
+						optional
+							slides
+						optional
+							audio
+						mandatory
+							video
+		optional
+			network_hw
+				optional
+					modem
+				optional
+					ethernet
 		mandatory
-			arch_style
+			server_pc
+				optional
+					network
+				optional
+					irda_port
+		mandatory
+			_play
+				optional
+					on_demand
+		optional
+			client_pc
+				optional
+					_network
+		optional
+			handheld
+
+Example:
+Dell laptop
+
+You return:
+features
+	Dell_laptop
+		mandatory
+			productcategory
 				alternative
-					shared_data
-					adt
-					implicit_invocation
-					pipe_and_filter
+					mininotebooks
+					inspironlaptops
+					studiolaptops
+					xpslaptops
+					adamo
+					studioxpslaptops
+		mandatory
+			operatingsystem
+				alternative
+					windows10
+					windows11
+					ubuntu
+	
+		mandatory
+			harddrive
+				alternative
+					hd500gb
+					hd320gb
+					hd250gb
+					hd160gb
+					hd128gbsolidstate
+					hd120gb
+					hd80gb
+		optional
+			opticaldrive
+				alternative
+					cddvdrw
+					dvdromdriveanddvdrw
+					dvdrwandcdrwcombo
+					bluraydisc
+		mandatory
+			laptopweight
+				alternative
+					ultralight
+					light
+					desktopreplacement
+		mandatory
+			memory
+				alternative
+					morethan4g
+					mem4gb
+					mem3gb
+					mem2gb
+					mem1gb
+		mandatory
+			processor
+				alternative
+					intelcore2duo
+					intelpentiumdualcore
+					intelceleron
+					intelatom
+		mandatory
+			price
+				alternative
+					lessthanus400
+					us400us800
+					us800us1200
+					morethanus1200
+

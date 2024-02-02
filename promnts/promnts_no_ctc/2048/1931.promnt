@@ -3,79 +3,81 @@ In a feature model, there are features which are represented by a string
 and relationships. Relationships have 1 child feature if they are mandatory or optional
 , also they have 2 or more if they are alternative or or. Follow the grammar in the examples. 
 Please, generate maintaining the indentation schema but using items from the domain I tell you:
+
 Example:
-Jplug
+Weather station
 
 You return:
 features
-	jplug
+	weather_station
 		mandatory
-			interface
-				alternative
-					sdi
-					mdi
-		optional
-			gui_builder
-				mandatory
-					java
-				optional
-					qt
-		optional
-			model_code_synch
-		optional
-			compiler
+			measurements
 				or
-					javac
-					mvc
-		optional
-			diagram_builder
-				mandatory
-					uml
-				optional
-					petri_net
-Example: 
-Sandwiches
-
-You return:
-features
-    Sandwich
-        mandatory
-            Bread
-        optional
-            Sauce
-                alternative
-                    Ketchup
-                    Mustard
-            Cheese
-Example:
-Car
-
-You return:
-features
-	Car
-		optional
-			support
-				mandatory
-					avoidance
-						alternative
-							normal_avoidance
-							enhanced_avoidance
-				optional
-					parallel_parking
+					pressure
+					temperature
+					wind_speed
 		mandatory
-			range_finder
-				optional
-					lateral_range_finder
-				optional
-					forward_range_finder
-		optional
-			gps
-		optional
-			audio
+			data_source
 				alternative
-					cd
-					mp3
-					video
+					internet
+					demo
+					external_services
+		mandatory
+			output_format
+				alternative
+					text
+					web_server
+					file
+				mandatory
+					format
+						alternative
+							xml
+							html
+							plain_text
+				mandatory
+					language
+						alternative
+							english
+							german
+		optional
+			alarm
+				or
+					freeze_point
+					storm_alert
+
+Example:
+Programming stack
+
+You return:
+features
+	Stack
+		optional
+			Size
+				alternative
+					Fixed
+						mandatory
+							Value
+					Dynamic
+		mandatory
+			Element_Type
+				alternative
+					Integer
+					Float
+					String
+		optional
+			Optimization
+				alternative
+					Speed
+					Memory_Usage
+		optional
+			Counter
+		optional
+			Additional_Features
+				or
+					Thread_Safety
+					Bounds_Check
+					Type_Check
+
 Example
 CFDP Library
 
@@ -103,33 +105,7 @@ features
 					Reboot_Entity
 				optional
 					reboot_pus
-Example:
-Movies App
 
-You return:
-features
-	Movies_App
-		mandatory
-			GUI
-				alternative
-					Thin
-					Rich
-		mandatory
-			DB
-				alternative
-					Local
-					Remote
-						mandatory
-							Cache_Policy
-		mandatory
-			Network
-				alternative
-					Wifi
-					Bluetooth
-		optional
-			GPS
-				optional
-					Built-In
 Example:
 Aircraft
 
@@ -154,118 +130,156 @@ features
 					Wood
 					Cloth
 					Plastic
+
 Example:
-Cellphone
+james cms
 
 You return:
 features
-	cellphone
+	james
+		mandatory
+			user_mngt
+				alternative
+					db
+					ldap
 		optional
-			wireless
+			ws_interface
+		mandatory
+			gui
 				or
-					infrared
-					bluetooth
+					pc
+					pda
 		mandatory
-			accu_cell
-				alternative
-					li_ion
-					ni_mh
-					ni_ca
+			core
 		mandatory
-			display
-				alternative
-					color
-					monochrome
+			modules
+				or
+					calendar
+					forum
+					congress_mngt
+					repository
+
 Example:
-telecom
+Connector
 
 You return:
 features
-	tecom
-		optional
-			ipvoice
-				mandatory
-					software
-						alternative
-							swpack1
-							swpack2
+	Connector
 		mandatory
-			rack
-				mandatory
-					sizes
+			Paradigm
+				alternative
+					Client/Server
 						alternative
-							large
-							medium
-							small
-		optional
-			messaging
-				optional
-					upgrade_swpack
-Example:
-Document generator
+							Synchronous
+								optional
+									Timeout
+							Asynchronous
+								alternative
+									Polling
+										alternative
+											Blocking
+											Non-blocking
+									Callback
+					Message-Based
+						mandatory
+							Sender
+						mandatory
+							Receiver
+								alternative
+									Pull
+										or
+											Queued
+											Non-Queued
+									Push
+		mandatory
+			Technology
+				alternative
+					CAN
+					Local
+
+Example: 
+Sandwiches
 
 You return:
 features
-	doc_gen
+    Sandwich
+        mandatory
+            Bread
+        optional
+            Sauce
+                alternative
+                    Ketchup
+                    Mustard
+            Cheese
+
+Example:
+vof
+
+You return:
+features
+	vof
 		mandatory
-			analysis
+			follow_me
 				mandatory
-					language_analysis
-						or
-							cobol
+					user_localize
+						mandatory
+							user_pos_method
 								alternative
-									ibm_cobol
-									microfocus_cobol
-							jcl
-							sql
-							delphi
-							progress
+									access_point
+									rfid
+				mandatory
+					logon
+		optional
+			virtual_printer
+				mandatory
+					printer_register
+				mandatory
+					file_upload
 				optional
-					version_mngt
-				optional
-					subsystems
+					file_converter
+
+Example:
+Insurance products
+
+You return:
+features
+	insurance_product
 		mandatory
-			presentation
-				mandatory
-					localization
-						or
-							english
-							dutch
-				mandatory
-					interaction
-						alternative
-							static
-							dynamic
-				mandatory
-					main_pages
-						or
-							program_page
-								or
-									annotation_section
-									activation_section
-									entities_section
-									parameters_section
-							copybook_page
-							statistics_page
-								alternative
-									with_history
-									without_history
-							indexes
-							search_page
-							subsystem_page
-							source_page
-							source_difference
-				optional
-					visualizations
-						or
-							perform_graph
-							conditional_perform_graph
-							jcl_graph
-							subsystem_graph
-							overview_graph
-		mandatory
-			database
+			insured_object
 				alternative
-					db2
-					oracle
-					mysql
+					corporation
+					realty
+					movable_property
+					person
+		mandatory
+			coverage
+				or
+					illness
+					life
+					unemployment
+					damage
+					loss
+		mandatory
+			payment
+				alternative
+					service
+					ammount
+				optional
+					own_risk
+		mandatory
+			conditions
+				mandatory
+					acceptance
+				mandatory
+					exception
+		mandatory
+			premium
+				alternative
+					direct
+					periodical
+		mandatory
+			payee
+				or
+					_person
+					payee_corporation
+

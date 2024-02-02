@@ -3,46 +3,78 @@ In a feature model, there are features which are represented by a string
 and relationships. Relationships have 1 child feature if they are mandatory or optional
 , also they have 2 or more if they are alternative or or. Follow the grammar in the examples. 
 Please, generate maintaining the indentation schema but using items from the domain I tell you:
+
 Example:
-Weather station
+Movies App
 
 You return:
 features
-	weather_station
+	Movies_App
 		mandatory
-			measurements
-				or
-					pressure
-					temperature
-					wind_speed
-		mandatory
-			data_source
+			GUI
 				alternative
-					internet
-					demo
-					external_services
+					Thin
+					Rich
 		mandatory
-			output_format
+			DB
 				alternative
-					text
-					web_server
-					file
-				mandatory
-					format
-						alternative
-							xml
-							html
-							plain_text
-				mandatory
-					language
-						alternative
-							english
-							german
+					Local
+					Remote
+						mandatory
+							Cache_Policy
+		mandatory
+			Network
+				alternative
+					Wifi
+					Bluetooth
 		optional
-			alarm
+			GPS
+				optional
+					Built-In
+
+Example:
+james cms
+
+You return:
+features
+	james
+		mandatory
+			user_mngt
+				alternative
+					db
+					ldap
+		optional
+			ws_interface
+		mandatory
+			gui
 				or
-					freeze_point
-					storm_alert
+					pc
+					pda
+		mandatory
+			core
+		mandatory
+			modules
+				or
+					calendar
+					forum
+					congress_mngt
+					repository
+
+Example: 
+Sandwiches
+
+You return:
+features
+    Sandwich
+        mandatory
+            Bread
+        optional
+            Sauce
+                alternative
+                    Ketchup
+                    Mustard
+            Cheese
+
 Example:
 Tex editor
 
@@ -82,38 +114,30 @@ features
 						mandatory
 							syntax_definition_file
 
+
 Example:
-monitor engine system
+vof
 
 You return:
 features
-	monitor_engine_system
+	vof
 		mandatory
-			engine_performance
+			follow_me
 				mandatory
-					temperatures
-						optional
-							colant
+					user_localize
 						mandatory
-							oil
-						mandatory
-							engine
-						mandatory
-							transmission
+							user_pos_method
+								alternative
+									access_point
+									rfid
 				mandatory
-					rpm
+					logon
+		optional
+			virtual_printer
 				mandatory
-					exhaust_level_temp
-		mandatory
-			fuel_consumption
+					printer_register
 				mandatory
-					measures
-						alternative
-							l_km
-							gallon_mile
-				mandatory
-					methods
-						or
-							distance
-							type_of_driving
-							drive
+					file_upload
+				optional
+					file_converter
+

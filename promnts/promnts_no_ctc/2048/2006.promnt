@@ -3,228 +3,76 @@ In a feature model, there are features which are represented by a string
 and relationships. Relationships have 1 child feature if they are mandatory or optional
 , also they have 2 or more if they are alternative or or. Follow the grammar in the examples. 
 Please, generate maintaining the indentation schema but using items from the domain I tell you:
+
 Example:
-Weather station
+monitor engine system
 
 You return:
 features
-	weather_station
+	monitor_engine_system
 		mandatory
-			measurements
-				or
-					pressure
-					temperature
-					wind_speed
-		mandatory
-			data_source
-				alternative
-					internet
-					demo
-					external_services
-		mandatory
-			output_format
-				alternative
-					text
-					web_server
-					file
+			engine_performance
 				mandatory
-					format
-						alternative
-							xml
-							html
-							plain_text
-				mandatory
-					language
-						alternative
-							english
-							german
-		optional
-			alarm
-				or
-					freeze_point
-					storm_alert
-Example:
-Jplug
-
-You return:
-features
-	jplug
-		mandatory
-			interface
-				alternative
-					sdi
-					mdi
-		optional
-			gui_builder
-				mandatory
-					java
-				optional
-					qt
-		optional
-			model_code_synch
-		optional
-			compiler
-				or
-					javac
-					mvc
-		optional
-			diagram_builder
-				mandatory
-					uml
-				optional
-					petri_net
-Example: 
-Sandwiches
-
-You return:
-features
-    Sandwich
-        mandatory
-            Bread
-        optional
-            Sauce
-                alternative
-                    Ketchup
-                    Mustard
-            Cheese
-Example:
-Movies App
-
-You return:
-features
-	Movies_App
-		mandatory
-			GUI
-				alternative
-					Thin
-					Rich
-		mandatory
-			DB
-				alternative
-					Local
-					Remote
+					temperatures
+						optional
+							colant
 						mandatory
-							Cache_Policy
+							oil
+						mandatory
+							engine
+						mandatory
+							transmission
+				mandatory
+					rpm
+				mandatory
+					exhaust_level_temp
 		mandatory
-			Network
-				alternative
-					Wifi
-					Bluetooth
-		optional
-			GPS
-				optional
-					Built-In
+			fuel_consumption
+				mandatory
+					measures
+						alternative
+							l_km
+							gallon_mile
+				mandatory
+					methods
+						or
+							distance
+							type_of_driving
+							drive
+
 Example:
-Dell laptop
+Programming stack
 
 You return:
 features
-	Dell_laptop
-		mandatory
-			productcategory
-				alternative
-					mininotebooks
-					inspironlaptops
-					studiolaptops
-					xpslaptops
-					adamo
-					studioxpslaptops
-		mandatory
-			operatingsystem
-				alternative
-					windows10
-					windows11
-					ubuntu
-	
-		mandatory
-			harddrive
-				alternative
-					hd500gb
-					hd320gb
-					hd250gb
-					hd160gb
-					hd128gbsolidstate
-					hd120gb
-					hd80gb
+	Stack
 		optional
-			opticaldrive
+			Size
 				alternative
-					cddvdrw
-					dvdromdriveanddvdrw
-					dvdrwandcdrwcombo
-					bluraydisc
+					Fixed
+						mandatory
+							Value
+					Dynamic
 		mandatory
-			laptopweight
+			Element_Type
 				alternative
-					ultralight
-					light
-					desktopreplacement
-		mandatory
-			memory
+					Integer
+					Float
+					String
+		optional
+			Optimization
 				alternative
-					morethan4g
-					mem4gb
-					mem3gb
-					mem2gb
-					mem1gb
-		mandatory
-			processor
-				alternative
-					intelcore2duo
-					intelpentiumdualcore
-					intelceleron
-					intelatom
-		mandatory
-			price
-				alternative
-					lessthanus400
-					us400us800
-					us800us1200
-					morethanus1200
-Example:
-Insurance products
+					Speed
+					Memory_Usage
+		optional
+			Counter
+		optional
+			Additional_Features
+				or
+					Thread_Safety
+					Bounds_Check
+					Type_Check
 
-You return:
-features
-	insurance_product
-		mandatory
-			insured_object
-				alternative
-					corporation
-					realty
-					movable_property
-					person
-		mandatory
-			coverage
-				or
-					illness
-					life
-					unemployment
-					damage
-					loss
-		mandatory
-			payment
-				alternative
-					service
-					ammount
-				optional
-					own_risk
-		mandatory
-			conditions
-				mandatory
-					acceptance
-				mandatory
-					exception
-		mandatory
-			premium
-				alternative
-					direct
-					periodical
-		mandatory
-			payee
-				or
-					_person
-					payee_corporation
 Example:
 file compressor
 
@@ -271,3 +119,162 @@ features
 					adt
 					implicit_invocation
 					pipe_and_filter
+
+Example:
+Car
+
+You return:
+features
+	Car
+		optional
+			support
+				mandatory
+					avoidance
+						alternative
+							normal_avoidance
+							enhanced_avoidance
+				optional
+					parallel_parking
+		mandatory
+			range_finder
+				optional
+					lateral_range_finder
+				optional
+					forward_range_finder
+		optional
+			gps
+		optional
+			audio
+				alternative
+					cd
+					mp3
+					video
+
+Example:
+vof
+
+You return:
+features
+	vof
+		mandatory
+			follow_me
+				mandatory
+					user_localize
+						mandatory
+							user_pos_method
+								alternative
+									access_point
+									rfid
+				mandatory
+					logon
+		optional
+			virtual_printer
+				mandatory
+					printer_register
+				mandatory
+					file_upload
+				optional
+					file_converter
+
+Example:
+Digital video system
+
+You return:
+features
+	dvs
+		mandatory
+			control
+				mandatory
+					remote
+				optional
+					telephone
+						optional
+							sms
+				optional
+					net
+						optional
+							web
+						optional
+							wap
+						mandatory
+							email
+				optional
+					edit
+						optional
+							add_music
+				mandatory
+					play
+						optional
+							slides
+						optional
+							audio
+						mandatory
+							video
+		optional
+			network_hw
+				optional
+					modem
+				optional
+					ethernet
+		mandatory
+			server_pc
+				optional
+					network
+				optional
+					irda_port
+		mandatory
+			_play
+				optional
+					on_demand
+		optional
+			client_pc
+				optional
+					_network
+		optional
+			handheld
+
+Example:
+Insurance products
+
+You return:
+features
+	insurance_product
+		mandatory
+			insured_object
+				alternative
+					corporation
+					realty
+					movable_property
+					person
+		mandatory
+			coverage
+				or
+					illness
+					life
+					unemployment
+					damage
+					loss
+		mandatory
+			payment
+				alternative
+					service
+					ammount
+				optional
+					own_risk
+		mandatory
+			conditions
+				mandatory
+					acceptance
+				mandatory
+					exception
+		mandatory
+			premium
+				alternative
+					direct
+					periodical
+		mandatory
+			payee
+				or
+					_person
+					payee_corporation
+

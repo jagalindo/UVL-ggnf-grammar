@@ -3,96 +3,81 @@ In a feature model, there are features which are represented by a string
 and relationships. Relationships have 1 child feature if they are mandatory or optional
 , also they have 2 or more if they are alternative or or. Follow the grammar in the examples. 
 Please, generate maintaining the indentation schema but using items from the domain I tell you:
+
 Example:
-vof
+Weather station
 
 You return:
 features
-	vof
+	weather_station
 		mandatory
-			follow_me
-				mandatory
-					user_localize
-						mandatory
-							user_pos_method
-								alternative
-									access_point
-									rfid
-				mandatory
-					logon
-		optional
-			virtual_printer
-				mandatory
-					printer_register
-				mandatory
-					file_upload
-				optional
-					file_converter
-Example:
-monitor engine system
-
-You return:
-features
-	monitor_engine_system
-		mandatory
-			engine_performance
-				mandatory
-					temperatures
-						optional
-							colant
-						mandatory
-							oil
-						mandatory
-							engine
-						mandatory
-							transmission
-				mandatory
-					rpm
-				mandatory
-					exhaust_level_temp
-		mandatory
-			fuel_consumption
-				mandatory
-					measures
-						alternative
-							l_km
-							gallon_mile
-				mandatory
-					methods
-						or
-							distance
-							type_of_driving
-							drive
-Example:
-Jplug
-
-You return:
-features
-	jplug
-		mandatory
-			interface
-				alternative
-					sdi
-					mdi
-		optional
-			gui_builder
-				mandatory
-					java
-				optional
-					qt
-		optional
-			model_code_synch
-		optional
-			compiler
+			measurements
 				or
-					javac
-					mvc
-		optional
-			diagram_builder
+					pressure
+					temperature
+					wind_speed
+		mandatory
+			data_source
+				alternative
+					internet
+					demo
+					external_services
+		mandatory
+			output_format
+				alternative
+					text
+					web_server
+					file
 				mandatory
-					uml
-				optional
-					petri_net
+					format
+						alternative
+							xml
+							html
+							plain_text
+				mandatory
+					language
+						alternative
+							english
+							german
+		optional
+			alarm
+				or
+					freeze_point
+					storm_alert
+
+Example:
+Programming stack
+
+You return:
+features
+	Stack
+		optional
+			Size
+				alternative
+					Fixed
+						mandatory
+							Value
+					Dynamic
+		mandatory
+			Element_Type
+				alternative
+					Integer
+					Float
+					String
+		optional
+			Optimization
+				alternative
+					Speed
+					Memory_Usage
+		optional
+			Counter
+		optional
+			Additional_Features
+				or
+					Thread_Safety
+					Bounds_Check
+					Type_Check
+
 Example: 
 Sandwiches
 
@@ -107,30 +92,59 @@ features
                     Ketchup
                     Mustard
             Cheese
+
 Example:
-james cms
+Car
 
 You return:
 features
-	james
-		mandatory
-			user_mngt
-				alternative
-					db
-					ldap
+	Car
 		optional
-			ws_interface
+			support
+				mandatory
+					avoidance
+						alternative
+							normal_avoidance
+							enhanced_avoidance
+				optional
+					parallel_parking
 		mandatory
-			gui
+			range_finder
+				optional
+					lateral_range_finder
+				optional
+					forward_range_finder
+		optional
+			gps
+		optional
+			audio
+				alternative
+					cd
+					mp3
+					video
+
+Example:
+Aircraft
+
+You return:
+features
+	Aircraft
+		mandatory
+			Wing
 				or
-					pc
-					pda
+					High
+					Shoulder
+					Low
+		optional
+			Engine
+				alternative
+					Jet
+					Piston
 		mandatory
-			core
-		mandatory
-			modules
+			Materials
 				or
-					calendar
-					forum
-					congress_mngt
-					repository
+					Metal
+					Wood
+					Cloth
+					Plastic
+

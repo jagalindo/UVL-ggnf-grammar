@@ -3,6 +3,58 @@ In a feature model, there are features which are represented by a string
 and relationships. Relationships have 1 child feature if they are mandatory or optional
 , also they have 2 or more if they are alternative or or. Follow the grammar in the examples. 
 Please, generate maintaining the indentation schema but using items from the domain I tell you:
+
+Example:
+Movies App
+
+You return:
+features
+	Movies_App
+		mandatory
+			GUI
+				alternative
+					Thin
+					Rich
+		mandatory
+			DB
+				alternative
+					Local
+					Remote
+						mandatory
+							Cache_Policy
+		mandatory
+			Network
+				alternative
+					Wifi
+					Bluetooth
+		optional
+			GPS
+				optional
+					Built-In
+
+Example:
+Cellphone
+
+You return:
+features
+	cellphone
+		optional
+			wireless
+				or
+					infrared
+					bluetooth
+		mandatory
+			accu_cell
+				alternative
+					li_ion
+					ni_mh
+					ni_ca
+		mandatory
+			display
+				alternative
+					color
+					monochrome
+
 Example:
 Weather station
 
@@ -43,6 +95,7 @@ features
 				or
 					freeze_point
 					storm_alert
+
 Example:
 monitor engine system
 
@@ -78,6 +131,35 @@ features
 							distance
 							type_of_driving
 							drive
+
+Example:
+james cms
+
+You return:
+features
+	james
+		mandatory
+			user_mngt
+				alternative
+					db
+					ldap
+		optional
+			ws_interface
+		mandatory
+			gui
+				or
+					pc
+					pda
+		mandatory
+			core
+		mandatory
+			modules
+				or
+					calendar
+					forum
+					congress_mngt
+					repository
+
 Example: 
 Sandwiches
 
@@ -92,6 +174,58 @@ features
                     Ketchup
                     Mustard
             Cheese
+
+Example:
+telecom
+
+You return:
+features
+	tecom
+		optional
+			ipvoice
+				mandatory
+					software
+						alternative
+							swpack1
+							swpack2
+		mandatory
+			rack
+				mandatory
+					sizes
+						alternative
+							large
+							medium
+							small
+		optional
+			messaging
+				optional
+					upgrade_swpack
+
+Example:
+Aircraft
+
+You return:
+features
+	Aircraft
+		mandatory
+			Wing
+				or
+					High
+					Shoulder
+					Low
+		optional
+			Engine
+				alternative
+					Jet
+					Piston
+		mandatory
+			Materials
+				or
+					Metal
+					Wood
+					Cloth
+					Plastic
+
 Example:
 Digital video system
 
@@ -148,128 +282,4 @@ features
 					_network
 		optional
 			handheld
-Example:
-Movies App
 
-You return:
-features
-	Movies_App
-		mandatory
-			GUI
-				alternative
-					Thin
-					Rich
-		mandatory
-			DB
-				alternative
-					Local
-					Remote
-						mandatory
-							Cache_Policy
-		mandatory
-			Network
-				alternative
-					Wifi
-					Bluetooth
-		optional
-			GPS
-				optional
-					Built-In
-Example:
-james cms
-
-You return:
-features
-	james
-		mandatory
-			user_mngt
-				alternative
-					db
-					ldap
-		optional
-			ws_interface
-		mandatory
-			gui
-				or
-					pc
-					pda
-		mandatory
-			core
-		mandatory
-			modules
-				or
-					calendar
-					forum
-					congress_mngt
-					repository
-Example:
-Aircraft
-
-You return:
-features
-	Aircraft
-		mandatory
-			Wing
-				or
-					High
-					Shoulder
-					Low
-		optional
-			Engine
-				alternative
-					Jet
-					Piston
-		mandatory
-			Materials
-				or
-					Metal
-					Wood
-					Cloth
-					Plastic
-Example:
-Cellphone
-
-You return:
-features
-	cellphone
-		optional
-			wireless
-				or
-					infrared
-					bluetooth
-		mandatory
-			accu_cell
-				alternative
-					li_ion
-					ni_mh
-					ni_ca
-		mandatory
-			display
-				alternative
-					color
-					monochrome
-Example:
-telecom
-
-You return:
-features
-	tecom
-		optional
-			ipvoice
-				mandatory
-					software
-						alternative
-							swpack1
-							swpack2
-		mandatory
-			rack
-				mandatory
-					sizes
-						alternative
-							large
-							medium
-							small
-		optional
-			messaging
-				optional
-					upgrade_swpack

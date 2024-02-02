@@ -3,205 +3,88 @@ In a feature model, there are features which are represented by a string
 and relationships. Relationships have 1 child feature if they are mandatory or optional
 , also they have 2 or more if they are alternative or or. Follow the grammar in the examples. 
 Please, generate maintaining the indentation schema but using items from the domain I tell you:
+
 Example:
-monitor engine system
+Cellphone
 
 You return:
 features
-	monitor_engine_system
+	cellphone
+		optional
+			wireless
+				or
+					infrared
+					bluetooth
 		mandatory
-			engine_performance
-				mandatory
-					temperatures
-						optional
-							colant
-						mandatory
-							oil
-						mandatory
-							engine
-						mandatory
-							transmission
-				mandatory
-					rpm
-				mandatory
-					exhaust_level_temp
+			accu_cell
+				alternative
+					li_ion
+					ni_mh
+					ni_ca
 		mandatory
-			fuel_consumption
-				mandatory
-					measures
-						alternative
-							l_km
-							gallon_mile
-				mandatory
-					methods
-						or
-							distance
-							type_of_driving
-							drive
-Example: 
-Sandwiches
+			display
+				alternative
+					color
+					monochrome
 
-You return:
-features
-    Sandwich
-        mandatory
-            Bread
-        optional
-            Sauce
-                alternative
-                    Ketchup
-                    Mustard
-            Cheese
 Example:
-Digital video system
+Programming stack
 
 You return:
 features
-	dvs
-		mandatory
-			control
-				mandatory
-					remote
-				optional
-					telephone
-						optional
-							sms
-				optional
-					net
-						optional
-							web
-						optional
-							wap
+	Stack
+		optional
+			Size
+				alternative
+					Fixed
 						mandatory
-							email
-				optional
-					edit
-						optional
-							add_music
-				mandatory
-					play
-						optional
-							slides
-						optional
-							audio
-						mandatory
-							video
-		optional
-			network_hw
-				optional
-					modem
-				optional
-					ethernet
+							Value
+					Dynamic
 		mandatory
-			server_pc
-				optional
-					network
-				optional
-					irda_port
-		mandatory
-			_play
-				optional
-					on_demand
+			Element_Type
+				alternative
+					Integer
+					Float
+					String
 		optional
-			client_pc
-				optional
-					_network
+			Optimization
+				alternative
+					Speed
+					Memory_Usage
 		optional
-			handheld
-Example
-CFDP Library
+			Counter
+		optional
+			Additional_Features
+				or
+					Thread_Safety
+					Bounds_Check
+					Type_Check
 
-You return:
-features
-	CFDP_Library
-		or
-			send
-				optional
-					Send_Acknowledged_Mode
-				optional
-					send_fs_operations
-			receive
-				optional
-					Receive_Acknowledged_Mode
-				optional
-					receive_fs_operations
-			pus
-				optional
-					pus_rename
-				optional
-					pus_copy
-			Reboot
-				optional
-					Reboot_Entity
-				optional
-					reboot_pus
 Example:
-Dell laptop
+Aircraft
 
 You return:
 features
-	Dell_laptop
+	Aircraft
 		mandatory
-			productcategory
-				alternative
-					mininotebooks
-					inspironlaptops
-					studiolaptops
-					xpslaptops
-					adamo
-					studioxpslaptops
-		mandatory
-			operatingsystem
-				alternative
-					windows10
-					windows11
-					ubuntu
-	
-		mandatory
-			harddrive
-				alternative
-					hd500gb
-					hd320gb
-					hd250gb
-					hd160gb
-					hd128gbsolidstate
-					hd120gb
-					hd80gb
+			Wing
+				or
+					High
+					Shoulder
+					Low
 		optional
-			opticaldrive
+			Engine
 				alternative
-					cddvdrw
-					dvdromdriveanddvdrw
-					dvdrwandcdrwcombo
-					bluraydisc
+					Jet
+					Piston
 		mandatory
-			laptopweight
-				alternative
-					ultralight
-					light
-					desktopreplacement
-		mandatory
-			memory
-				alternative
-					morethan4g
-					mem4gb
-					mem3gb
-					mem2gb
-					mem1gb
-		mandatory
-			processor
-				alternative
-					intelcore2duo
-					intelpentiumdualcore
-					intelceleron
-					intelatom
-		mandatory
-			price
-				alternative
-					lessthanus400
-					us400us800
-					us800us1200
-					morethanus1200
+			Materials
+				or
+					Metal
+					Wood
+					Cloth
+					Plastic
+
 Example:
 file compressor
 
@@ -248,3 +131,156 @@ features
 					adt
 					implicit_invocation
 					pipe_and_filter
+
+Example: 
+Sandwiches
+
+You return:
+features
+    Sandwich
+        mandatory
+            Bread
+        optional
+            Sauce
+                alternative
+                    Ketchup
+                    Mustard
+            Cheese
+
+Example:
+telecom
+
+You return:
+features
+	tecom
+		optional
+			ipvoice
+				mandatory
+					software
+						alternative
+							swpack1
+							swpack2
+		mandatory
+			rack
+				mandatory
+					sizes
+						alternative
+							large
+							medium
+							small
+		optional
+			messaging
+				optional
+					upgrade_swpack
+
+Example:
+Tex editor
+
+You return:
+features
+	editor_config
+		mandatory
+			backup
+				optional
+					autosave
+						mandatory
+							minutes
+				optional
+					backup_onchange
+				mandatory
+					backup_extension
+						alternative
+							file_bak
+							file_bak_ext
+							file_ext_bak
+		optional
+			document_class
+				mandatory
+					associated_file_ext
+						optional
+							ext
+				mandatory
+					commands
+						optional
+							remove_blank_lines
+						optional
+							spell_check
+						optional
+							dos_unix_conversion
+				optional
+					syntax_highlighting
+						mandatory
+							syntax_definition_file
+
+
+Example:
+vof
+
+You return:
+features
+	vof
+		mandatory
+			follow_me
+				mandatory
+					user_localize
+						mandatory
+							user_pos_method
+								alternative
+									access_point
+									rfid
+				mandatory
+					logon
+		optional
+			virtual_printer
+				mandatory
+					printer_register
+				mandatory
+					file_upload
+				optional
+					file_converter
+
+Example:
+Insurance products
+
+You return:
+features
+	insurance_product
+		mandatory
+			insured_object
+				alternative
+					corporation
+					realty
+					movable_property
+					person
+		mandatory
+			coverage
+				or
+					illness
+					life
+					unemployment
+					damage
+					loss
+		mandatory
+			payment
+				alternative
+					service
+					ammount
+				optional
+					own_risk
+		mandatory
+			conditions
+				mandatory
+					acceptance
+				mandatory
+					exception
+		mandatory
+			premium
+				alternative
+					direct
+					periodical
+		mandatory
+			payee
+				or
+					_person
+					payee_corporation
+

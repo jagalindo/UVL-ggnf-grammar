@@ -3,31 +3,30 @@ In a feature model, there are features which are represented by a string
 and relationships. Relationships have 1 child feature if they are mandatory or optional
 , also they have 2 or more if they are alternative or or. Follow the grammar in the examples. 
 Please, generate maintaining the indentation schema but using items from the domain I tell you:
+
 Example:
-vof
+Cellphone
 
 You return:
 features
-	vof
-		mandatory
-			follow_me
-				mandatory
-					user_localize
-						mandatory
-							user_pos_method
-								alternative
-									access_point
-									rfid
-				mandatory
-					logon
+	cellphone
 		optional
-			virtual_printer
-				mandatory
-					printer_register
-				mandatory
-					file_upload
-				optional
-					file_converter
+			wireless
+				or
+					infrared
+					bluetooth
+		mandatory
+			accu_cell
+				alternative
+					li_ion
+					ni_mh
+					ni_ca
+		mandatory
+			display
+				alternative
+					color
+					monochrome
+
 Example:
 Weather station
 
@@ -68,20 +67,7 @@ features
 				or
 					freeze_point
 					storm_alert
-Example: 
-Sandwiches
 
-You return:
-features
-    Sandwich
-        mandatory
-            Bread
-        optional
-            Sauce
-                alternative
-                    Ketchup
-                    Mustard
-            Cheese
 Example:
 Aircraft
 
@@ -106,25 +92,45 @@ features
 					Wood
 					Cloth
 					Plastic
-Example:
-Cellphone
+
+Example: 
+Sandwiches
 
 You return:
 features
-	cellphone
+    Sandwich
+        mandatory
+            Bread
+        optional
+            Sauce
+                alternative
+                    Ketchup
+                    Mustard
+            Cheese
+
+Example:
+vof
+
+You return:
+features
+	vof
+		mandatory
+			follow_me
+				mandatory
+					user_localize
+						mandatory
+							user_pos_method
+								alternative
+									access_point
+									rfid
+				mandatory
+					logon
 		optional
-			wireless
-				or
-					infrared
-					bluetooth
-		mandatory
-			accu_cell
-				alternative
-					li_ion
-					ni_mh
-					ni_ca
-		mandatory
-			display
-				alternative
-					color
-					monochrome
+			virtual_printer
+				mandatory
+					printer_register
+				mandatory
+					file_upload
+				optional
+					file_converter
+

@@ -3,179 +3,104 @@ In a feature model, there are features which are represented by a string
 and relationships. Relationships have 1 child feature if they are mandatory or optional
 , also they have 2 or more if they are alternative or or. Follow the grammar in the examples. 
 Please, generate maintaining the indentation schema but using items from the domain I tell you:
+
 Example:
-Web portal
+Movies App
 
 You return:
 features
-	web_portal
-		optional
-			add_services
-				optional
-					site_stats
-						mandatory
-							basic
-						optional
-							advanced
-				optional
-					site_search
-						optional
-							images
-						optional
-							text
-								mandatory
-									html
-								optional
-									dynamic
-				optional
-					ad_server
-						mandatory
-							reports
-						optional
-							popups
-						mandatory
-							banners
-								mandatory
-									ban_img
-								optional
-									ban_flash
-						optional
-							keyword
+	Movies_App
 		mandatory
-			web_server
+			GUI
+				alternative
+					Thin
+					Rich
+		mandatory
+			DB
+				alternative
+					Local
+					Remote
+						mandatory
+							Cache_Policy
+		mandatory
+			Network
+				alternative
+					Wifi
+					Bluetooth
+		optional
+			GPS
 				optional
-					logging
-						alternative
-							db
-							file
+					Built-In
+
+Example
+CFDP Library
+
+You return:
+features
+	CFDP_Library
+		or
+			send
 				optional
-					protocol
-						or
-							nttp
-							ftp
-							https
+					Send_Acknowledged_Mode
+				optional
+					send_fs_operations
+			receive
+				optional
+					Receive_Acknowledged_Mode
+				optional
+					receive_fs_operations
+			pus
+				optional
+					pus_rename
+				optional
+					pus_copy
+			Reboot
+				optional
+					Reboot_Entity
+				optional
+					reboot_pus
+
+Example:
+Weather station
+
+You return:
+features
+	weather_station
+		mandatory
+			measurements
+				or
+					pressure
+					temperature
+					wind_speed
+		mandatory
+			data_source
+				alternative
+					internet
+					demo
+					external_services
+		mandatory
+			output_format
+				alternative
+					text
+					web_server
+					file
 				mandatory
-					cont
-						mandatory
-							static
-						optional
-							active
-								or
-									asp
-									php
-									jsp
-									cgi
-		optional
-			persistence
-				alternative
-					xml
-					database
-		optional
-			ri
-				or
-					data_storage
-					data_transfer
-					user_auth
-		optional
-			performance
-				alternative
-					ms
-					sec
-					min
-Example: 
-Sandwiches
-
-You return:
-features
-    Sandwich
-        mandatory
-            Bread
-        optional
-            Sauce
-                alternative
-                    Ketchup
-                    Mustard
-            Cheese
-Example:
-Car
-
-You return:
-features
-	Car
-		optional
-			support
-				mandatory
-					avoidance
+					format
 						alternative
-							normal_avoidance
-							enhanced_avoidance
-				optional
-					parallel_parking
-		mandatory
-			range_finder
-				optional
-					lateral_range_finder
-				optional
-					forward_range_finder
+							xml
+							html
+							plain_text
+				mandatory
+					language
+						alternative
+							english
+							german
 		optional
-			gps
-		optional
-			audio
-				alternative
-					cd
-					mp3
-					video
-Example:
-james cms
+			alarm
+				or
+					freeze_point
+					storm_alert
 
-You return:
-features
-	james
-		mandatory
-			user_mngt
-				alternative
-					db
-					ldap
-		optional
-			ws_interface
-		mandatory
-			gui
-				or
-					pc
-					pda
-		mandatory
-			core
-		mandatory
-			modules
-				or
-					calendar
-					forum
-					congress_mngt
-					repository
-Example:
-Aircraft
-
-You return:
-features
-	Aircraft
-		mandatory
-			Wing
-				or
-					High
-					Shoulder
-					Low
-		optional
-			Engine
-				alternative
-					Jet
-					Piston
-		mandatory
-			Materials
-				or
-					Metal
-					Wood
-					Cloth
-					Plastic
 Example:
 Connector
 
@@ -213,42 +138,106 @@ features
 				alternative
 					CAN
 					Local
-Example:
-Tex editor
+
+Example: 
+Sandwiches
 
 You return:
 features
-	editor_config
+    Sandwich
+        mandatory
+            Bread
+        optional
+            Sauce
+                alternative
+                    Ketchup
+                    Mustard
+            Cheese
+
+Example:
+Aircraft
+
+You return:
+features
+	Aircraft
 		mandatory
-			backup
-				optional
-					autosave
-						mandatory
-							minutes
-				optional
-					backup_onchange
-				mandatory
-					backup_extension
-						alternative
-							file_bak
-							file_bak_ext
-							file_ext_bak
+			Wing
+				or
+					High
+					Shoulder
+					Low
 		optional
-			document_class
+			Engine
+				alternative
+					Jet
+					Piston
+		mandatory
+			Materials
+				or
+					Metal
+					Wood
+					Cloth
+					Plastic
+
+Example:
+Graph operations
+
+You return:
+features
+	graph
+		mandatory
+			services
 				mandatory
-					associated_file_ext
-						optional
-							ext
-				mandatory
-					commands
-						optional
-							remove_blank_lines
-						optional
-							spell_check
-						optional
-							dos_unix_conversion
-				optional
-					syntax_highlighting
+					graph_manipulation
 						mandatory
-							syntax_definition_file
+							delete
+						mandatory
+							select
+								mandatory
+									selection_mode
+										alternative
+											increment_selection
+											non_increment_selection
+						mandatory
+							add
+								mandatory
+									entity_add
+								mandatory
+									connector_add
+						mandatory
+							move
+								mandatory
+									moving_mode
+										alternative
+											outline_moving
+											content_moving
+								optional
+									moving_constraint
+										alternative
+											horizontal_constraint
+											vertical_constraint
+						optional
+							compose
+						optional
+							layer_adjust
+								mandatory
+									up_layer
+								mandatory
+									down_layer
+				optional
+					do_undo_redo
+						mandatory
+							select_do_undo_redo
+						mandatory
+							add_do_undo_redo
+						mandatory
+							delete__do_undo_redo
+						mandatory
+							move_do_undo_redo
+						optional
+							compose_do_undo_redo
+						optional
+							layer_adjust_do_undo_redo
+				optional
+					zoom_inout
 

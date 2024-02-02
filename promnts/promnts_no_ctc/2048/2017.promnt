@@ -3,221 +3,115 @@ In a feature model, there are features which are represented by a string
 and relationships. Relationships have 1 child feature if they are mandatory or optional
 , also they have 2 or more if they are alternative or or. Follow the grammar in the examples. 
 Please, generate maintaining the indentation schema but using items from the domain I tell you:
+
 Example:
-Data base management system
+monitor engine system
 
 You return:
 features
-	FAME-DBMS
+	monitor_engine_system
 		mandatory
-			OS
-				alternative
-					Nut/OS
-					Win
-		mandatory
-			Buffer_Manager
-				alternative
-					Persistent
-						mandatory
-							Memory_Allocation
-								alternative
-									Static
-									Dynamic
-						mandatory
-							Page_Replication
-								alternative
-									LRU
-									LFU
-					In_Memory
-		optional
-			Debug_Logging
-		mandatory
-			Storage
+			engine_performance
 				mandatory
-					API
+					temperatures
 						optional
-							Get
-						optional
-							Put
-						optional
-							Delete
-				alternative
-					B+_Tree
-					Unindexed
-Example:
-Web portal
-
-You return:
-features
-	web_portal
-		optional
-			add_services
-				optional
-					site_stats
+							colant
 						mandatory
-							basic
-						optional
-							advanced
-				optional
-					site_search
-						optional
-							images
-						optional
-							text
-								mandatory
-									html
-								optional
-									dynamic
-				optional
-					ad_server
+							oil
 						mandatory
-							reports
-						optional
-							popups
+							engine
 						mandatory
-							banners
-								mandatory
-									ban_img
-								optional
-									ban_flash
-						optional
-							keyword
+							transmission
+				mandatory
+					rpm
+				mandatory
+					exhaust_level_temp
 		mandatory
-			web_server
-				optional
-					logging
+			fuel_consumption
+				mandatory
+					measures
 						alternative
-							db
-							file
-				optional
-					protocol
+							l_km
+							gallon_mile
+				mandatory
+					methods
 						or
-							nttp
-							ftp
-							https
-				mandatory
-					cont
-						mandatory
-							static
-						optional
-							active
-								or
-									asp
-									php
-									jsp
-									cgi
-		optional
-			persistence
-				alternative
-					xml
-					database
-		optional
-			ri
-				or
-					data_storage
-					data_transfer
-					user_auth
-		optional
-			performance
-				alternative
-					ms
-					sec
-					min
+							distance
+							type_of_driving
+							drive
+
 Example:
-Movies App
+Weather station
 
 You return:
 features
-	Movies_App
+	weather_station
 		mandatory
-			GUI
-				alternative
-					Thin
-					Rich
+			measurements
+				or
+					pressure
+					temperature
+					wind_speed
 		mandatory
-			DB
+			data_source
 				alternative
-					Local
-					Remote
-						mandatory
-							Cache_Policy
+					internet
+					demo
+					external_services
 		mandatory
-			Network
+			output_format
 				alternative
-					Wifi
-					Bluetooth
+					text
+					web_server
+					file
+				mandatory
+					format
+						alternative
+							xml
+							html
+							plain_text
+				mandatory
+					language
+						alternative
+							english
+							german
 		optional
-			GPS
+			alarm
+				or
+					freeze_point
+					storm_alert
+
+Example:
+Jplug
+
+You return:
+features
+	jplug
+		mandatory
+			interface
+				alternative
+					sdi
+					mdi
+		optional
+			gui_builder
+				mandatory
+					java
 				optional
-					Built-In
-Example:
-Aircraft
-
-You return:
-features
-	Aircraft
-		mandatory
-			Wing
-				or
-					High
-					Shoulder
-					Low
+					qt
 		optional
-			Engine
-				alternative
-					Jet
-					Piston
-		mandatory
-			Materials
+			model_code_synch
+		optional
+			compiler
 				or
-					Metal
-					Wood
-					Cloth
-					Plastic
-Example:
-Insurance products
-
-You return:
-features
-	insurance_product
-		mandatory
-			insured_object
-				alternative
-					corporation
-					realty
-					movable_property
-					person
-		mandatory
-			coverage
-				or
-					illness
-					life
-					unemployment
-					damage
-					loss
-		mandatory
-			payment
-				alternative
-					service
-					ammount
+					javac
+					mvc
+		optional
+			diagram_builder
+				mandatory
+					uml
 				optional
-					own_risk
-		mandatory
-			conditions
-				mandatory
-					acceptance
-				mandatory
-					exception
-		mandatory
-			premium
-				alternative
-					direct
-					periodical
-		mandatory
-			payee
-				or
-					_person
-					payee_corporation
+					petri_net
+
 Example:
 file compressor
 
@@ -264,3 +158,117 @@ features
 					adt
 					implicit_invocation
 					pipe_and_filter
+
+Example: 
+Sandwiches
+
+You return:
+features
+    Sandwich
+        mandatory
+            Bread
+        optional
+            Sauce
+                alternative
+                    Ketchup
+                    Mustard
+            Cheese
+
+Example:
+Car
+
+You return:
+features
+	Car
+		optional
+			support
+				mandatory
+					avoidance
+						alternative
+							normal_avoidance
+							enhanced_avoidance
+				optional
+					parallel_parking
+		mandatory
+			range_finder
+				optional
+					lateral_range_finder
+				optional
+					forward_range_finder
+		optional
+			gps
+		optional
+			audio
+				alternative
+					cd
+					mp3
+					video
+
+Example:
+Dell laptop
+
+You return:
+features
+	Dell_laptop
+		mandatory
+			productcategory
+				alternative
+					mininotebooks
+					inspironlaptops
+					studiolaptops
+					xpslaptops
+					adamo
+					studioxpslaptops
+		mandatory
+			operatingsystem
+				alternative
+					windows10
+					windows11
+					ubuntu
+	
+		mandatory
+			harddrive
+				alternative
+					hd500gb
+					hd320gb
+					hd250gb
+					hd160gb
+					hd128gbsolidstate
+					hd120gb
+					hd80gb
+		optional
+			opticaldrive
+				alternative
+					cddvdrw
+					dvdromdriveanddvdrw
+					dvdrwandcdrwcombo
+					bluraydisc
+		mandatory
+			laptopweight
+				alternative
+					ultralight
+					light
+					desktopreplacement
+		mandatory
+			memory
+				alternative
+					morethan4g
+					mem4gb
+					mem3gb
+					mem2gb
+					mem1gb
+		mandatory
+			processor
+				alternative
+					intelcore2duo
+					intelpentiumdualcore
+					intelceleron
+					intelatom
+		mandatory
+			price
+				alternative
+					lessthanus400
+					us400us800
+					us800us1200
+					morethanus1200
+

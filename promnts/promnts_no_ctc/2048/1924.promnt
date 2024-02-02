@@ -3,31 +3,66 @@ In a feature model, there are features which are represented by a string
 and relationships. Relationships have 1 child feature if they are mandatory or optional
 , also they have 2 or more if they are alternative or or. Follow the grammar in the examples. 
 Please, generate maintaining the indentation schema but using items from the domain I tell you:
+
 Example:
-vof
+Cellphone
 
 You return:
 features
-	vof
-		mandatory
-			follow_me
-				mandatory
-					user_localize
-						mandatory
-							user_pos_method
-								alternative
-									access_point
-									rfid
-				mandatory
-					logon
+	cellphone
 		optional
-			virtual_printer
+			wireless
+				or
+					infrared
+					bluetooth
+		mandatory
+			accu_cell
+				alternative
+					li_ion
+					ni_mh
+					ni_ca
+		mandatory
+			display
+				alternative
+					color
+					monochrome
+
+Example:
+monitor engine system
+
+You return:
+features
+	monitor_engine_system
+		mandatory
+			engine_performance
 				mandatory
-					printer_register
+					temperatures
+						optional
+							colant
+						mandatory
+							oil
+						mandatory
+							engine
+						mandatory
+							transmission
 				mandatory
-					file_upload
-				optional
-					file_converter
+					rpm
+				mandatory
+					exhaust_level_temp
+		mandatory
+			fuel_consumption
+				mandatory
+					measures
+						alternative
+							l_km
+							gallon_mile
+				mandatory
+					methods
+						or
+							distance
+							type_of_driving
+							drive
+
 Example:
 Data base management system
 
@@ -69,36 +104,113 @@ features
 				alternative
 					B+_Tree
 					Unindexed
+
 Example:
-Jplug
+Aircraft
 
 You return:
 features
-	jplug
+	Aircraft
 		mandatory
-			interface
-				alternative
-					sdi
-					mdi
-		optional
-			gui_builder
-				mandatory
-					java
-				optional
-					qt
-		optional
-			model_code_synch
-		optional
-			compiler
+			Wing
 				or
-					javac
-					mvc
+					High
+					Shoulder
+					Low
 		optional
-			diagram_builder
-				mandatory
-					uml
+			Engine
+				alternative
+					Jet
+					Piston
+		mandatory
+			Materials
+				or
+					Metal
+					Wood
+					Cloth
+					Plastic
+
+Example: 
+Sandwiches
+
+You return:
+features
+    Sandwich
+        mandatory
+            Bread
+        optional
+            Sauce
+                alternative
+                    Ketchup
+                    Mustard
+            Cheese
+
+Example:
+Tex editor
+
+You return:
+features
+	editor_config
+		mandatory
+			backup
 				optional
-					petri_net
+					autosave
+						mandatory
+							minutes
+				optional
+					backup_onchange
+				mandatory
+					backup_extension
+						alternative
+							file_bak
+							file_bak_ext
+							file_ext_bak
+		optional
+			document_class
+				mandatory
+					associated_file_ext
+						optional
+							ext
+				mandatory
+					commands
+						optional
+							remove_blank_lines
+						optional
+							spell_check
+						optional
+							dos_unix_conversion
+				optional
+					syntax_highlighting
+						mandatory
+							syntax_definition_file
+
+
+Example:
+vof
+
+You return:
+features
+	vof
+		mandatory
+			follow_me
+				mandatory
+					user_localize
+						mandatory
+							user_pos_method
+								alternative
+									access_point
+									rfid
+				mandatory
+					logon
+		optional
+			virtual_printer
+				mandatory
+					printer_register
+				mandatory
+					file_upload
+				optional
+					file_converter
+
 Example:
 Digital video system
 
@@ -155,110 +267,4 @@ features
 					_network
 		optional
 			handheld
-Example:
-Car
 
-You return:
-features
-	Car
-		optional
-			support
-				mandatory
-					avoidance
-						alternative
-							normal_avoidance
-							enhanced_avoidance
-				optional
-					parallel_parking
-		mandatory
-			range_finder
-				optional
-					lateral_range_finder
-				optional
-					forward_range_finder
-		optional
-			gps
-		optional
-			audio
-				alternative
-					cd
-					mp3
-					video
-Example: 
-Sandwiches
-
-You return:
-features
-    Sandwich
-        mandatory
-            Bread
-        optional
-            Sauce
-                alternative
-                    Ketchup
-                    Mustard
-            Cheese
-Example:
-Movies App
-
-You return:
-features
-	Movies_App
-		mandatory
-			GUI
-				alternative
-					Thin
-					Rich
-		mandatory
-			DB
-				alternative
-					Local
-					Remote
-						mandatory
-							Cache_Policy
-		mandatory
-			Network
-				alternative
-					Wifi
-					Bluetooth
-		optional
-			GPS
-				optional
-					Built-In
-Example:
-Connector
-
-You return:
-features
-	Connector
-		mandatory
-			Paradigm
-				alternative
-					Client/Server
-						alternative
-							Synchronous
-								optional
-									Timeout
-							Asynchronous
-								alternative
-									Polling
-										alternative
-											Blocking
-											Non-blocking
-									Callback
-					Message-Based
-						mandatory
-							Sender
-						mandatory
-							Receiver
-								alternative
-									Pull
-										or
-											Queued
-											Non-Queued
-									Push
-		mandatory
-			Technology
-				alternative
-					CAN
-					Local

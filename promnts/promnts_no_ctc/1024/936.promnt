@@ -3,6 +3,7 @@ In a feature model, there are features which are represented by a string
 and relationships. Relationships have 1 child feature if they are mandatory or optional
 , also they have 2 or more if they are alternative or or. Follow the grammar in the examples. 
 Please, generate maintaining the indentation schema but using items from the domain I tell you:
+
 Example:
 monitor engine system
 
@@ -38,77 +39,7 @@ features
 							distance
 							type_of_driving
 							drive
-Example:
-Data base management system
 
-You return:
-features
-	FAME-DBMS
-		mandatory
-			OS
-				alternative
-					Nut/OS
-					Win
-		mandatory
-			Buffer_Manager
-				alternative
-					Persistent
-						mandatory
-							Memory_Allocation
-								alternative
-									Static
-									Dynamic
-						mandatory
-							Page_Replication
-								alternative
-									LRU
-									LFU
-					In_Memory
-		optional
-			Debug_Logging
-		mandatory
-			Storage
-				mandatory
-					API
-						optional
-							Get
-						optional
-							Put
-						optional
-							Delete
-				alternative
-					B+_Tree
-					Unindexed
-Example:
-Jplug
-
-You return:
-features
-	jplug
-		mandatory
-			interface
-				alternative
-					sdi
-					mdi
-		optional
-			gui_builder
-				mandatory
-					java
-				optional
-					qt
-		optional
-			model_code_synch
-		optional
-			compiler
-				or
-					javac
-					mvc
-		optional
-			diagram_builder
-				mandatory
-					uml
-				optional
-					petri_net
 Example: 
 Sandwiches
 
@@ -123,3 +54,70 @@ features
                     Ketchup
                     Mustard
             Cheese
+
+Example:
+Tex editor
+
+You return:
+features
+	editor_config
+		mandatory
+			backup
+				optional
+					autosave
+						mandatory
+							minutes
+				optional
+					backup_onchange
+				mandatory
+					backup_extension
+						alternative
+							file_bak
+							file_bak_ext
+							file_ext_bak
+		optional
+			document_class
+				mandatory
+					associated_file_ext
+						optional
+							ext
+				mandatory
+					commands
+						optional
+							remove_blank_lines
+						optional
+							spell_check
+						optional
+							dos_unix_conversion
+				optional
+					syntax_highlighting
+						mandatory
+							syntax_definition_file
+
+
+Example:
+vof
+
+You return:
+features
+	vof
+		mandatory
+			follow_me
+				mandatory
+					user_localize
+						mandatory
+							user_pos_method
+								alternative
+									access_point
+									rfid
+				mandatory
+					logon
+		optional
+			virtual_printer
+				mandatory
+					printer_register
+				mandatory
+					file_upload
+				optional
+					file_converter
+

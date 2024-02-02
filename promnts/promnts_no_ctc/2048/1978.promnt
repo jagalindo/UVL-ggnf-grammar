@@ -3,31 +3,48 @@ In a feature model, there are features which are represented by a string
 and relationships. Relationships have 1 child feature if they are mandatory or optional
 , also they have 2 or more if they are alternative or or. Follow the grammar in the examples. 
 Please, generate maintaining the indentation schema but using items from the domain I tell you:
+
 Example:
-vof
+Weather station
 
 You return:
 features
-	vof
+	weather_station
 		mandatory
-			follow_me
+			measurements
+				or
+					pressure
+					temperature
+					wind_speed
+		mandatory
+			data_source
+				alternative
+					internet
+					demo
+					external_services
+		mandatory
+			output_format
+				alternative
+					text
+					web_server
+					file
 				mandatory
-					user_localize
-						mandatory
-							user_pos_method
-								alternative
-									access_point
-									rfid
+					format
+						alternative
+							xml
+							html
+							plain_text
 				mandatory
-					logon
+					language
+						alternative
+							english
+							german
 		optional
-			virtual_printer
-				mandatory
-					printer_register
-				mandatory
-					file_upload
-				optional
-					file_converter
+			alarm
+				or
+					freeze_point
+					storm_alert
+
 Example:
 Programming stack
 
@@ -60,41 +77,7 @@ features
 					Thread_Safety
 					Bounds_Check
 					Type_Check
-Example:
-monitor engine system
 
-You return:
-features
-	monitor_engine_system
-		mandatory
-			engine_performance
-				mandatory
-					temperatures
-						optional
-							colant
-						mandatory
-							oil
-						mandatory
-							engine
-						mandatory
-							transmission
-				mandatory
-					rpm
-				mandatory
-					exhaust_level_temp
-		mandatory
-			fuel_consumption
-				mandatory
-					measures
-						alternative
-							l_km
-							gallon_mile
-				mandatory
-					methods
-						or
-							distance
-							type_of_driving
-							drive
 Example:
 Jplug
 
@@ -125,62 +108,92 @@ features
 					uml
 				optional
 					petri_net
+
 Example:
-Digital video system
+file compressor
 
 You return:
 features
-	dvs
+	kwic
 		mandatory
-			control
+			input_output
+				or
+					file
+					console
+		mandatory
+			circular_shift
 				mandatory
-					remote
+					shift_data
+						alternative
+							implicit
+							explicit
 				optional
-					telephone
-						optional
-							sms
-				optional
-					net
-						optional
-							web
-						optional
-							wap
+					compression
 						mandatory
-							email
-				optional
-					edit
+							shift_processing
+						alternative
+							each_line
+							all_lines
 						optional
-							add_music
+							noise_words
+		mandatory
+			alpha_sort
 				mandatory
-					play
-						optional
-							slides
-						optional
-							audio
+					order
+						alternative
+							descendant
+							ascendant
+				mandatory
+					case_sensitivity
+						alternative
+							sensitive
+							insensitive
+		mandatory
+			arch_style
+				alternative
+					shared_data
+					adt
+					implicit_invocation
+					pipe_and_filter
+
+Example:
+Connector
+
+You return:
+features
+	Connector
+		mandatory
+			Paradigm
+				alternative
+					Client/Server
+						alternative
+							Synchronous
+								optional
+									Timeout
+							Asynchronous
+								alternative
+									Polling
+										alternative
+											Blocking
+											Non-blocking
+									Callback
+					Message-Based
 						mandatory
-							video
-		optional
-			network_hw
-				optional
-					modem
-				optional
-					ethernet
+							Sender
+						mandatory
+							Receiver
+								alternative
+									Pull
+										or
+											Queued
+											Non-Queued
+									Push
 		mandatory
-			server_pc
-				optional
-					network
-				optional
-					irda_port
-		mandatory
-			_play
-				optional
-					on_demand
-		optional
-			client_pc
-				optional
-					_network
-		optional
-			handheld
+			Technology
+				alternative
+					CAN
+					Local
+
 Example: 
 Sandwiches
 
@@ -195,52 +208,33 @@ features
                     Ketchup
                     Mustard
             Cheese
+
 Example:
-Aircraft
+telecom
 
 You return:
 features
-	Aircraft
-		mandatory
-			Wing
-				or
-					High
-					Shoulder
-					Low
+	tecom
 		optional
-			Engine
-				alternative
-					Jet
-					Piston
+			ipvoice
+				mandatory
+					software
+						alternative
+							swpack1
+							swpack2
 		mandatory
-			Materials
-				or
-					Metal
-					Wood
-					Cloth
-					Plastic
-Example:
-Cellphone
+			rack
+				mandatory
+					sizes
+						alternative
+							large
+							medium
+							small
+		optional
+			messaging
+				optional
+					upgrade_swpack
 
-You return:
-features
-	cellphone
-		optional
-			wireless
-				or
-					infrared
-					bluetooth
-		mandatory
-			accu_cell
-				alternative
-					li_ion
-					ni_mh
-					ni_ca
-		mandatory
-			display
-				alternative
-					color
-					monochrome
 Example:
 Tex editor
 
@@ -279,4 +273,5 @@ features
 					syntax_highlighting
 						mandatory
 							syntax_definition_file
+
 

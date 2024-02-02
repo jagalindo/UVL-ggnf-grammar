@@ -3,31 +3,102 @@ In a feature model, there are features which are represented by a string
 and relationships. Relationships have 1 child feature if they are mandatory or optional
 , also they have 2 or more if they are alternative or or. Follow the grammar in the examples. 
 Please, generate maintaining the indentation schema but using items from the domain I tell you:
+
 Example:
-vof
+monitor engine system
 
 You return:
 features
-	vof
+	monitor_engine_system
 		mandatory
-			follow_me
+			engine_performance
 				mandatory
-					user_localize
+					temperatures
+						optional
+							colant
 						mandatory
-							user_pos_method
-								alternative
-									access_point
-									rfid
+							oil
+						mandatory
+							engine
+						mandatory
+							transmission
 				mandatory
-					logon
+					rpm
+				mandatory
+					exhaust_level_temp
+		mandatory
+			fuel_consumption
+				mandatory
+					measures
+						alternative
+							l_km
+							gallon_mile
+				mandatory
+					methods
+						or
+							distance
+							type_of_driving
+							drive
+
+Example:
+Jplug
+
+You return:
+features
+	jplug
+		mandatory
+			interface
+				alternative
+					sdi
+					mdi
 		optional
-			virtual_printer
+			gui_builder
 				mandatory
-					printer_register
-				mandatory
-					file_upload
+					java
 				optional
-					file_converter
+					qt
+		optional
+			model_code_synch
+		optional
+			compiler
+				or
+					javac
+					mvc
+		optional
+			diagram_builder
+				mandatory
+					uml
+				optional
+					petri_net
+
+Example:
+james cms
+
+You return:
+features
+	james
+		mandatory
+			user_mngt
+				alternative
+					db
+					ldap
+		optional
+			ws_interface
+		mandatory
+			gui
+				or
+					pc
+					pda
+		mandatory
+			core
+		mandatory
+			modules
+				or
+					calendar
+					forum
+					congress_mngt
+					repository
+
 Example: 
 Sandwiches
 
@@ -42,95 +113,34 @@ features
                     Ketchup
                     Mustard
             Cheese
+
 Example:
-Aircraft
+Car
 
 You return:
 features
-	Aircraft
-		mandatory
-			Wing
-				or
-					High
-					Shoulder
-					Low
+	Car
 		optional
-			Engine
-				alternative
-					Jet
-					Piston
-		mandatory
-			Materials
-				or
-					Metal
-					Wood
-					Cloth
-					Plastic
-Example:
-Cellphone
-
-You return:
-features
-	cellphone
-		optional
-			wireless
-				or
-					infrared
-					bluetooth
-		mandatory
-			accu_cell
-				alternative
-					li_ion
-					ni_mh
-					ni_ca
-		mandatory
-			display
-				alternative
-					color
-					monochrome
-Example:
-file compressor
-
-You return:
-features
-	kwic
-		mandatory
-			input_output
-				or
-					file
-					console
-		mandatory
-			circular_shift
+			support
 				mandatory
-					shift_data
+					avoidance
 						alternative
-							implicit
-							explicit
+							normal_avoidance
+							enhanced_avoidance
 				optional
-					compression
-						mandatory
-							shift_processing
-						alternative
-							each_line
-							all_lines
-						optional
-							noise_words
+					parallel_parking
 		mandatory
-			alpha_sort
-				mandatory
-					order
-						alternative
-							descendant
-							ascendant
-				mandatory
-					case_sensitivity
-						alternative
-							sensitive
-							insensitive
-		mandatory
-			arch_style
+			range_finder
+				optional
+					lateral_range_finder
+				optional
+					forward_range_finder
+		optional
+			gps
+		optional
+			audio
 				alternative
-					shared_data
-					adt
-					implicit_invocation
-					pipe_and_filter
+					cd
+					mp3
+					video
+

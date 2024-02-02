@@ -3,200 +3,109 @@ In a feature model, there are features which are represented by a string
 and relationships. Relationships have 1 child feature if they are mandatory or optional
 , also they have 2 or more if they are alternative or or. Follow the grammar in the examples. 
 Please, generate maintaining the indentation schema but using items from the domain I tell you:
+
 Example:
-vof
+Movies App
 
 You return:
 features
-	vof
+	Movies_App
 		mandatory
-			follow_me
-				mandatory
-					user_localize
-						mandatory
-							user_pos_method
-								alternative
-									access_point
-									rfid
-				mandatory
-					logon
-		optional
-			virtual_printer
-				mandatory
-					printer_register
-				mandatory
-					file_upload
-				optional
-					file_converter
-Example:
-monitor engine system
-
-You return:
-features
-	monitor_engine_system
-		mandatory
-			engine_performance
-				mandatory
-					temperatures
-						optional
-							colant
-						mandatory
-							oil
-						mandatory
-							engine
-						mandatory
-							transmission
-				mandatory
-					rpm
-				mandatory
-					exhaust_level_temp
-		mandatory
-			fuel_consumption
-				mandatory
-					measures
-						alternative
-							l_km
-							gallon_mile
-				mandatory
-					methods
-						or
-							distance
-							type_of_driving
-							drive
-Example:
-Graph operations
-
-You return:
-features
-	graph
-		mandatory
-			services
-				mandatory
-					graph_manipulation
-						mandatory
-							delete
-						mandatory
-							select
-								mandatory
-									selection_mode
-										alternative
-											increment_selection
-											non_increment_selection
-						mandatory
-							add
-								mandatory
-									entity_add
-								mandatory
-									connector_add
-						mandatory
-							move
-								mandatory
-									moving_mode
-										alternative
-											outline_moving
-											content_moving
-								optional
-									moving_constraint
-										alternative
-											horizontal_constraint
-											vertical_constraint
-						optional
-							compose
-						optional
-							layer_adjust
-								mandatory
-									up_layer
-								mandatory
-									down_layer
-				optional
-					do_undo_redo
-						mandatory
-							select_do_undo_redo
-						mandatory
-							add_do_undo_redo
-						mandatory
-							delete__do_undo_redo
-						mandatory
-							move_do_undo_redo
-						optional
-							compose_do_undo_redo
-						optional
-							layer_adjust_do_undo_redo
-				optional
-					zoom_inout
-Example:
-Jplug
-
-You return:
-features
-	jplug
-		mandatory
-			interface
+			GUI
 				alternative
-					sdi
-					mdi
+					Thin
+					Rich
+		mandatory
+			DB
+				alternative
+					Local
+					Remote
+						mandatory
+							Cache_Policy
+		mandatory
+			Network
+				alternative
+					Wifi
+					Bluetooth
 		optional
-			gui_builder
-				mandatory
-					java
+			GPS
 				optional
-					qt
-		optional
-			model_code_synch
-		optional
-			compiler
+					Built-In
+
+Example:
+Weather station
+
+You return:
+features
+	weather_station
+		mandatory
+			measurements
 				or
-					javac
-					mvc
-		optional
-			diagram_builder
-				mandatory
-					uml
-				optional
-					petri_net
-Example: 
-Sandwiches
-
-You return:
-features
-    Sandwich
-        mandatory
-            Bread
-        optional
-            Sauce
-                alternative
-                    Ketchup
-                    Mustard
-            Cheese
-Example:
-Car
-
-You return:
-features
-	Car
-		optional
-			support
-				mandatory
-					avoidance
-						alternative
-							normal_avoidance
-							enhanced_avoidance
-				optional
-					parallel_parking
+					pressure
+					temperature
+					wind_speed
 		mandatory
-			range_finder
-				optional
-					lateral_range_finder
-				optional
-					forward_range_finder
-		optional
-			gps
-		optional
-			audio
+			data_source
 				alternative
-					cd
-					mp3
-					video
+					internet
+					demo
+					external_services
+		mandatory
+			output_format
+				alternative
+					text
+					web_server
+					file
+				mandatory
+					format
+						alternative
+							xml
+							html
+							plain_text
+				mandatory
+					language
+						alternative
+							english
+							german
+		optional
+			alarm
+				or
+					freeze_point
+					storm_alert
+
+Example:
+Programming stack
+
+You return:
+features
+	Stack
+		optional
+			Size
+				alternative
+					Fixed
+						mandatory
+							Value
+					Dynamic
+		mandatory
+			Element_Type
+				alternative
+					Integer
+					Float
+					String
+		optional
+			Optimization
+				alternative
+					Speed
+					Memory_Usage
+		optional
+			Counter
+		optional
+			Additional_Features
+				or
+					Thread_Safety
+					Bounds_Check
+					Type_Check
+
 Example
 CFDP Library
 
@@ -224,30 +133,148 @@ features
 					Reboot_Entity
 				optional
 					reboot_pus
+
 Example:
-james cms
+file compressor
 
 You return:
 features
-	james
+	kwic
 		mandatory
-			user_mngt
+			input_output
+				or
+					file
+					console
+		mandatory
+			circular_shift
+				mandatory
+					shift_data
+						alternative
+							implicit
+							explicit
+				optional
+					compression
+						mandatory
+							shift_processing
+						alternative
+							each_line
+							all_lines
+						optional
+							noise_words
+		mandatory
+			alpha_sort
+				mandatory
+					order
+						alternative
+							descendant
+							ascendant
+				mandatory
+					case_sensitivity
+						alternative
+							sensitive
+							insensitive
+		mandatory
+			arch_style
 				alternative
-					db
-					ldap
+					shared_data
+					adt
+					implicit_invocation
+					pipe_and_filter
+
+Example:
+Tex editor
+
+You return:
+features
+	editor_config
+		mandatory
+			backup
+				optional
+					autosave
+						mandatory
+							minutes
+				optional
+					backup_onchange
+				mandatory
+					backup_extension
+						alternative
+							file_bak
+							file_bak_ext
+							file_ext_bak
 		optional
-			ws_interface
+			document_class
+				mandatory
+					associated_file_ext
+						optional
+							ext
+				mandatory
+					commands
+						optional
+							remove_blank_lines
+						optional
+							spell_check
+						optional
+							dos_unix_conversion
+				optional
+					syntax_highlighting
+						mandatory
+							syntax_definition_file
+
+
+Example:
+Digital video system
+
+You return:
+features
+	dvs
 		mandatory
-			gui
-				or
-					pc
-					pda
+			control
+				mandatory
+					remote
+				optional
+					telephone
+						optional
+							sms
+				optional
+					net
+						optional
+							web
+						optional
+							wap
+						mandatory
+							email
+				optional
+					edit
+						optional
+							add_music
+				mandatory
+					play
+						optional
+							slides
+						optional
+							audio
+						mandatory
+							video
+		optional
+			network_hw
+				optional
+					modem
+				optional
+					ethernet
 		mandatory
-			core
+			server_pc
+				optional
+					network
+				optional
+					irda_port
 		mandatory
-			modules
-				or
-					calendar
-					forum
-					congress_mngt
-					repository
+			_play
+				optional
+					on_demand
+		optional
+			client_pc
+				optional
+					_network
+		optional
+			handheld
+

@@ -3,119 +3,114 @@ In a feature model, there are features which are represented by a string
 and relationships. Relationships have 1 child feature if they are mandatory or optional
 , also they have 2 or more if they are alternative or or. Follow the grammar in the examples. 
 Please, generate maintaining the indentation schema but using items from the domain I tell you:
+
 Example:
-Weather station
+Movies App
 
 You return:
 features
-	weather_station
+	Movies_App
 		mandatory
-			measurements
-				or
-					pressure
-					temperature
-					wind_speed
-		mandatory
-			data_source
+			GUI
 				alternative
-					internet
-					demo
-					external_services
+					Thin
+					Rich
 		mandatory
-			output_format
+			DB
 				alternative
-					text
-					web_server
-					file
-				mandatory
-					format
-						alternative
-							xml
-							html
-							plain_text
-				mandatory
-					language
-						alternative
-							english
-							german
+					Local
+					Remote
+						mandatory
+							Cache_Policy
+		mandatory
+			Network
+				alternative
+					Wifi
+					Bluetooth
 		optional
-			alarm
-				or
-					freeze_point
-					storm_alert
+			GPS
+				optional
+					Built-In
+
 Example:
-Programming stack
+Cellphone
 
 You return:
 features
-	Stack
+	cellphone
 		optional
-			Size
-				alternative
-					Fixed
-						mandatory
-							Value
-					Dynamic
-		mandatory
-			Element_Type
-				alternative
-					Integer
-					Float
-					String
-		optional
-			Optimization
-				alternative
-					Speed
-					Memory_Usage
-		optional
-			Counter
-		optional
-			Additional_Features
+			wireless
 				or
-					Thread_Safety
-					Bounds_Check
-					Type_Check
-Example:
-Data base management system
+					infrared
+					bluetooth
+		mandatory
+			accu_cell
+				alternative
+					li_ion
+					ni_mh
+					ni_ca
+		mandatory
+			display
+				alternative
+					color
+					monochrome
+
+Example
+CFDP Library
 
 You return:
 features
-	FAME-DBMS
+	CFDP_Library
+		or
+			send
+				optional
+					Send_Acknowledged_Mode
+				optional
+					send_fs_operations
+			receive
+				optional
+					Receive_Acknowledged_Mode
+				optional
+					receive_fs_operations
+			pus
+				optional
+					pus_rename
+				optional
+					pus_copy
+			Reboot
+				optional
+					Reboot_Entity
+				optional
+					reboot_pus
+
+Example:
+james cms
+
+You return:
+features
+	james
 		mandatory
-			OS
+			user_mngt
 				alternative
-					Nut/OS
-					Win
-		mandatory
-			Buffer_Manager
-				alternative
-					Persistent
-						mandatory
-							Memory_Allocation
-								alternative
-									Static
-									Dynamic
-						mandatory
-							Page_Replication
-								alternative
-									LRU
-									LFU
-					In_Memory
+					db
+					ldap
 		optional
-			Debug_Logging
+			ws_interface
 		mandatory
-			Storage
-				mandatory
-					API
-						optional
-							Get
-						optional
-							Put
-						optional
-							Delete
-				alternative
-					B+_Tree
-					Unindexed
+			gui
+				or
+					pc
+					pda
+		mandatory
+			core
+		mandatory
+			modules
+				or
+					calendar
+					forum
+					congress_mngt
+					repository
+
 Example: 
 Sandwiches
 
@@ -130,97 +125,129 @@ features
                     Ketchup
                     Mustard
             Cheese
+
 Example:
-Dell laptop
+telecom
 
 You return:
 features
-	Dell_laptop
-		mandatory
-			productcategory
-				alternative
-					mininotebooks
-					inspironlaptops
-					studiolaptops
-					xpslaptops
-					adamo
-					studioxpslaptops
-		mandatory
-			operatingsystem
-				alternative
-					windows10
-					windows11
-					ubuntu
-	
-		mandatory
-			harddrive
-				alternative
-					hd500gb
-					hd320gb
-					hd250gb
-					hd160gb
-					hd128gbsolidstate
-					hd120gb
-					hd80gb
+	tecom
 		optional
-			opticaldrive
-				alternative
-					cddvdrw
-					dvdromdriveanddvdrw
-					dvdrwandcdrwcombo
-					bluraydisc
+			ipvoice
+				mandatory
+					software
+						alternative
+							swpack1
+							swpack2
 		mandatory
-			laptopweight
-				alternative
-					ultralight
-					light
-					desktopreplacement
-		mandatory
-			memory
-				alternative
-					morethan4g
-					mem4gb
-					mem3gb
-					mem2gb
-					mem1gb
-		mandatory
-			processor
-				alternative
-					intelcore2duo
-					intelpentiumdualcore
-					intelceleron
-					intelatom
-		mandatory
-			price
-				alternative
-					lessthanus400
-					us400us800
-					us800us1200
-					morethanus1200
+			rack
+				mandatory
+					sizes
+						alternative
+							large
+							medium
+							small
+		optional
+			messaging
+				optional
+					upgrade_swpack
+
 Example:
-Aircraft
+Tex editor
 
 You return:
 features
-	Aircraft
+	editor_config
 		mandatory
-			Wing
-				or
-					High
-					Shoulder
-					Low
+			backup
+				optional
+					autosave
+						mandatory
+							minutes
+				optional
+					backup_onchange
+				mandatory
+					backup_extension
+						alternative
+							file_bak
+							file_bak_ext
+							file_ext_bak
 		optional
-			Engine
-				alternative
-					Jet
-					Piston
+			document_class
+				mandatory
+					associated_file_ext
+						optional
+							ext
+				mandatory
+					commands
+						optional
+							remove_blank_lines
+						optional
+							spell_check
+						optional
+							dos_unix_conversion
+				optional
+					syntax_highlighting
+						mandatory
+							syntax_definition_file
+
+
+Example:
+Car
+
+You return:
+features
+	Car
+		optional
+			support
+				mandatory
+					avoidance
+						alternative
+							normal_avoidance
+							enhanced_avoidance
+				optional
+					parallel_parking
 		mandatory
-			Materials
-				or
-					Metal
-					Wood
-					Cloth
-					Plastic
+			range_finder
+				optional
+					lateral_range_finder
+				optional
+					forward_range_finder
+		optional
+			gps
+		optional
+			audio
+				alternative
+					cd
+					mp3
+					video
+
+Example:
+vof
+
+You return:
+features
+	vof
+		mandatory
+			follow_me
+				mandatory
+					user_localize
+						mandatory
+							user_pos_method
+								alternative
+									access_point
+									rfid
+				mandatory
+					logon
+		optional
+			virtual_printer
+				mandatory
+					printer_register
+				mandatory
+					file_upload
+				optional
+					file_converter
+
 Example:
 Insurance products
 
@@ -265,3 +292,4 @@ features
 				or
 					_person
 					payee_corporation
+

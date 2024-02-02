@@ -3,187 +3,35 @@ In a feature model, there are features which are represented by a string
 and relationships. Relationships have 1 child feature if they are mandatory or optional
 , also they have 2 or more if they are alternative or or. Follow the grammar in the examples. 
 Please, generate maintaining the indentation schema but using items from the domain I tell you:
+
 Example:
-monitor engine system
+Movies App
 
 You return:
 features
-	monitor_engine_system
+	Movies_App
 		mandatory
-			engine_performance
-				mandatory
-					temperatures
-						optional
-							colant
-						mandatory
-							oil
-						mandatory
-							engine
-						mandatory
-							transmission
-				mandatory
-					rpm
-				mandatory
-					exhaust_level_temp
-		mandatory
-			fuel_consumption
-				mandatory
-					measures
-						alternative
-							l_km
-							gallon_mile
-				mandatory
-					methods
-						or
-							distance
-							type_of_driving
-							drive
-Example:
-Data base management system
-
-You return:
-features
-	FAME-DBMS
-		mandatory
-			OS
+			GUI
 				alternative
-					Nut/OS
-					Win
+					Thin
+					Rich
 		mandatory
-			Buffer_Manager
+			DB
 				alternative
-					Persistent
+					Local
+					Remote
 						mandatory
-							Memory_Allocation
-								alternative
-									Static
-									Dynamic
-						mandatory
-							Page_Replication
-								alternative
-									LRU
-									LFU
-					In_Memory
+							Cache_Policy
+		mandatory
+			Network
+				alternative
+					Wifi
+					Bluetooth
 		optional
-			Debug_Logging
-		mandatory
-			Storage
-				mandatory
-					API
-						optional
-							Get
-						optional
-							Put
-						optional
-							Delete
-				alternative
-					B+_Tree
-					Unindexed
-Example: 
-Sandwiches
+			GPS
+				optional
+					Built-In
 
-You return:
-features
-    Sandwich
-        mandatory
-            Bread
-        optional
-            Sauce
-                alternative
-                    Ketchup
-                    Mustard
-            Cheese
-Example:
-Dell laptop
-
-You return:
-features
-	Dell_laptop
-		mandatory
-			productcategory
-				alternative
-					mininotebooks
-					inspironlaptops
-					studiolaptops
-					xpslaptops
-					adamo
-					studioxpslaptops
-		mandatory
-			operatingsystem
-				alternative
-					windows10
-					windows11
-					ubuntu
-	
-		mandatory
-			harddrive
-				alternative
-					hd500gb
-					hd320gb
-					hd250gb
-					hd160gb
-					hd128gbsolidstate
-					hd120gb
-					hd80gb
-		optional
-			opticaldrive
-				alternative
-					cddvdrw
-					dvdromdriveanddvdrw
-					dvdrwandcdrwcombo
-					bluraydisc
-		mandatory
-			laptopweight
-				alternative
-					ultralight
-					light
-					desktopreplacement
-		mandatory
-			memory
-				alternative
-					morethan4g
-					mem4gb
-					mem3gb
-					mem2gb
-					mem1gb
-		mandatory
-			processor
-				alternative
-					intelcore2duo
-					intelpentiumdualcore
-					intelceleron
-					intelatom
-		mandatory
-			price
-				alternative
-					lessthanus400
-					us400us800
-					us800us1200
-					morethanus1200
-Example:
-Aircraft
-
-You return:
-features
-	Aircraft
-		mandatory
-			Wing
-				or
-					High
-					Shoulder
-					Low
-		optional
-			Engine
-				alternative
-					Jet
-					Piston
-		mandatory
-			Materials
-				or
-					Metal
-					Wood
-					Cloth
-					Plastic
 Example:
 Cellphone
 
@@ -206,42 +54,197 @@ features
 				alternative
 					color
 					monochrome
+
 Example:
-Tex editor
+Weather station
 
 You return:
 features
-	editor_config
+	weather_station
 		mandatory
-			backup
-				optional
-					autosave
-						mandatory
-							minutes
-				optional
-					backup_onchange
+			measurements
+				or
+					pressure
+					temperature
+					wind_speed
+		mandatory
+			data_source
+				alternative
+					internet
+					demo
+					external_services
+		mandatory
+			output_format
+				alternative
+					text
+					web_server
+					file
 				mandatory
-					backup_extension
+					format
 						alternative
-							file_bak
-							file_bak_ext
-							file_ext_bak
+							xml
+							html
+							plain_text
+				mandatory
+					language
+						alternative
+							english
+							german
 		optional
-			document_class
+			alarm
+				or
+					freeze_point
+					storm_alert
+
+Example:
+file compressor
+
+You return:
+features
+	kwic
+		mandatory
+			input_output
+				or
+					file
+					console
+		mandatory
+			circular_shift
 				mandatory
-					associated_file_ext
-						optional
-							ext
-				mandatory
-					commands
-						optional
-							remove_blank_lines
-						optional
-							spell_check
-						optional
-							dos_unix_conversion
+					shift_data
+						alternative
+							implicit
+							explicit
 				optional
-					syntax_highlighting
+					compression
 						mandatory
-							syntax_definition_file
+							shift_processing
+						alternative
+							each_line
+							all_lines
+						optional
+							noise_words
+		mandatory
+			alpha_sort
+				mandatory
+					order
+						alternative
+							descendant
+							ascendant
+				mandatory
+					case_sensitivity
+						alternative
+							sensitive
+							insensitive
+		mandatory
+			arch_style
+				alternative
+					shared_data
+					adt
+					implicit_invocation
+					pipe_and_filter
+
+Example:
+james cms
+
+You return:
+features
+	james
+		mandatory
+			user_mngt
+				alternative
+					db
+					ldap
+		optional
+			ws_interface
+		mandatory
+			gui
+				or
+					pc
+					pda
+		mandatory
+			core
+		mandatory
+			modules
+				or
+					calendar
+					forum
+					congress_mngt
+					repository
+
+Example: 
+Sandwiches
+
+You return:
+features
+    Sandwich
+        mandatory
+            Bread
+        optional
+            Sauce
+                alternative
+                    Ketchup
+                    Mustard
+            Cheese
+
+Example:
+Graph operations
+
+You return:
+features
+	graph
+		mandatory
+			services
+				mandatory
+					graph_manipulation
+						mandatory
+							delete
+						mandatory
+							select
+								mandatory
+									selection_mode
+										alternative
+											increment_selection
+											non_increment_selection
+						mandatory
+							add
+								mandatory
+									entity_add
+								mandatory
+									connector_add
+						mandatory
+							move
+								mandatory
+									moving_mode
+										alternative
+											outline_moving
+											content_moving
+								optional
+									moving_constraint
+										alternative
+											horizontal_constraint
+											vertical_constraint
+						optional
+							compose
+						optional
+							layer_adjust
+								mandatory
+									up_layer
+								mandatory
+									down_layer
+				optional
+					do_undo_redo
+						mandatory
+							select_do_undo_redo
+						mandatory
+							add_do_undo_redo
+						mandatory
+							delete__do_undo_redo
+						mandatory
+							move_do_undo_redo
+						optional
+							compose_do_undo_redo
+						optional
+							layer_adjust_do_undo_redo
+				optional
+					zoom_inout
 

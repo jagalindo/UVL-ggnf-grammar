@@ -3,130 +3,7 @@ In a feature model, there are features which are represented by a string
 and relationships. Relationships have 1 child feature if they are mandatory or optional
 , also they have 2 or more if they are alternative or or. Follow the grammar in the examples. 
 Please, generate maintaining the indentation schema but using items from the domain I tell you:
-Example:
-Programming stack
 
-You return:
-features
-	Stack
-		optional
-			Size
-				alternative
-					Fixed
-						mandatory
-							Value
-					Dynamic
-		mandatory
-			Element_Type
-				alternative
-					Integer
-					Float
-					String
-		optional
-			Optimization
-				alternative
-					Speed
-					Memory_Usage
-		optional
-			Counter
-		optional
-			Additional_Features
-				or
-					Thread_Safety
-					Bounds_Check
-					Type_Check
-Example: 
-Sandwiches
-
-You return:
-features
-    Sandwich
-        mandatory
-            Bread
-        optional
-            Sauce
-                alternative
-                    Ketchup
-                    Mustard
-            Cheese
-Example
-CFDP Library
-
-You return:
-features
-	CFDP_Library
-		or
-			send
-				optional
-					Send_Acknowledged_Mode
-				optional
-					send_fs_operations
-			receive
-				optional
-					Receive_Acknowledged_Mode
-				optional
-					receive_fs_operations
-			pus
-				optional
-					pus_rename
-				optional
-					pus_copy
-			Reboot
-				optional
-					Reboot_Entity
-				optional
-					reboot_pus
-Example:
-james cms
-
-You return:
-features
-	james
-		mandatory
-			user_mngt
-				alternative
-					db
-					ldap
-		optional
-			ws_interface
-		mandatory
-			gui
-				or
-					pc
-					pda
-		mandatory
-			core
-		mandatory
-			modules
-				or
-					calendar
-					forum
-					congress_mngt
-					repository
-Example:
-Aircraft
-
-You return:
-features
-	Aircraft
-		mandatory
-			Wing
-				or
-					High
-					Shoulder
-					Low
-		optional
-			Engine
-				alternative
-					Jet
-					Piston
-		mandatory
-			Materials
-				or
-					Metal
-					Wood
-					Cloth
-					Plastic
 Example:
 Cellphone
 
@@ -149,44 +26,47 @@ features
 				alternative
 					color
 					monochrome
+
 Example:
-Tex editor
+Weather station
 
 You return:
 features
-	editor_config
+	weather_station
 		mandatory
-			backup
-				optional
-					autosave
-						mandatory
-							minutes
-				optional
-					backup_onchange
+			measurements
+				or
+					pressure
+					temperature
+					wind_speed
+		mandatory
+			data_source
+				alternative
+					internet
+					demo
+					external_services
+		mandatory
+			output_format
+				alternative
+					text
+					web_server
+					file
 				mandatory
-					backup_extension
+					format
 						alternative
-							file_bak
-							file_bak_ext
-							file_ext_bak
+							xml
+							html
+							plain_text
+				mandatory
+					language
+						alternative
+							english
+							german
 		optional
-			document_class
-				mandatory
-					associated_file_ext
-						optional
-							ext
-				mandatory
-					commands
-						optional
-							remove_blank_lines
-						optional
-							spell_check
-						optional
-							dos_unix_conversion
-				optional
-					syntax_highlighting
-						mandatory
-							syntax_definition_file
+			alarm
+				or
+					freeze_point
+					storm_alert
 
 Example:
 Document generator
@@ -256,3 +136,135 @@ features
 					db2
 					oracle
 					mysql
+
+Example:
+Programming stack
+
+You return:
+features
+	Stack
+		optional
+			Size
+				alternative
+					Fixed
+						mandatory
+							Value
+					Dynamic
+		mandatory
+			Element_Type
+				alternative
+					Integer
+					Float
+					String
+		optional
+			Optimization
+				alternative
+					Speed
+					Memory_Usage
+		optional
+			Counter
+		optional
+			Additional_Features
+				or
+					Thread_Safety
+					Bounds_Check
+					Type_Check
+
+Example
+CFDP Library
+
+You return:
+features
+	CFDP_Library
+		or
+			send
+				optional
+					Send_Acknowledged_Mode
+				optional
+					send_fs_operations
+			receive
+				optional
+					Receive_Acknowledged_Mode
+				optional
+					receive_fs_operations
+			pus
+				optional
+					pus_rename
+				optional
+					pus_copy
+			Reboot
+				optional
+					Reboot_Entity
+				optional
+					reboot_pus
+
+Example: 
+Sandwiches
+
+You return:
+features
+    Sandwich
+        mandatory
+            Bread
+        optional
+            Sauce
+                alternative
+                    Ketchup
+                    Mustard
+            Cheese
+
+Example:
+Car
+
+You return:
+features
+	Car
+		optional
+			support
+				mandatory
+					avoidance
+						alternative
+							normal_avoidance
+							enhanced_avoidance
+				optional
+					parallel_parking
+		mandatory
+			range_finder
+				optional
+					lateral_range_finder
+				optional
+					forward_range_finder
+		optional
+			gps
+		optional
+			audio
+				alternative
+					cd
+					mp3
+					video
+
+Example:
+Aircraft
+
+You return:
+features
+	Aircraft
+		mandatory
+			Wing
+				or
+					High
+					Shoulder
+					Low
+		optional
+			Engine
+				alternative
+					Jet
+					Piston
+		mandatory
+			Materials
+				or
+					Metal
+					Wood
+					Cloth
+					Plastic
+

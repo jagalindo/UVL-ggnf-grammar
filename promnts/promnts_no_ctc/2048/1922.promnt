@@ -3,31 +3,71 @@ In a feature model, there are features which are represented by a string
 and relationships. Relationships have 1 child feature if they are mandatory or optional
 , also they have 2 or more if they are alternative or or. Follow the grammar in the examples. 
 Please, generate maintaining the indentation schema but using items from the domain I tell you:
+
 Example:
-vof
+Movies App
 
 You return:
 features
-	vof
+	Movies_App
 		mandatory
-			follow_me
-				mandatory
-					user_localize
+			GUI
+				alternative
+					Thin
+					Rich
+		mandatory
+			DB
+				alternative
+					Local
+					Remote
 						mandatory
-							user_pos_method
-								alternative
-									access_point
-									rfid
-				mandatory
-					logon
+							Cache_Policy
+		mandatory
+			Network
+				alternative
+					Wifi
+					Bluetooth
 		optional
-			virtual_printer
-				mandatory
-					printer_register
-				mandatory
-					file_upload
+			GPS
 				optional
-					file_converter
+					Built-In
+
+Example:
+monitor engine system
+
+You return:
+features
+	monitor_engine_system
+		mandatory
+			engine_performance
+				mandatory
+					temperatures
+						optional
+							colant
+						mandatory
+							oil
+						mandatory
+							engine
+						mandatory
+							transmission
+				mandatory
+					rpm
+				mandatory
+					exhaust_level_temp
+		mandatory
+			fuel_consumption
+				mandatory
+					measures
+						alternative
+							l_km
+							gallon_mile
+				mandatory
+					methods
+						or
+							distance
+							type_of_driving
+							drive
+
 Example:
 Weather station
 
@@ -68,73 +108,113 @@ features
 				or
 					freeze_point
 					storm_alert
+
 Example:
-Programming stack
+Jplug
 
 You return:
 features
-	Stack
-		optional
-			Size
-				alternative
-					Fixed
-						mandatory
-							Value
-					Dynamic
+	jplug
 		mandatory
-			Element_Type
+			interface
 				alternative
-					Integer
-					Float
-					String
+					sdi
+					mdi
 		optional
-			Optimization
-				alternative
-					Speed
-					Memory_Usage
+			gui_builder
+				mandatory
+					java
+				optional
+					qt
 		optional
-			Counter
+			model_code_synch
 		optional
-			Additional_Features
+			compiler
 				or
-					Thread_Safety
-					Bounds_Check
-					Type_Check
+					javac
+					mvc
+		optional
+			diagram_builder
+				mandatory
+					uml
+				optional
+					petri_net
+
 Example:
-monitor engine system
+file compressor
 
 You return:
 features
-	monitor_engine_system
+	kwic
 		mandatory
-			engine_performance
-				mandatory
-					temperatures
-						optional
-							colant
-						mandatory
-							oil
-						mandatory
-							engine
-						mandatory
-							transmission
-				mandatory
-					rpm
-				mandatory
-					exhaust_level_temp
+			input_output
+				or
+					file
+					console
 		mandatory
-			fuel_consumption
+			circular_shift
 				mandatory
-					measures
+					shift_data
 						alternative
-							l_km
-							gallon_mile
+							implicit
+							explicit
+				optional
+					compression
+						mandatory
+							shift_processing
+						alternative
+							each_line
+							all_lines
+						optional
+							noise_words
+		mandatory
+			alpha_sort
 				mandatory
-					methods
-						or
-							distance
-							type_of_driving
-							drive
+					order
+						alternative
+							descendant
+							ascendant
+				mandatory
+					case_sensitivity
+						alternative
+							sensitive
+							insensitive
+		mandatory
+			arch_style
+				alternative
+					shared_data
+					adt
+					implicit_invocation
+					pipe_and_filter
+
+Example:
+james cms
+
+You return:
+features
+	james
+		mandatory
+			user_mngt
+				alternative
+					db
+					ldap
+		optional
+			ws_interface
+		mandatory
+			gui
+				or
+					pc
+					pda
+		mandatory
+			core
+		mandatory
+			modules
+				or
+					calendar
+					forum
+					congress_mngt
+					repository
+
 Example: 
 Sandwiches
 
@@ -149,125 +229,59 @@ features
                     Ketchup
                     Mustard
             Cheese
+
 Example:
-Digital video system
+Car
 
 You return:
 features
-	dvs
-		mandatory
-			control
+	Car
+		optional
+			support
 				mandatory
-					remote
+					avoidance
+						alternative
+							normal_avoidance
+							enhanced_avoidance
 				optional
-					telephone
-						optional
-							sms
-				optional
-					net
-						optional
-							web
-						optional
-							wap
-						mandatory
-							email
-				optional
-					edit
-						optional
-							add_music
-				mandatory
-					play
-						optional
-							slides
-						optional
-							audio
-						mandatory
-							video
-		optional
-			network_hw
-				optional
-					modem
-				optional
-					ethernet
+					parallel_parking
 		mandatory
-			server_pc
+			range_finder
 				optional
-					network
+					lateral_range_finder
 				optional
-					irda_port
-		mandatory
-			_play
-				optional
-					on_demand
+					forward_range_finder
 		optional
-			client_pc
-				optional
-					_network
+			gps
 		optional
-			handheld
+			audio
+				alternative
+					cd
+					mp3
+					video
+
 Example:
-Insurance products
+Aircraft
 
 You return:
 features
-	insurance_product
+	Aircraft
 		mandatory
-			insured_object
-				alternative
-					corporation
-					realty
-					movable_property
-					person
-		mandatory
-			coverage
+			Wing
 				or
-					illness
-					life
-					unemployment
-					damage
-					loss
-		mandatory
-			payment
-				alternative
-					service
-					ammount
-				optional
-					own_risk
-		mandatory
-			conditions
-				mandatory
-					acceptance
-				mandatory
-					exception
-		mandatory
-			premium
-				alternative
-					direct
-					periodical
-		mandatory
-			payee
-				or
-					_person
-					payee_corporation
-Example:
-Cellphone
-
-You return:
-features
-	cellphone
+					High
+					Shoulder
+					Low
 		optional
-			wireless
+			Engine
+				alternative
+					Jet
+					Piston
+		mandatory
+			Materials
 				or
-					infrared
-					bluetooth
-		mandatory
-			accu_cell
-				alternative
-					li_ion
-					ni_mh
-					ni_ca
-		mandatory
-			display
-				alternative
-					color
-					monochrome
+					Metal
+					Wood
+					Cloth
+					Plastic
+

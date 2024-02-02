@@ -3,6 +3,94 @@ In a feature model, there are features which are represented by a string
 and relationships. Relationships have 1 child feature if they are mandatory or optional
 , also they have 2 or more if they are alternative or or. Follow the grammar in the examples. 
 Please, generate maintaining the indentation schema but using items from the domain I tell you:
+
+Example:
+Movies App
+
+You return:
+features
+	Movies_App
+		mandatory
+			GUI
+				alternative
+					Thin
+					Rich
+		mandatory
+			DB
+				alternative
+					Local
+					Remote
+						mandatory
+							Cache_Policy
+		mandatory
+			Network
+				alternative
+					Wifi
+					Bluetooth
+		optional
+			GPS
+				optional
+					Built-In
+
+Example:
+Cellphone
+
+You return:
+features
+	cellphone
+		optional
+			wireless
+				or
+					infrared
+					bluetooth
+		mandatory
+			accu_cell
+				alternative
+					li_ion
+					ni_mh
+					ni_ca
+		mandatory
+			display
+				alternative
+					color
+					monochrome
+
+Example:
+monitor engine system
+
+You return:
+features
+	monitor_engine_system
+		mandatory
+			engine_performance
+				mandatory
+					temperatures
+						optional
+							colant
+						mandatory
+							oil
+						mandatory
+							engine
+						mandatory
+							transmission
+				mandatory
+					rpm
+				mandatory
+					exhaust_level_temp
+		mandatory
+			fuel_consumption
+				mandatory
+					measures
+						alternative
+							l_km
+							gallon_mile
+				mandatory
+					methods
+						or
+							distance
+							type_of_driving
+							drive
+
 Example:
 Programming stack
 
@@ -35,216 +123,108 @@ features
 					Thread_Safety
 					Bounds_Check
 					Type_Check
-Example: 
-Sandwiches
 
-You return:
-features
-    Sandwich
-        mandatory
-            Bread
-        optional
-            Sauce
-                alternative
-                    Ketchup
-                    Mustard
-            Cheese
 Example:
-Digital video system
+vof
 
 You return:
 features
-	dvs
+	vof
 		mandatory
-			control
+			follow_me
 				mandatory
-					remote
-				optional
-					telephone
-						optional
-							sms
-				optional
-					net
-						optional
-							web
-						optional
-							wap
+					user_localize
 						mandatory
-							email
-				optional
-					edit
-						optional
-							add_music
-				mandatory
-					play
-						optional
-							slides
-						optional
-							audio
-						mandatory
-							video
-		optional
-			network_hw
-				optional
-					modem
-				optional
-					ethernet
-		mandatory
-			server_pc
-				optional
-					network
-				optional
-					irda_port
-		mandatory
-			_play
-				optional
-					on_demand
-		optional
-			client_pc
-				optional
-					_network
-		optional
-			handheld
-Example:
-Car
-
-You return:
-features
-	Car
-		optional
-			support
-				mandatory
-					avoidance
-						alternative
-							normal_avoidance
-							enhanced_avoidance
-				optional
-					parallel_parking
-		mandatory
-			range_finder
-				optional
-					lateral_range_finder
-				optional
-					forward_range_finder
-		optional
-			gps
-		optional
-			audio
-				alternative
-					cd
-					mp3
-					video
-Example:
-Movies App
-
-You return:
-features
-	Movies_App
-		mandatory
-			GUI
-				alternative
-					Thin
-					Rich
-		mandatory
-			DB
-				alternative
-					Local
-					Remote
-						mandatory
-							Cache_Policy
-		mandatory
-			Network
-				alternative
-					Wifi
-					Bluetooth
-		optional
-			GPS
-				optional
-					Built-In
-Example:
-Connector
-
-You return:
-features
-	Connector
-		mandatory
-			Paradigm
-				alternative
-					Client/Server
-						alternative
-							Synchronous
-								optional
-									Timeout
-							Asynchronous
+							user_pos_method
 								alternative
-									Polling
-										alternative
-											Blocking
-											Non-blocking
-									Callback
-					Message-Based
-						mandatory
-							Sender
-						mandatory
-							Receiver
-								alternative
-									Pull
-										or
-											Queued
-											Non-Queued
-									Push
-		mandatory
-			Technology
-				alternative
-					CAN
-					Local
+									access_point
+									rfid
+				mandatory
+					logon
+		optional
+			virtual_printer
+				mandatory
+					printer_register
+				mandatory
+					file_upload
+				optional
+					file_converter
+
 Example:
-Cellphone
+james cms
 
 You return:
 features
-	cellphone
+	james
+		mandatory
+			user_mngt
+				alternative
+					db
+					ldap
 		optional
-			wireless
+			ws_interface
+		mandatory
+			gui
 				or
-					infrared
-					bluetooth
+					pc
+					pda
 		mandatory
-			accu_cell
-				alternative
-					li_ion
-					ni_mh
-					ni_ca
+			core
 		mandatory
-			display
-				alternative
-					color
-					monochrome
+			modules
+				or
+					calendar
+					forum
+					congress_mngt
+					repository
+
 Example:
-telecom
+file compressor
 
 You return:
 features
-	tecom
-		optional
-			ipvoice
-				mandatory
-					software
-						alternative
-							swpack1
-							swpack2
+	kwic
 		mandatory
-			rack
+			input_output
+				or
+					file
+					console
+		mandatory
+			circular_shift
 				mandatory
-					sizes
+					shift_data
 						alternative
-							large
-							medium
-							small
-		optional
-			messaging
+							implicit
+							explicit
 				optional
-					upgrade_swpack
+					compression
+						mandatory
+							shift_processing
+						alternative
+							each_line
+							all_lines
+						optional
+							noise_words
+		mandatory
+			alpha_sort
+				mandatory
+					order
+						alternative
+							descendant
+							ascendant
+				mandatory
+					case_sensitivity
+						alternative
+							sensitive
+							insensitive
+		mandatory
+			arch_style
+				alternative
+					shared_data
+					adt
+					implicit_invocation
+					pipe_and_filter
+
 Example:
 Tex editor
 
@@ -283,4 +263,30 @@ features
 					syntax_highlighting
 						mandatory
 							syntax_definition_file
+
+
+Example:
+Aircraft
+
+You return:
+features
+	Aircraft
+		mandatory
+			Wing
+				or
+					High
+					Shoulder
+					Low
+		optional
+			Engine
+				alternative
+					Jet
+					Piston
+		mandatory
+			Materials
+				or
+					Metal
+					Wood
+					Cloth
+					Plastic
 

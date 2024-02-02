@@ -3,6 +3,30 @@ In a feature model, there are features which are represented by a string
 and relationships. Relationships have 1 child feature if they are mandatory or optional
 , also they have 2 or more if they are alternative or or. Follow the grammar in the examples. 
 Please, generate maintaining the indentation schema but using items from the domain I tell you:
+
+Example:
+Cellphone
+
+You return:
+features
+	cellphone
+		optional
+			wireless
+				or
+					infrared
+					bluetooth
+		mandatory
+			accu_cell
+				alternative
+					li_ion
+					ni_mh
+					ni_ca
+		mandatory
+			display
+				alternative
+					color
+					monochrome
+
 Example:
 monitor engine system
 
@@ -38,6 +62,7 @@ features
 							distance
 							type_of_driving
 							drive
+
 Example:
 Jplug
 
@@ -68,6 +93,7 @@ features
 					uml
 				optional
 					petri_net
+
 Example: 
 Sandwiches
 
@@ -82,6 +108,7 @@ features
                     Ketchup
                     Mustard
             Cheese
+
 Example:
 Aircraft
 
@@ -106,25 +133,4 @@ features
 					Wood
 					Cloth
 					Plastic
-Example:
-Cellphone
 
-You return:
-features
-	cellphone
-		optional
-			wireless
-				or
-					infrared
-					bluetooth
-		mandatory
-			accu_cell
-				alternative
-					li_ion
-					ni_mh
-					ni_ca
-		mandatory
-			display
-				alternative
-					color
-					monochrome

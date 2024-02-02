@@ -3,47 +3,130 @@ In a feature model, there are features which are represented by a string
 and relationships. Relationships have 1 child feature if they are mandatory or optional
 , also they have 2 or more if they are alternative or or. Follow the grammar in the examples. 
 Please, generate maintaining the indentation schema but using items from the domain I tell you:
+
 Example:
-Data base management system
+Cellphone
 
 You return:
 features
-	FAME-DBMS
-		mandatory
-			OS
-				alternative
-					Nut/OS
-					Win
-		mandatory
-			Buffer_Manager
-				alternative
-					Persistent
-						mandatory
-							Memory_Allocation
-								alternative
-									Static
-									Dynamic
-						mandatory
-							Page_Replication
-								alternative
-									LRU
-									LFU
-					In_Memory
+	cellphone
 		optional
-			Debug_Logging
+			wireless
+				or
+					infrared
+					bluetooth
 		mandatory
-			Storage
-				mandatory
-					API
-						optional
-							Get
-						optional
-							Put
-						optional
-							Delete
+			accu_cell
 				alternative
-					B+_Tree
-					Unindexed
+					li_ion
+					ni_mh
+					ni_ca
+		mandatory
+			display
+				alternative
+					color
+					monochrome
+
+Example:
+Document generator
+
+You return:
+features
+	doc_gen
+		mandatory
+			analysis
+				mandatory
+					language_analysis
+						or
+							cobol
+								alternative
+									ibm_cobol
+									microfocus_cobol
+							jcl
+							sql
+							delphi
+							progress
+				optional
+					version_mngt
+				optional
+					subsystems
+		mandatory
+			presentation
+				mandatory
+					localization
+						or
+							english
+							dutch
+				mandatory
+					interaction
+						alternative
+							static
+							dynamic
+				mandatory
+					main_pages
+						or
+							program_page
+								or
+									annotation_section
+									activation_section
+									entities_section
+									parameters_section
+							copybook_page
+							statistics_page
+								alternative
+									with_history
+									without_history
+							indexes
+							search_page
+							subsystem_page
+							source_page
+							source_difference
+				optional
+					visualizations
+						or
+							perform_graph
+							conditional_perform_graph
+							jcl_graph
+							subsystem_graph
+							overview_graph
+		mandatory
+			database
+				alternative
+					db2
+					oracle
+					mysql
+
+Example:
+Jplug
+
+You return:
+features
+	jplug
+		mandatory
+			interface
+				alternative
+					sdi
+					mdi
+		optional
+			gui_builder
+				mandatory
+					java
+				optional
+					qt
+		optional
+			model_code_synch
+		optional
+			compiler
+				or
+					javac
+					mvc
+		optional
+			diagram_builder
+				mandatory
+					uml
+				optional
+					petri_net
+
 Example: 
 Sandwiches
 
@@ -58,156 +141,103 @@ features
                     Ketchup
                     Mustard
             Cheese
+
 Example:
-Digital video system
+telecom
 
 You return:
 features
-	dvs
-		mandatory
-			control
+	tecom
+		optional
+			ipvoice
 				mandatory
-					remote
-				optional
-					telephone
-						optional
-							sms
-				optional
-					net
-						optional
-							web
-						optional
-							wap
-						mandatory
-							email
-				optional
-					edit
-						optional
-							add_music
+					software
+						alternative
+							swpack1
+							swpack2
+		mandatory
+			rack
 				mandatory
-					play
-						optional
-							slides
-						optional
-							audio
-						mandatory
-							video
+					sizes
+						alternative
+							large
+							medium
+							small
 		optional
-			network_hw
+			messaging
 				optional
-					modem
-				optional
-					ethernet
-		mandatory
-			server_pc
-				optional
-					network
-				optional
-					irda_port
-		mandatory
-			_play
-				optional
-					on_demand
-		optional
-			client_pc
-				optional
-					_network
-		optional
-			handheld
-Example
-CFDP Library
+					upgrade_swpack
 
-You return:
-features
-	CFDP_Library
-		or
-			send
-				optional
-					Send_Acknowledged_Mode
-				optional
-					send_fs_operations
-			receive
-				optional
-					Receive_Acknowledged_Mode
-				optional
-					receive_fs_operations
-			pus
-				optional
-					pus_rename
-				optional
-					pus_copy
-			Reboot
-				optional
-					Reboot_Entity
-				optional
-					reboot_pus
 Example:
-Dell laptop
+Tex editor
 
 You return:
 features
-	Dell_laptop
+	editor_config
 		mandatory
-			productcategory
-				alternative
-					mininotebooks
-					inspironlaptops
-					studiolaptops
-					xpslaptops
-					adamo
-					studioxpslaptops
-		mandatory
-			operatingsystem
-				alternative
-					windows10
-					windows11
-					ubuntu
-	
-		mandatory
-			harddrive
-				alternative
-					hd500gb
-					hd320gb
-					hd250gb
-					hd160gb
-					hd128gbsolidstate
-					hd120gb
-					hd80gb
+			backup
+				optional
+					autosave
+						mandatory
+							minutes
+				optional
+					backup_onchange
+				mandatory
+					backup_extension
+						alternative
+							file_bak
+							file_bak_ext
+							file_ext_bak
 		optional
-			opticaldrive
-				alternative
-					cddvdrw
-					dvdromdriveanddvdrw
-					dvdrwandcdrwcombo
-					bluraydisc
+			document_class
+				mandatory
+					associated_file_ext
+						optional
+							ext
+				mandatory
+					commands
+						optional
+							remove_blank_lines
+						optional
+							spell_check
+						optional
+							dos_unix_conversion
+				optional
+					syntax_highlighting
+						mandatory
+							syntax_definition_file
+
+
+Example:
+Car
+
+You return:
+features
+	Car
+		optional
+			support
+				mandatory
+					avoidance
+						alternative
+							normal_avoidance
+							enhanced_avoidance
+				optional
+					parallel_parking
 		mandatory
-			laptopweight
+			range_finder
+				optional
+					lateral_range_finder
+				optional
+					forward_range_finder
+		optional
+			gps
+		optional
+			audio
 				alternative
-					ultralight
-					light
-					desktopreplacement
-		mandatory
-			memory
-				alternative
-					morethan4g
-					mem4gb
-					mem3gb
-					mem2gb
-					mem1gb
-		mandatory
-			processor
-				alternative
-					intelcore2duo
-					intelpentiumdualcore
-					intelceleron
-					intelatom
-		mandatory
-			price
-				alternative
-					lessthanus400
-					us400us800
-					us800us1200
-					morethanus1200
+					cd
+					mp3
+					video
+
 Example:
 Aircraft
 
@@ -232,25 +262,4 @@ features
 					Wood
 					Cloth
 					Plastic
-Example:
-Cellphone
 
-You return:
-features
-	cellphone
-		optional
-			wireless
-				or
-					infrared
-					bluetooth
-		mandatory
-			accu_cell
-				alternative
-					li_ion
-					ni_mh
-					ni_ca
-		mandatory
-			display
-				alternative
-					color
-					monochrome

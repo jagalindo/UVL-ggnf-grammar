@@ -3,92 +3,99 @@ In a feature model, there are features which are represented by a string
 and relationships. Relationships have 1 child feature if they are mandatory or optional
 , also they have 2 or more if they are alternative or or. Follow the grammar in the examples. 
 Please, generate maintaining the indentation schema but using items from the domain I tell you:
+
 Example:
-Jplug
+Cellphone
 
 You return:
 features
-	jplug
-		mandatory
-			interface
-				alternative
-					sdi
-					mdi
+	cellphone
 		optional
-			gui_builder
-				mandatory
-					java
-				optional
-					qt
-		optional
-			model_code_synch
-		optional
-			compiler
+			wireless
 				or
-					javac
-					mvc
-		optional
-			diagram_builder
-				mandatory
-					uml
-				optional
-					petri_net
+					infrared
+					bluetooth
+		mandatory
+			accu_cell
+				alternative
+					li_ion
+					ni_mh
+					ni_ca
+		mandatory
+			display
+				alternative
+					color
+					monochrome
+
 Example:
-Digital video system
+monitor engine system
 
 You return:
 features
-	dvs
+	monitor_engine_system
 		mandatory
-			control
+			engine_performance
 				mandatory
-					remote
-				optional
-					telephone
+					temperatures
 						optional
-							sms
-				optional
-					net
-						optional
-							web
-						optional
-							wap
+							colant
 						mandatory
-							email
-				optional
-					edit
-						optional
-							add_music
+							oil
+						mandatory
+							engine
+						mandatory
+							transmission
 				mandatory
-					play
-						optional
-							slides
-						optional
-							audio
+					rpm
+				mandatory
+					exhaust_level_temp
+		mandatory
+			fuel_consumption
+				mandatory
+					measures
+						alternative
+							l_km
+							gallon_mile
+				mandatory
+					methods
+						or
+							distance
+							type_of_driving
+							drive
+
+Example:
+Programming stack
+
+You return:
+features
+	Stack
+		optional
+			Size
+				alternative
+					Fixed
 						mandatory
-							video
-		optional
-			network_hw
-				optional
-					modem
-				optional
-					ethernet
+							Value
+					Dynamic
 		mandatory
-			server_pc
-				optional
-					network
-				optional
-					irda_port
-		mandatory
-			_play
-				optional
-					on_demand
+			Element_Type
+				alternative
+					Integer
+					Float
+					String
 		optional
-			client_pc
-				optional
-					_network
+			Optimization
+				alternative
+					Speed
+					Memory_Usage
 		optional
-			handheld
+			Counter
+		optional
+			Additional_Features
+				or
+					Thread_Safety
+					Bounds_Check
+					Type_Check
+
 Example
 CFDP Library
 
@@ -116,6 +123,45 @@ features
 					Reboot_Entity
 				optional
 					reboot_pus
+
+Example:
+Connector
+
+You return:
+features
+	Connector
+		mandatory
+			Paradigm
+				alternative
+					Client/Server
+						alternative
+							Synchronous
+								optional
+									Timeout
+							Asynchronous
+								alternative
+									Polling
+										alternative
+											Blocking
+											Non-blocking
+									Callback
+					Message-Based
+						mandatory
+							Sender
+						mandatory
+							Receiver
+								alternative
+									Pull
+										or
+											Queued
+											Non-Queued
+									Push
+		mandatory
+			Technology
+				alternative
+					CAN
+					Local
+
 Example: 
 Sandwiches
 
@@ -130,136 +176,105 @@ features
                     Ketchup
                     Mustard
             Cheese
+
 Example:
-Movies App
+Car
 
 You return:
 features
-	Movies_App
-		mandatory
-			GUI
-				alternative
-					Thin
-					Rich
-		mandatory
-			DB
-				alternative
-					Local
-					Remote
-						mandatory
-							Cache_Policy
-		mandatory
-			Network
-				alternative
-					Wifi
-					Bluetooth
+	Car
 		optional
-			GPS
-				optional
-					Built-In
-Example:
-Dell laptop
-
-You return:
-features
-	Dell_laptop
-		mandatory
-			productcategory
-				alternative
-					mininotebooks
-					inspironlaptops
-					studiolaptops
-					xpslaptops
-					adamo
-					studioxpslaptops
-		mandatory
-			operatingsystem
-				alternative
-					windows10
-					windows11
-					ubuntu
-	
-		mandatory
-			harddrive
-				alternative
-					hd500gb
-					hd320gb
-					hd250gb
-					hd160gb
-					hd128gbsolidstate
-					hd120gb
-					hd80gb
-		optional
-			opticaldrive
-				alternative
-					cddvdrw
-					dvdromdriveanddvdrw
-					dvdrwandcdrwcombo
-					bluraydisc
-		mandatory
-			laptopweight
-				alternative
-					ultralight
-					light
-					desktopreplacement
-		mandatory
-			memory
-				alternative
-					morethan4g
-					mem4gb
-					mem3gb
-					mem2gb
-					mem1gb
-		mandatory
-			processor
-				alternative
-					intelcore2duo
-					intelpentiumdualcore
-					intelceleron
-					intelatom
-		mandatory
-			price
-				alternative
-					lessthanus400
-					us400us800
-					us800us1200
-					morethanus1200
-Example:
-Tex editor
-
-You return:
-features
-	editor_config
-		mandatory
-			backup
-				optional
-					autosave
-						mandatory
-							minutes
-				optional
-					backup_onchange
+			support
 				mandatory
-					backup_extension
+					avoidance
 						alternative
-							file_bak
-							file_bak_ext
-							file_ext_bak
-		optional
-			document_class
-				mandatory
-					associated_file_ext
-						optional
-							ext
-				mandatory
-					commands
-						optional
-							remove_blank_lines
-						optional
-							spell_check
-						optional
-							dos_unix_conversion
+							normal_avoidance
+							enhanced_avoidance
 				optional
-					syntax_highlighting
+					parallel_parking
+		mandatory
+			range_finder
+				optional
+					lateral_range_finder
+				optional
+					forward_range_finder
+		optional
+			gps
+		optional
+			audio
+				alternative
+					cd
+					mp3
+					video
+
+Example:
+vof
+
+You return:
+features
+	vof
+		mandatory
+			follow_me
+				mandatory
+					user_localize
 						mandatory
-							syntax_definition_file
+							user_pos_method
+								alternative
+									access_point
+									rfid
+				mandatory
+					logon
+		optional
+			virtual_printer
+				mandatory
+					printer_register
+				mandatory
+					file_upload
+				optional
+					file_converter
+
+Example:
+Insurance products
+
+You return:
+features
+	insurance_product
+		mandatory
+			insured_object
+				alternative
+					corporation
+					realty
+					movable_property
+					person
+		mandatory
+			coverage
+				or
+					illness
+					life
+					unemployment
+					damage
+					loss
+		mandatory
+			payment
+				alternative
+					service
+					ammount
+				optional
+					own_risk
+		mandatory
+			conditions
+				mandatory
+					acceptance
+				mandatory
+					exception
+		mandatory
+			premium
+				alternative
+					direct
+					periodical
+		mandatory
+			payee
+				or
+					_person
+					payee_corporation
 

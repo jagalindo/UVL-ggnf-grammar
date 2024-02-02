@@ -3,31 +3,105 @@ In a feature model, there are features which are represented by a string
 and relationships. Relationships have 1 child feature if they are mandatory or optional
 , also they have 2 or more if they are alternative or or. Follow the grammar in the examples. 
 Please, generate maintaining the indentation schema but using items from the domain I tell you:
+
 Example:
-vof
+Cellphone
 
 You return:
 features
-	vof
-		mandatory
-			follow_me
-				mandatory
-					user_localize
-						mandatory
-							user_pos_method
-								alternative
-									access_point
-									rfid
-				mandatory
-					logon
+	cellphone
 		optional
-			virtual_printer
+			wireless
+				or
+					infrared
+					bluetooth
+		mandatory
+			accu_cell
+				alternative
+					li_ion
+					ni_mh
+					ni_ca
+		mandatory
+			display
+				alternative
+					color
+					monochrome
+
+Example:
+file compressor
+
+You return:
+features
+	kwic
+		mandatory
+			input_output
+				or
+					file
+					console
+		mandatory
+			circular_shift
 				mandatory
-					printer_register
-				mandatory
-					file_upload
+					shift_data
+						alternative
+							implicit
+							explicit
 				optional
-					file_converter
+					compression
+						mandatory
+							shift_processing
+						alternative
+							each_line
+							all_lines
+						optional
+							noise_words
+		mandatory
+			alpha_sort
+				mandatory
+					order
+						alternative
+							descendant
+							ascendant
+				mandatory
+					case_sensitivity
+						alternative
+							sensitive
+							insensitive
+		mandatory
+			arch_style
+				alternative
+					shared_data
+					adt
+					implicit_invocation
+					pipe_and_filter
+
+Example:
+james cms
+
+You return:
+features
+	james
+		mandatory
+			user_mngt
+				alternative
+					db
+					ldap
+		optional
+			ws_interface
+		mandatory
+			gui
+				or
+					pc
+					pda
+		mandatory
+			core
+		mandatory
+			modules
+				or
+					calendar
+					forum
+					congress_mngt
+					repository
+
 Example:
 Web portal
 
@@ -107,159 +181,104 @@ features
 					ms
 					sec
 					min
+
 Example:
-Digital video system
+Car
 
 You return:
 features
-	dvs
-		mandatory
-			control
+	Car
+		optional
+			support
 				mandatory
-					remote
+					avoidance
+						alternative
+							normal_avoidance
+							enhanced_avoidance
 				optional
-					telephone
-						optional
-							sms
-				optional
-					net
-						optional
-							web
-						optional
-							wap
-						mandatory
-							email
-				optional
-					edit
-						optional
-							add_music
-				mandatory
-					play
-						optional
-							slides
-						optional
-							audio
-						mandatory
-							video
-		optional
-			network_hw
-				optional
-					modem
-				optional
-					ethernet
+					parallel_parking
 		mandatory
-			server_pc
+			range_finder
 				optional
-					network
+					lateral_range_finder
 				optional
-					irda_port
-		mandatory
-			_play
-				optional
-					on_demand
+					forward_range_finder
 		optional
-			client_pc
-				optional
-					_network
+			gps
 		optional
-			handheld
-Example
-CFDP Library
-
-You return:
-features
-	CFDP_Library
-		or
-			send
-				optional
-					Send_Acknowledged_Mode
-				optional
-					send_fs_operations
-			receive
-				optional
-					Receive_Acknowledged_Mode
-				optional
-					receive_fs_operations
-			pus
-				optional
-					pus_rename
-				optional
-					pus_copy
-			Reboot
-				optional
-					Reboot_Entity
-				optional
-					reboot_pus
-Example:
-james cms
-
-You return:
-features
-	james
-		mandatory
-			user_mngt
+			audio
 				alternative
-					db
-					ldap
-		optional
-			ws_interface
-		mandatory
-			gui
-				or
-					pc
-					pda
-		mandatory
-			core
-		mandatory
-			modules
-				or
-					calendar
-					forum
-					congress_mngt
-					repository
+					cd
+					mp3
+					video
+
 Example:
-file compressor
+Aircraft
 
 You return:
 features
-	kwic
+	Aircraft
 		mandatory
-			input_output
+			Wing
 				or
-					file
-					console
-		mandatory
-			circular_shift
-				mandatory
-					shift_data
-						alternative
-							implicit
-							explicit
-				optional
-					compression
-						mandatory
-							shift_processing
-						alternative
-							each_line
-							all_lines
-						optional
-							noise_words
-		mandatory
-			alpha_sort
-				mandatory
-					order
-						alternative
-							descendant
-							ascendant
-				mandatory
-					case_sensitivity
-						alternative
-							sensitive
-							insensitive
-		mandatory
-			arch_style
+					High
+					Shoulder
+					Low
+		optional
+			Engine
 				alternative
-					shared_data
-					adt
-					implicit_invocation
-					pipe_and_filter
+					Jet
+					Piston
+		mandatory
+			Materials
+				or
+					Metal
+					Wood
+					Cloth
+					Plastic
+
+Example:
+Insurance products
+
+You return:
+features
+	insurance_product
+		mandatory
+			insured_object
+				alternative
+					corporation
+					realty
+					movable_property
+					person
+		mandatory
+			coverage
+				or
+					illness
+					life
+					unemployment
+					damage
+					loss
+		mandatory
+			payment
+				alternative
+					service
+					ammount
+				optional
+					own_risk
+		mandatory
+			conditions
+				mandatory
+					acceptance
+				mandatory
+					exception
+		mandatory
+			premium
+				alternative
+					direct
+					periodical
+		mandatory
+			payee
+				or
+					_person
+					payee_corporation
+

@@ -3,31 +3,58 @@ In a feature model, there are features which are represented by a string
 and relationships. Relationships have 1 child feature if they are mandatory or optional
 , also they have 2 or more if they are alternative or or. Follow the grammar in the examples. 
 Please, generate maintaining the indentation schema but using items from the domain I tell you:
+
 Example:
-vof
+Movies App
 
 You return:
 features
-	vof
+	Movies_App
 		mandatory
-			follow_me
-				mandatory
-					user_localize
+			GUI
+				alternative
+					Thin
+					Rich
+		mandatory
+			DB
+				alternative
+					Local
+					Remote
 						mandatory
-							user_pos_method
-								alternative
-									access_point
-									rfid
-				mandatory
-					logon
+							Cache_Policy
+		mandatory
+			Network
+				alternative
+					Wifi
+					Bluetooth
 		optional
-			virtual_printer
-				mandatory
-					printer_register
-				mandatory
-					file_upload
+			GPS
 				optional
-					file_converter
+					Built-In
+
+Example:
+Cellphone
+
+You return:
+features
+	cellphone
+		optional
+			wireless
+				or
+					infrared
+					bluetooth
+		mandatory
+			accu_cell
+				alternative
+					li_ion
+					ni_mh
+					ni_ca
+		mandatory
+			display
+				alternative
+					color
+					monochrome
+
 Example:
 monitor engine system
 
@@ -63,6 +90,7 @@ features
 							distance
 							type_of_driving
 							drive
+
 Example: 
 Sandwiches
 
@@ -77,52 +105,30 @@ features
                     Ketchup
                     Mustard
             Cheese
+
 Example:
-Movies App
+vof
 
 You return:
 features
-	Movies_App
+	vof
 		mandatory
-			GUI
-				alternative
-					Thin
-					Rich
-		mandatory
-			DB
-				alternative
-					Local
-					Remote
+			follow_me
+				mandatory
+					user_localize
 						mandatory
-							Cache_Policy
-		mandatory
-			Network
-				alternative
-					Wifi
-					Bluetooth
+							user_pos_method
+								alternative
+									access_point
+									rfid
+				mandatory
+					logon
 		optional
-			GPS
+			virtual_printer
+				mandatory
+					printer_register
+				mandatory
+					file_upload
 				optional
-					Built-In
-Example:
-Cellphone
+					file_converter
 
-You return:
-features
-	cellphone
-		optional
-			wireless
-				or
-					infrared
-					bluetooth
-		mandatory
-			accu_cell
-				alternative
-					li_ion
-					ni_mh
-					ni_ca
-		mandatory
-			display
-				alternative
-					color
-					monochrome

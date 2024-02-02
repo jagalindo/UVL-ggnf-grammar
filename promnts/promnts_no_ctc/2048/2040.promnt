@@ -3,38 +3,7 @@ In a feature model, there are features which are represented by a string
 and relationships. Relationships have 1 child feature if they are mandatory or optional
 , also they have 2 or more if they are alternative or or. Follow the grammar in the examples. 
 Please, generate maintaining the indentation schema but using items from the domain I tell you:
-Example:
-Programming stack
 
-You return:
-features
-	Stack
-		optional
-			Size
-				alternative
-					Fixed
-						mandatory
-							Value
-					Dynamic
-		mandatory
-			Element_Type
-				alternative
-					Integer
-					Float
-					String
-		optional
-			Optimization
-				alternative
-					Speed
-					Memory_Usage
-		optional
-			Counter
-		optional
-			Additional_Features
-				or
-					Thread_Safety
-					Bounds_Check
-					Type_Check
 Example:
 Jplug
 
@@ -65,103 +34,7 @@ features
 					uml
 				optional
 					petri_net
-Example:
-Digital video system
 
-You return:
-features
-	dvs
-		mandatory
-			control
-				mandatory
-					remote
-				optional
-					telephone
-						optional
-							sms
-				optional
-					net
-						optional
-							web
-						optional
-							wap
-						mandatory
-							email
-				optional
-					edit
-						optional
-							add_music
-				mandatory
-					play
-						optional
-							slides
-						optional
-							audio
-						mandatory
-							video
-		optional
-			network_hw
-				optional
-					modem
-				optional
-					ethernet
-		mandatory
-			server_pc
-				optional
-					network
-				optional
-					irda_port
-		mandatory
-			_play
-				optional
-					on_demand
-		optional
-			client_pc
-				optional
-					_network
-		optional
-			handheld
-Example
-CFDP Library
-
-You return:
-features
-	CFDP_Library
-		or
-			send
-				optional
-					Send_Acknowledged_Mode
-				optional
-					send_fs_operations
-			receive
-				optional
-					Receive_Acknowledged_Mode
-				optional
-					receive_fs_operations
-			pus
-				optional
-					pus_rename
-				optional
-					pus_copy
-			Reboot
-				optional
-					Reboot_Entity
-				optional
-					reboot_pus
-Example: 
-Sandwiches
-
-You return:
-features
-    Sandwich
-        mandatory
-            Bread
-        optional
-            Sauce
-                alternative
-                    Ketchup
-                    Mustard
-            Cheese
 Example:
 james cms
 
@@ -189,57 +62,7 @@ features
 					forum
 					congress_mngt
 					repository
-Example:
-Movies App
 
-You return:
-features
-	Movies_App
-		mandatory
-			GUI
-				alternative
-					Thin
-					Rich
-		mandatory
-			DB
-				alternative
-					Local
-					Remote
-						mandatory
-							Cache_Policy
-		mandatory
-			Network
-				alternative
-					Wifi
-					Bluetooth
-		optional
-			GPS
-				optional
-					Built-In
-Example:
-Aircraft
-
-You return:
-features
-	Aircraft
-		mandatory
-			Wing
-				or
-					High
-					Shoulder
-					Low
-		optional
-			Engine
-				alternative
-					Jet
-					Piston
-		mandatory
-			Materials
-				or
-					Metal
-					Wood
-					Cloth
-					Plastic
 Example:
 Connector
 
@@ -277,25 +100,151 @@ features
 				alternative
 					CAN
 					Local
+
 Example:
-Cellphone
+Graph operations
 
 You return:
 features
-	cellphone
+	graph
+		mandatory
+			services
+				mandatory
+					graph_manipulation
+						mandatory
+							delete
+						mandatory
+							select
+								mandatory
+									selection_mode
+										alternative
+											increment_selection
+											non_increment_selection
+						mandatory
+							add
+								mandatory
+									entity_add
+								mandatory
+									connector_add
+						mandatory
+							move
+								mandatory
+									moving_mode
+										alternative
+											outline_moving
+											content_moving
+								optional
+									moving_constraint
+										alternative
+											horizontal_constraint
+											vertical_constraint
+						optional
+							compose
+						optional
+							layer_adjust
+								mandatory
+									up_layer
+								mandatory
+									down_layer
+				optional
+					do_undo_redo
+						mandatory
+							select_do_undo_redo
+						mandatory
+							add_do_undo_redo
+						mandatory
+							delete__do_undo_redo
+						mandatory
+							move_do_undo_redo
+						optional
+							compose_do_undo_redo
+						optional
+							layer_adjust_do_undo_redo
+				optional
+					zoom_inout
+
+Example:
+Tex editor
+
+You return:
+features
+	editor_config
+		mandatory
+			backup
+				optional
+					autosave
+						mandatory
+							minutes
+				optional
+					backup_onchange
+				mandatory
+					backup_extension
+						alternative
+							file_bak
+							file_bak_ext
+							file_ext_bak
 		optional
-			wireless
+			document_class
+				mandatory
+					associated_file_ext
+						optional
+							ext
+				mandatory
+					commands
+						optional
+							remove_blank_lines
+						optional
+							spell_check
+						optional
+							dos_unix_conversion
+				optional
+					syntax_highlighting
+						mandatory
+							syntax_definition_file
+
+
+Example:
+Insurance products
+
+You return:
+features
+	insurance_product
+		mandatory
+			insured_object
+				alternative
+					corporation
+					realty
+					movable_property
+					person
+		mandatory
+			coverage
 				or
-					infrared
-					bluetooth
+					illness
+					life
+					unemployment
+					damage
+					loss
 		mandatory
-			accu_cell
+			payment
 				alternative
-					li_ion
-					ni_mh
-					ni_ca
+					service
+					ammount
+				optional
+					own_risk
 		mandatory
-			display
+			conditions
+				mandatory
+					acceptance
+				mandatory
+					exception
+		mandatory
+			premium
 				alternative
-					color
-					monochrome
+					direct
+					periodical
+		mandatory
+			payee
+				or
+					_person
+					payee_corporation
+

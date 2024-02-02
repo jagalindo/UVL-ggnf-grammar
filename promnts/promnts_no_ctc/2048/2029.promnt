@@ -3,6 +3,7 @@ In a feature model, there are features which are represented by a string
 and relationships. Relationships have 1 child feature if they are mandatory or optional
 , also they have 2 or more if they are alternative or or. Follow the grammar in the examples. 
 Please, generate maintaining the indentation schema but using items from the domain I tell you:
+
 Example:
 Programming stack
 
@@ -35,139 +36,80 @@ features
 					Thread_Safety
 					Bounds_Check
 					Type_Check
+
 Example:
-Web portal
+Jplug
 
 You return:
 features
-	web_portal
-		optional
-			add_services
-				optional
-					site_stats
-						mandatory
-							basic
-						optional
-							advanced
-				optional
-					site_search
-						optional
-							images
-						optional
-							text
-								mandatory
-									html
-								optional
-									dynamic
-				optional
-					ad_server
-						mandatory
-							reports
-						optional
-							popups
-						mandatory
-							banners
-								mandatory
-									ban_img
-								optional
-									ban_flash
-						optional
-							keyword
+	jplug
 		mandatory
-			web_server
-				optional
-					logging
-						alternative
-							db
-							file
-				optional
-					protocol
-						or
-							nttp
-							ftp
-							https
+			interface
+				alternative
+					sdi
+					mdi
+		optional
+			gui_builder
 				mandatory
-					cont
-						mandatory
-							static
-						optional
-							active
-								or
-									asp
-									php
-									jsp
-									cgi
+					java
+				optional
+					qt
 		optional
-			persistence
-				alternative
-					xml
-					database
+			model_code_synch
 		optional
-			ri
+			compiler
 				or
-					data_storage
-					data_transfer
-					user_auth
+					javac
+					mvc
 		optional
-			performance
-				alternative
-					ms
-					sec
-					min
+			diagram_builder
+				mandatory
+					uml
+				optional
+					petri_net
+
 Example:
-Movies App
+Data base management system
 
 You return:
 features
-	Movies_App
+	FAME-DBMS
 		mandatory
-			GUI
+			OS
 				alternative
-					Thin
-					Rich
+					Nut/OS
+					Win
 		mandatory
-			DB
+			Buffer_Manager
 				alternative
-					Local
-					Remote
+					Persistent
 						mandatory
-							Cache_Policy
-		mandatory
-			Network
-				alternative
-					Wifi
-					Bluetooth
+							Memory_Allocation
+								alternative
+									Static
+									Dynamic
+						mandatory
+							Page_Replication
+								alternative
+									LRU
+									LFU
+					In_Memory
 		optional
-			GPS
-				optional
-					Built-In
-Example
-CFDP Library
+			Debug_Logging
+		mandatory
+			Storage
+				mandatory
+					API
+						optional
+							Get
+						optional
+							Put
+						optional
+							Delete
+				alternative
+					B+_Tree
+					Unindexed
 
-You return:
-features
-	CFDP_Library
-		or
-			send
-				optional
-					Send_Acknowledged_Mode
-				optional
-					send_fs_operations
-			receive
-				optional
-					Receive_Acknowledged_Mode
-				optional
-					receive_fs_operations
-			pus
-				optional
-					pus_rename
-				optional
-					pus_copy
-			Reboot
-				optional
-					Reboot_Entity
-				optional
-					reboot_pus
 Example:
 james cms
 
@@ -195,6 +137,52 @@ features
 					forum
 					congress_mngt
 					repository
+
+Example: 
+Sandwiches
+
+You return:
+features
+    Sandwich
+        mandatory
+            Bread
+        optional
+            Sauce
+                alternative
+                    Ketchup
+                    Mustard
+            Cheese
+
+Example:
+Car
+
+You return:
+features
+	Car
+		optional
+			support
+				mandatory
+					avoidance
+						alternative
+							normal_avoidance
+							enhanced_avoidance
+				optional
+					parallel_parking
+		mandatory
+			range_finder
+				optional
+					lateral_range_finder
+				optional
+					forward_range_finder
+		optional
+			gps
+		optional
+			audio
+				alternative
+					cd
+					mp3
+					video
+
 Example:
 Aircraft
 
@@ -219,64 +207,106 @@ features
 					Wood
 					Cloth
 					Plastic
+
 Example:
-Cellphone
+Digital video system
 
 You return:
 features
-	cellphone
+	dvs
+		mandatory
+			control
+				mandatory
+					remote
+				optional
+					telephone
+						optional
+							sms
+				optional
+					net
+						optional
+							web
+						optional
+							wap
+						mandatory
+							email
+				optional
+					edit
+						optional
+							add_music
+				mandatory
+					play
+						optional
+							slides
+						optional
+							audio
+						mandatory
+							video
 		optional
-			wireless
+			network_hw
+				optional
+					modem
+				optional
+					ethernet
+		mandatory
+			server_pc
+				optional
+					network
+				optional
+					irda_port
+		mandatory
+			_play
+				optional
+					on_demand
+		optional
+			client_pc
+				optional
+					_network
+		optional
+			handheld
+
+Example:
+Insurance products
+
+You return:
+features
+	insurance_product
+		mandatory
+			insured_object
+				alternative
+					corporation
+					realty
+					movable_property
+					person
+		mandatory
+			coverage
 				or
-					infrared
-					bluetooth
+					illness
+					life
+					unemployment
+					damage
+					loss
 		mandatory
-			accu_cell
+			payment
 				alternative
-					li_ion
-					ni_mh
-					ni_ca
+					service
+					ammount
+				optional
+					own_risk
 		mandatory
-			display
+			conditions
+				mandatory
+					acceptance
+				mandatory
+					exception
+		mandatory
+			premium
 				alternative
-					color
-					monochrome
-Example:
-Tex editor
-
-You return:
-features
-	editor_config
+					direct
+					periodical
 		mandatory
-			backup
-				optional
-					autosave
-						mandatory
-							minutes
-				optional
-					backup_onchange
-				mandatory
-					backup_extension
-						alternative
-							file_bak
-							file_bak_ext
-							file_ext_bak
-		optional
-			document_class
-				mandatory
-					associated_file_ext
-						optional
-							ext
-				mandatory
-					commands
-						optional
-							remove_blank_lines
-						optional
-							spell_check
-						optional
-							dos_unix_conversion
-				optional
-					syntax_highlighting
-						mandatory
-							syntax_definition_file
+			payee
+				or
+					_person
+					payee_corporation
 

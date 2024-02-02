@@ -3,78 +3,66 @@ In a feature model, there are features which are represented by a string
 and relationships. Relationships have 1 child feature if they are mandatory or optional
 , also they have 2 or more if they are alternative or or. Follow the grammar in the examples. 
 Please, generate maintaining the indentation schema but using items from the domain I tell you:
+
 Example:
-Weather station
+Cellphone
 
 You return:
 features
-	weather_station
-		mandatory
-			measurements
-				or
-					pressure
-					temperature
-					wind_speed
-		mandatory
-			data_source
-				alternative
-					internet
-					demo
-					external_services
-		mandatory
-			output_format
-				alternative
-					text
-					web_server
-					file
-				mandatory
-					format
-						alternative
-							xml
-							html
-							plain_text
-				mandatory
-					language
-						alternative
-							english
-							german
+	cellphone
 		optional
-			alarm
+			wireless
 				or
-					freeze_point
-					storm_alert
+					infrared
+					bluetooth
+		mandatory
+			accu_cell
+				alternative
+					li_ion
+					ni_mh
+					ni_ca
+		mandatory
+			display
+				alternative
+					color
+					monochrome
+
 Example:
-Programming stack
+monitor engine system
 
 You return:
 features
-	Stack
-		optional
-			Size
-				alternative
-					Fixed
+	monitor_engine_system
+		mandatory
+			engine_performance
+				mandatory
+					temperatures
+						optional
+							colant
 						mandatory
-							Value
-					Dynamic
+							oil
+						mandatory
+							engine
+						mandatory
+							transmission
+				mandatory
+					rpm
+				mandatory
+					exhaust_level_temp
 		mandatory
-			Element_Type
-				alternative
-					Integer
-					Float
-					String
-		optional
-			Optimization
-				alternative
-					Speed
-					Memory_Usage
-		optional
-			Counter
-		optional
-			Additional_Features
-				or
-					Thread_Safety
-					Bounds_Check
-					Type_Check
+			fuel_consumption
+				mandatory
+					measures
+						alternative
+							l_km
+							gallon_mile
+				mandatory
+					methods
+						or
+							distance
+							type_of_driving
+							drive
+
 Example:
 Jplug
 
@@ -105,6 +93,82 @@ features
 					uml
 				optional
 					petri_net
+
+Example
+CFDP Library
+
+You return:
+features
+	CFDP_Library
+		or
+			send
+				optional
+					Send_Acknowledged_Mode
+				optional
+					send_fs_operations
+			receive
+				optional
+					Receive_Acknowledged_Mode
+				optional
+					receive_fs_operations
+			pus
+				optional
+					pus_rename
+				optional
+					pus_copy
+			Reboot
+				optional
+					Reboot_Entity
+				optional
+					reboot_pus
+
+Example:
+file compressor
+
+You return:
+features
+	kwic
+		mandatory
+			input_output
+				or
+					file
+					console
+		mandatory
+			circular_shift
+				mandatory
+					shift_data
+						alternative
+							implicit
+							explicit
+				optional
+					compression
+						mandatory
+							shift_processing
+						alternative
+							each_line
+							all_lines
+						optional
+							noise_words
+		mandatory
+			alpha_sort
+				mandatory
+					order
+						alternative
+							descendant
+							ascendant
+				mandatory
+					case_sensitivity
+						alternative
+							sensitive
+							insensitive
+		mandatory
+			arch_style
+				alternative
+					shared_data
+					adt
+					implicit_invocation
+					pipe_and_filter
+
 Example: 
 Sandwiches
 
@@ -119,89 +183,33 @@ features
                     Ketchup
                     Mustard
             Cheese
+
 Example:
-Car
+telecom
 
 You return:
 features
-	Car
+	tecom
 		optional
-			support
+			ipvoice
 				mandatory
-					avoidance
+					software
 						alternative
-							normal_avoidance
-							enhanced_avoidance
-				optional
-					parallel_parking
+							swpack1
+							swpack2
 		mandatory
-			range_finder
-				optional
-					lateral_range_finder
-				optional
-					forward_range_finder
+			rack
+				mandatory
+					sizes
+						alternative
+							large
+							medium
+							small
 		optional
-			gps
-		optional
-			audio
-				alternative
-					cd
-					mp3
-					video
-Example:
-Movies App
+			messaging
+				optional
+					upgrade_swpack
 
-You return:
-features
-	Movies_App
-		mandatory
-			GUI
-				alternative
-					Thin
-					Rich
-		mandatory
-			DB
-				alternative
-					Local
-					Remote
-						mandatory
-							Cache_Policy
-		mandatory
-			Network
-				alternative
-					Wifi
-					Bluetooth
-		optional
-			GPS
-				optional
-					Built-In
-Example:
-james cms
-
-You return:
-features
-	james
-		mandatory
-			user_mngt
-				alternative
-					db
-					ldap
-		optional
-			ws_interface
-		mandatory
-			gui
-				or
-					pc
-					pda
-		mandatory
-			core
-		mandatory
-			modules
-				or
-					calendar
-					forum
-					congress_mngt
-					repository
 Example:
 Aircraft
 
@@ -226,64 +234,46 @@ features
 					Wood
 					Cloth
 					Plastic
+
 Example:
-Cellphone
+Data base management system
 
 You return:
 features
-	cellphone
-		optional
-			wireless
-				or
-					infrared
-					bluetooth
+	FAME-DBMS
 		mandatory
-			accu_cell
+			OS
 				alternative
-					li_ion
-					ni_mh
-					ni_ca
+					Nut/OS
+					Win
 		mandatory
-			display
+			Buffer_Manager
 				alternative
-					color
-					monochrome
-Example:
-Tex editor
-
-You return:
-features
-	editor_config
-		mandatory
-			backup
-				optional
-					autosave
+					Persistent
 						mandatory
-							minutes
-				optional
-					backup_onchange
-				mandatory
-					backup_extension
-						alternative
-							file_bak
-							file_bak_ext
-							file_ext_bak
+							Memory_Allocation
+								alternative
+									Static
+									Dynamic
+						mandatory
+							Page_Replication
+								alternative
+									LRU
+									LFU
+					In_Memory
 		optional
-			document_class
+			Debug_Logging
+		mandatory
+			Storage
 				mandatory
-					associated_file_ext
+					API
 						optional
-							ext
-				mandatory
-					commands
+							Get
 						optional
-							remove_blank_lines
+							Put
 						optional
-							spell_check
-						optional
-							dos_unix_conversion
-				optional
-					syntax_highlighting
-						mandatory
-							syntax_definition_file
+							Delete
+				alternative
+					B+_Tree
+					Unindexed
 

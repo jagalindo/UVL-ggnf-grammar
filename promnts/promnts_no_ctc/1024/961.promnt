@@ -3,52 +3,58 @@ In a feature model, there are features which are represented by a string
 and relationships. Relationships have 1 child feature if they are mandatory or optional
 , also they have 2 or more if they are alternative or or. Follow the grammar in the examples. 
 Please, generate maintaining the indentation schema but using items from the domain I tell you:
+
 Example:
-Programming stack
+Movies App
 
 You return:
 features
-	Stack
-		optional
-			Size
-				alternative
-					Fixed
-						mandatory
-							Value
-					Dynamic
+	Movies_App
 		mandatory
-			Element_Type
+			GUI
 				alternative
-					Integer
-					Float
-					String
-		optional
-			Optimization
+					Thin
+					Rich
+		mandatory
+			DB
 				alternative
-					Speed
-					Memory_Usage
+					Local
+					Remote
+						mandatory
+							Cache_Policy
+		mandatory
+			Network
+				alternative
+					Wifi
+					Bluetooth
 		optional
-			Counter
-		optional
-			Additional_Features
-				or
-					Thread_Safety
-					Bounds_Check
-					Type_Check
-Example: 
-Sandwiches
+			GPS
+				optional
+					Built-In
+
+Example:
+Cellphone
 
 You return:
 features
-    Sandwich
-        mandatory
-            Bread
-        optional
-            Sauce
-                alternative
-                    Ketchup
-                    Mustard
-            Cheese
+	cellphone
+		optional
+			wireless
+				or
+					infrared
+					bluetooth
+		mandatory
+			accu_cell
+				alternative
+					li_ion
+					ni_mh
+					ni_ca
+		mandatory
+			display
+				alternative
+					color
+					monochrome
+
 Example
 CFDP Library
 
@@ -76,69 +82,73 @@ features
 					Reboot_Entity
 				optional
 					reboot_pus
+
 Example:
-Insurance products
+james cms
 
 You return:
 features
-	insurance_product
+	james
 		mandatory
-			insured_object
+			user_mngt
 				alternative
-					corporation
-					realty
-					movable_property
-					person
-		mandatory
-			coverage
-				or
-					illness
-					life
-					unemployment
-					damage
-					loss
-		mandatory
-			payment
-				alternative
-					service
-					ammount
-				optional
-					own_risk
-		mandatory
-			conditions
-				mandatory
-					acceptance
-				mandatory
-					exception
-		mandatory
-			premium
-				alternative
-					direct
-					periodical
-		mandatory
-			payee
-				or
-					_person
-					payee_corporation
-Example:
-Cellphone
-
-You return:
-features
-	cellphone
+					db
+					ldap
 		optional
-			wireless
+			ws_interface
+		mandatory
+			gui
 				or
-					infrared
-					bluetooth
+					pc
+					pda
 		mandatory
-			accu_cell
-				alternative
-					li_ion
-					ni_mh
-					ni_ca
+			core
 		mandatory
-			display
-				alternative
-					color
-					monochrome
+			modules
+				or
+					calendar
+					forum
+					congress_mngt
+					repository
+
+Example: 
+Sandwiches
+
+You return:
+features
+    Sandwich
+        mandatory
+            Bread
+        optional
+            Sauce
+                alternative
+                    Ketchup
+                    Mustard
+            Cheese
+
+Example:
+telecom
+
+You return:
+features
+	tecom
+		optional
+			ipvoice
+				mandatory
+					software
+						alternative
+							swpack1
+							swpack2
+		mandatory
+			rack
+				mandatory
+					sizes
+						alternative
+							large
+							medium
+							small
+		optional
+			messaging
+				optional
+					upgrade_swpack
+

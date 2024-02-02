@@ -3,6 +3,104 @@ In a feature model, there are features which are represented by a string
 and relationships. Relationships have 1 child feature if they are mandatory or optional
 , also they have 2 or more if they are alternative or or. Follow the grammar in the examples. 
 Please, generate maintaining the indentation schema but using items from the domain I tell you:
+
+Example:
+monitor engine system
+
+You return:
+features
+	monitor_engine_system
+		mandatory
+			engine_performance
+				mandatory
+					temperatures
+						optional
+							colant
+						mandatory
+							oil
+						mandatory
+							engine
+						mandatory
+							transmission
+				mandatory
+					rpm
+				mandatory
+					exhaust_level_temp
+		mandatory
+			fuel_consumption
+				mandatory
+					measures
+						alternative
+							l_km
+							gallon_mile
+				mandatory
+					methods
+						or
+							distance
+							type_of_driving
+							drive
+
+Example:
+Programming stack
+
+You return:
+features
+	Stack
+		optional
+			Size
+				alternative
+					Fixed
+						mandatory
+							Value
+					Dynamic
+		mandatory
+			Element_Type
+				alternative
+					Integer
+					Float
+					String
+		optional
+			Optimization
+				alternative
+					Speed
+					Memory_Usage
+		optional
+			Counter
+		optional
+			Additional_Features
+				or
+					Thread_Safety
+					Bounds_Check
+					Type_Check
+
+Example
+CFDP Library
+
+You return:
+features
+	CFDP_Library
+		or
+			send
+				optional
+					Send_Acknowledged_Mode
+				optional
+					send_fs_operations
+			receive
+				optional
+					Receive_Acknowledged_Mode
+				optional
+					receive_fs_operations
+			pus
+				optional
+					pus_rename
+				optional
+					pus_copy
+			Reboot
+				optional
+					Reboot_Entity
+				optional
+					reboot_pus
+
 Example: 
 Sandwiches
 
@@ -17,111 +115,30 @@ features
                     Ketchup
                     Mustard
             Cheese
+
 Example:
-Connector
+vof
 
 You return:
 features
-	Connector
+	vof
 		mandatory
-			Paradigm
-				alternative
-					Client/Server
-						alternative
-							Synchronous
-								optional
-									Timeout
-							Asynchronous
+			follow_me
+				mandatory
+					user_localize
+						mandatory
+							user_pos_method
 								alternative
-									Polling
-										alternative
-											Blocking
-											Non-blocking
-									Callback
-					Message-Based
-						mandatory
-							Sender
-						mandatory
-							Receiver
-								alternative
-									Pull
-										or
-											Queued
-											Non-Queued
-									Push
-		mandatory
-			Technology
-				alternative
-					CAN
-					Local
-Example:
-telecom
-
-You return:
-features
-	tecom
+									access_point
+									rfid
+				mandatory
+					logon
 		optional
-			ipvoice
+			virtual_printer
 				mandatory
-					software
-						alternative
-							swpack1
-							swpack2
-		mandatory
-			rack
+					printer_register
 				mandatory
-					sizes
-						alternative
-							large
-							medium
-							small
-		optional
-			messaging
+					file_upload
 				optional
-					upgrade_swpack
-Example:
-file compressor
+					file_converter
 
-You return:
-features
-	kwic
-		mandatory
-			input_output
-				or
-					file
-					console
-		mandatory
-			circular_shift
-				mandatory
-					shift_data
-						alternative
-							implicit
-							explicit
-				optional
-					compression
-						mandatory
-							shift_processing
-						alternative
-							each_line
-							all_lines
-						optional
-							noise_words
-		mandatory
-			alpha_sort
-				mandatory
-					order
-						alternative
-							descendant
-							ascendant
-				mandatory
-					case_sensitivity
-						alternative
-							sensitive
-							insensitive
-		mandatory
-			arch_style
-				alternative
-					shared_data
-					adt
-					implicit_invocation
-					pipe_and_filter

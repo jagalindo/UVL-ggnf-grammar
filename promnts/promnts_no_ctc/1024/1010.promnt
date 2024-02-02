@@ -3,136 +3,157 @@ In a feature model, there are features which are represented by a string
 and relationships. Relationships have 1 child feature if they are mandatory or optional
 , also they have 2 or more if they are alternative or or. Follow the grammar in the examples. 
 Please, generate maintaining the indentation schema but using items from the domain I tell you:
+
 Example:
-monitor engine system
+Jplug
 
 You return:
 features
-	monitor_engine_system
+	jplug
 		mandatory
-			engine_performance
+			interface
+				alternative
+					sdi
+					mdi
+		optional
+			gui_builder
 				mandatory
-					temperatures
-						optional
-							colant
-						mandatory
-							oil
-						mandatory
-							engine
-						mandatory
-							transmission
+					java
+				optional
+					qt
+		optional
+			model_code_synch
+		optional
+			compiler
+				or
+					javac
+					mvc
+		optional
+			diagram_builder
 				mandatory
-					rpm
-				mandatory
-					exhaust_level_temp
+					uml
+				optional
+					petri_net
+
+Example:
+Aircraft
+
+You return:
+features
+	Aircraft
 		mandatory
-			fuel_consumption
+			Wing
+				or
+					High
+					Shoulder
+					Low
+		optional
+			Engine
+				alternative
+					Jet
+					Piston
+		mandatory
+			Materials
+				or
+					Metal
+					Wood
+					Cloth
+					Plastic
+
+Example: 
+Sandwiches
+
+You return:
+features
+    Sandwich
+        mandatory
+            Bread
+        optional
+            Sauce
+                alternative
+                    Ketchup
+                    Mustard
+            Cheese
+
+Example:
+telecom
+
+You return:
+features
+	tecom
+		optional
+			ipvoice
 				mandatory
-					measures
+					software
 						alternative
-							l_km
-							gallon_mile
+							swpack1
+							swpack2
+		mandatory
+			rack
 				mandatory
-					methods
-						or
-							distance
-							type_of_driving
-							drive
+					sizes
+						alternative
+							large
+							medium
+							small
+		optional
+			messaging
+				optional
+					upgrade_swpack
+
 Example:
-Movies App
+Car
 
 You return:
 features
-	Movies_App
+	Car
+		optional
+			support
+				mandatory
+					avoidance
+						alternative
+							normal_avoidance
+							enhanced_avoidance
+				optional
+					parallel_parking
 		mandatory
-			GUI
+			range_finder
+				optional
+					lateral_range_finder
+				optional
+					forward_range_finder
+		optional
+			gps
+		optional
+			audio
 				alternative
-					Thin
-					Rich
+					cd
+					mp3
+					video
+
+Example:
+vof
+
+You return:
+features
+	vof
 		mandatory
-			DB
-				alternative
-					Local
-					Remote
+			follow_me
+				mandatory
+					user_localize
 						mandatory
-							Cache_Policy
-		mandatory
-			Network
-				alternative
-					Wifi
-					Bluetooth
-		optional
-			GPS
-				optional
-					Built-In
-Example:
-james cms
-
-You return:
-features
-	james
-		mandatory
-			user_mngt
-				alternative
-					db
-					ldap
-		optional
-			ws_interface
-		mandatory
-			gui
-				or
-					pc
-					pda
-		mandatory
-			core
-		mandatory
-			modules
-				or
-					calendar
-					forum
-					congress_mngt
-					repository
-Example:
-Insurance products
-
-You return:
-features
-	insurance_product
-		mandatory
-			insured_object
-				alternative
-					corporation
-					realty
-					movable_property
-					person
-		mandatory
-			coverage
-				or
-					illness
-					life
-					unemployment
-					damage
-					loss
-		mandatory
-			payment
-				alternative
-					service
-					ammount
-				optional
-					own_risk
-		mandatory
-			conditions
+							user_pos_method
+								alternative
+									access_point
+									rfid
 				mandatory
-					acceptance
+					logon
+		optional
+			virtual_printer
 				mandatory
-					exception
-		mandatory
-			premium
-				alternative
-					direct
-					periodical
-		mandatory
-			payee
-				or
-					_person
-					payee_corporation
+					printer_register
+				mandatory
+					file_upload
+				optional
+					file_converter
+

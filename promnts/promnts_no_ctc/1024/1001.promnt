@@ -3,129 +3,140 @@ In a feature model, there are features which are represented by a string
 and relationships. Relationships have 1 child feature if they are mandatory or optional
 , also they have 2 or more if they are alternative or or. Follow the grammar in the examples. 
 Please, generate maintaining the indentation schema but using items from the domain I tell you:
+
 Example:
-Data base management system
+Cellphone
 
 You return:
 features
-	FAME-DBMS
-		mandatory
-			OS
-				alternative
-					Nut/OS
-					Win
-		mandatory
-			Buffer_Manager
-				alternative
-					Persistent
-						mandatory
-							Memory_Allocation
-								alternative
-									Static
-									Dynamic
-						mandatory
-							Page_Replication
-								alternative
-									LRU
-									LFU
-					In_Memory
+	cellphone
 		optional
-			Debug_Logging
+			wireless
+				or
+					infrared
+					bluetooth
 		mandatory
-			Storage
-				mandatory
-					API
-						optional
-							Get
-						optional
-							Put
-						optional
-							Delete
+			accu_cell
 				alternative
-					B+_Tree
-					Unindexed
+					li_ion
+					ni_mh
+					ni_ca
+		mandatory
+			display
+				alternative
+					color
+					monochrome
+
 Example:
-Digital video system
+james cms
 
 You return:
 features
-	dvs
+	james
 		mandatory
-			control
-				mandatory
-					remote
-				optional
-					telephone
-						optional
-							sms
-				optional
-					net
-						optional
-							web
-						optional
-							wap
-						mandatory
-							email
-				optional
-					edit
-						optional
-							add_music
-				mandatory
-					play
-						optional
-							slides
-						optional
-							audio
-						mandatory
-							video
+			user_mngt
+				alternative
+					db
+					ldap
 		optional
-			network_hw
-				optional
-					modem
-				optional
-					ethernet
+			ws_interface
 		mandatory
-			server_pc
-				optional
-					network
-				optional
-					irda_port
+			gui
+				or
+					pc
+					pda
 		mandatory
-			_play
-				optional
-					on_demand
-		optional
-			client_pc
-				optional
-					_network
-		optional
-			handheld
+			core
+		mandatory
+			modules
+				or
+					calendar
+					forum
+					congress_mngt
+					repository
+
 Example:
-Car
+Tex editor
 
 You return:
 features
-	Car
-		optional
-			support
+	editor_config
+		mandatory
+			backup
+				optional
+					autosave
+						mandatory
+							minutes
+				optional
+					backup_onchange
 				mandatory
-					avoidance
+					backup_extension
 						alternative
-							normal_avoidance
-							enhanced_avoidance
+							file_bak
+							file_bak_ext
+							file_ext_bak
+		optional
+			document_class
+				mandatory
+					associated_file_ext
+						optional
+							ext
+				mandatory
+					commands
+						optional
+							remove_blank_lines
+						optional
+							spell_check
+						optional
+							dos_unix_conversion
 				optional
-					parallel_parking
+					syntax_highlighting
+						mandatory
+							syntax_definition_file
+
+
+Example:
+Insurance products
+
+You return:
+features
+	insurance_product
 		mandatory
-			range_finder
-				optional
-					lateral_range_finder
-				optional
-					forward_range_finder
-		optional
-			gps
-		optional
-			audio
+			insured_object
 				alternative
-					cd
-					mp3
-					video
+					corporation
+					realty
+					movable_property
+					person
+		mandatory
+			coverage
+				or
+					illness
+					life
+					unemployment
+					damage
+					loss
+		mandatory
+			payment
+				alternative
+					service
+					ammount
+				optional
+					own_risk
+		mandatory
+			conditions
+				mandatory
+					acceptance
+				mandatory
+					exception
+		mandatory
+			premium
+				alternative
+					direct
+					periodical
+		mandatory
+			payee
+				or
+					_person
+					payee_corporation
+

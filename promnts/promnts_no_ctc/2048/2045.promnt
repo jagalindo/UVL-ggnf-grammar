@@ -3,127 +3,35 @@ In a feature model, there are features which are represented by a string
 and relationships. Relationships have 1 child feature if they are mandatory or optional
 , also they have 2 or more if they are alternative or or. Follow the grammar in the examples. 
 Please, generate maintaining the indentation schema but using items from the domain I tell you:
+
 Example:
-Weather station
+Movies App
 
 You return:
 features
-	weather_station
+	Movies_App
 		mandatory
-			measurements
-				or
-					pressure
-					temperature
-					wind_speed
-		mandatory
-			data_source
+			GUI
 				alternative
-					internet
-					demo
-					external_services
+					Thin
+					Rich
 		mandatory
-			output_format
+			DB
 				alternative
-					text
-					web_server
-					file
-				mandatory
-					format
-						alternative
-							xml
-							html
-							plain_text
-				mandatory
-					language
-						alternative
-							english
-							german
+					Local
+					Remote
+						mandatory
+							Cache_Policy
+		mandatory
+			Network
+				alternative
+					Wifi
+					Bluetooth
 		optional
-			alarm
-				or
-					freeze_point
-					storm_alert
-Example:
-Programming stack
+			GPS
+				optional
+					Built-In
 
-You return:
-features
-	Stack
-		optional
-			Size
-				alternative
-					Fixed
-						mandatory
-							Value
-					Dynamic
-		mandatory
-			Element_Type
-				alternative
-					Integer
-					Float
-					String
-		optional
-			Optimization
-				alternative
-					Speed
-					Memory_Usage
-		optional
-			Counter
-		optional
-			Additional_Features
-				or
-					Thread_Safety
-					Bounds_Check
-					Type_Check
-Example:
-monitor engine system
-
-You return:
-features
-	monitor_engine_system
-		mandatory
-			engine_performance
-				mandatory
-					temperatures
-						optional
-							colant
-						mandatory
-							oil
-						mandatory
-							engine
-						mandatory
-							transmission
-				mandatory
-					rpm
-				mandatory
-					exhaust_level_temp
-		mandatory
-			fuel_consumption
-				mandatory
-					measures
-						alternative
-							l_km
-							gallon_mile
-				mandatory
-					methods
-						or
-							distance
-							type_of_driving
-							drive
-Example: 
-Sandwiches
-
-You return:
-features
-    Sandwich
-        mandatory
-            Bread
-        optional
-            Sauce
-                alternative
-                    Ketchup
-                    Mustard
-            Cheese
 Example
 CFDP Library
 
@@ -151,6 +59,35 @@ features
 					Reboot_Entity
 				optional
 					reboot_pus
+
+Example:
+james cms
+
+You return:
+features
+	james
+		mandatory
+			user_mngt
+				alternative
+					db
+					ldap
+		optional
+			ws_interface
+		mandatory
+			gui
+				or
+					pc
+					pda
+		mandatory
+			core
+		mandatory
+			modules
+				or
+					calendar
+					forum
+					congress_mngt
+					repository
+
 Example:
 Connector
 
@@ -188,89 +125,154 @@ features
 				alternative
 					CAN
 					Local
+
 Example:
-Cellphone
+Aircraft
 
 You return:
 features
-	cellphone
-		optional
-			wireless
+	Aircraft
+		mandatory
+			Wing
 				or
-					infrared
-					bluetooth
-		mandatory
-			accu_cell
+					High
+					Shoulder
+					Low
+		optional
+			Engine
 				alternative
-					li_ion
-					ni_mh
-					ni_ca
+					Jet
+					Piston
 		mandatory
-			display
-				alternative
-					color
-					monochrome
+			Materials
+				or
+					Metal
+					Wood
+					Cloth
+					Plastic
+
 Example:
-telecom
+Digital video system
 
 You return:
 features
-	tecom
-		optional
-			ipvoice
-				mandatory
-					software
-						alternative
-							swpack1
-							swpack2
+	dvs
 		mandatory
-			rack
+			control
 				mandatory
-					sizes
-						alternative
-							large
-							medium
-							small
-		optional
-			messaging
+					remote
 				optional
-					upgrade_swpack
+					telephone
+						optional
+							sms
+				optional
+					net
+						optional
+							web
+						optional
+							wap
+						mandatory
+							email
+				optional
+					edit
+						optional
+							add_music
+				mandatory
+					play
+						optional
+							slides
+						optional
+							audio
+						mandatory
+							video
+		optional
+			network_hw
+				optional
+					modem
+				optional
+					ethernet
+		mandatory
+			server_pc
+				optional
+					network
+				optional
+					irda_port
+		mandatory
+			_play
+				optional
+					on_demand
+		optional
+			client_pc
+				optional
+					_network
+		optional
+			handheld
+
 Example:
-Tex editor
+Dell laptop
 
 You return:
 features
-	editor_config
+	Dell_laptop
 		mandatory
-			backup
-				optional
-					autosave
-						mandatory
-							minutes
-				optional
-					backup_onchange
-				mandatory
-					backup_extension
-						alternative
-							file_bak
-							file_bak_ext
-							file_ext_bak
+			productcategory
+				alternative
+					mininotebooks
+					inspironlaptops
+					studiolaptops
+					xpslaptops
+					adamo
+					studioxpslaptops
+		mandatory
+			operatingsystem
+				alternative
+					windows10
+					windows11
+					ubuntu
+	
+		mandatory
+			harddrive
+				alternative
+					hd500gb
+					hd320gb
+					hd250gb
+					hd160gb
+					hd128gbsolidstate
+					hd120gb
+					hd80gb
 		optional
-			document_class
-				mandatory
-					associated_file_ext
-						optional
-							ext
-				mandatory
-					commands
-						optional
-							remove_blank_lines
-						optional
-							spell_check
-						optional
-							dos_unix_conversion
-				optional
-					syntax_highlighting
-						mandatory
-							syntax_definition_file
+			opticaldrive
+				alternative
+					cddvdrw
+					dvdromdriveanddvdrw
+					dvdrwandcdrwcombo
+					bluraydisc
+		mandatory
+			laptopweight
+				alternative
+					ultralight
+					light
+					desktopreplacement
+		mandatory
+			memory
+				alternative
+					morethan4g
+					mem4gb
+					mem3gb
+					mem2gb
+					mem1gb
+		mandatory
+			processor
+				alternative
+					intelcore2duo
+					intelpentiumdualcore
+					intelceleron
+					intelatom
+		mandatory
+			price
+				alternative
+					lessthanus400
+					us400us800
+					us800us1200
+					morethanus1200
 

@@ -3,101 +3,76 @@ In a feature model, there are features which are represented by a string
 and relationships. Relationships have 1 child feature if they are mandatory or optional
 , also they have 2 or more if they are alternative or or. Follow the grammar in the examples. 
 Please, generate maintaining the indentation schema but using items from the domain I tell you:
+
 Example:
-vof
+Document generator
 
 You return:
 features
-	vof
+	doc_gen
 		mandatory
-			follow_me
+			analysis
 				mandatory
-					user_localize
-						mandatory
-							user_pos_method
+					language_analysis
+						or
+							cobol
 								alternative
-									access_point
-									rfid
-				mandatory
-					logon
-		optional
-			virtual_printer
-				mandatory
-					printer_register
-				mandatory
-					file_upload
+									ibm_cobol
+									microfocus_cobol
+							jcl
+							sql
+							delphi
+							progress
 				optional
-					file_converter
-Example:
-Weather station
-
-You return:
-features
-	weather_station
+					version_mngt
+				optional
+					subsystems
 		mandatory
-			measurements
-				or
-					pressure
-					temperature
-					wind_speed
-		mandatory
-			data_source
-				alternative
-					internet
-					demo
-					external_services
-		mandatory
-			output_format
-				alternative
-					text
-					web_server
-					file
+			presentation
 				mandatory
-					format
-						alternative
-							xml
-							html
-							plain_text
-				mandatory
-					language
-						alternative
+					localization
+						or
 							english
-							german
-		optional
-			alarm
-				or
-					freeze_point
-					storm_alert
-Example:
-Jplug
-
-You return:
-features
-	jplug
+							dutch
+				mandatory
+					interaction
+						alternative
+							static
+							dynamic
+				mandatory
+					main_pages
+						or
+							program_page
+								or
+									annotation_section
+									activation_section
+									entities_section
+									parameters_section
+							copybook_page
+							statistics_page
+								alternative
+									with_history
+									without_history
+							indexes
+							search_page
+							subsystem_page
+							source_page
+							source_difference
+				optional
+					visualizations
+						or
+							perform_graph
+							conditional_perform_graph
+							jcl_graph
+							subsystem_graph
+							overview_graph
 		mandatory
-			interface
+			database
 				alternative
-					sdi
-					mdi
-		optional
-			gui_builder
-				mandatory
-					java
-				optional
-					qt
-		optional
-			model_code_synch
-		optional
-			compiler
-				or
-					javac
-					mvc
-		optional
-			diagram_builder
-				mandatory
-					uml
-				optional
-					petri_net
+					db2
+					oracle
+					mysql
+
 Example: 
 Sandwiches
 
@@ -112,30 +87,34 @@ features
                     Ketchup
                     Mustard
             Cheese
+
 Example:
-james cms
+Car
 
 You return:
 features
-	james
-		mandatory
-			user_mngt
-				alternative
-					db
-					ldap
+	Car
 		optional
-			ws_interface
+			support
+				mandatory
+					avoidance
+						alternative
+							normal_avoidance
+							enhanced_avoidance
+				optional
+					parallel_parking
 		mandatory
-			gui
-				or
-					pc
-					pda
-		mandatory
-			core
-		mandatory
-			modules
-				or
-					calendar
-					forum
-					congress_mngt
-					repository
+			range_finder
+				optional
+					lateral_range_finder
+				optional
+					forward_range_finder
+		optional
+			gps
+		optional
+			audio
+				alternative
+					cd
+					mp3
+					video
+

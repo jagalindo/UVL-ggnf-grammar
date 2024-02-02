@@ -3,153 +3,99 @@ In a feature model, there are features which are represented by a string
 and relationships. Relationships have 1 child feature if they are mandatory or optional
 , also they have 2 or more if they are alternative or or. Follow the grammar in the examples. 
 Please, generate maintaining the indentation schema but using items from the domain I tell you:
+
 Example:
-Web portal
+Cellphone
 
 You return:
 features
-	web_portal
+	cellphone
 		optional
-			add_services
-				optional
-					site_stats
-						mandatory
-							basic
-						optional
-							advanced
-				optional
-					site_search
-						optional
-							images
-						optional
-							text
-								mandatory
-									html
-								optional
-									dynamic
-				optional
-					ad_server
-						mandatory
-							reports
-						optional
-							popups
-						mandatory
-							banners
-								mandatory
-									ban_img
-								optional
-									ban_flash
-						optional
-							keyword
-		mandatory
-			web_server
-				optional
-					logging
-						alternative
-							db
-							file
-				optional
-					protocol
-						or
-							nttp
-							ftp
-							https
-				mandatory
-					cont
-						mandatory
-							static
-						optional
-							active
-								or
-									asp
-									php
-									jsp
-									cgi
-		optional
-			persistence
-				alternative
-					xml
-					database
-		optional
-			ri
+			wireless
 				or
-					data_storage
-					data_transfer
-					user_auth
-		optional
-			performance
+					infrared
+					bluetooth
+		mandatory
+			accu_cell
 				alternative
-					ms
-					sec
-					min
-Example: 
-Sandwiches
+					li_ion
+					ni_mh
+					ni_ca
+		mandatory
+			display
+				alternative
+					color
+					monochrome
 
-You return:
-features
-    Sandwich
-        mandatory
-            Bread
-        optional
-            Sauce
-                alternative
-                    Ketchup
-                    Mustard
-            Cheese
-Example
-CFDP Library
-
-You return:
-features
-	CFDP_Library
-		or
-			send
-				optional
-					Send_Acknowledged_Mode
-				optional
-					send_fs_operations
-			receive
-				optional
-					Receive_Acknowledged_Mode
-				optional
-					receive_fs_operations
-			pus
-				optional
-					pus_rename
-				optional
-					pus_copy
-			Reboot
-				optional
-					Reboot_Entity
-				optional
-					reboot_pus
 Example:
-Movies App
+monitor engine system
 
 You return:
 features
-	Movies_App
+	monitor_engine_system
 		mandatory
-			GUI
-				alternative
-					Thin
-					Rich
-		mandatory
-			DB
-				alternative
-					Local
-					Remote
+			engine_performance
+				mandatory
+					temperatures
+						optional
+							colant
 						mandatory
-							Cache_Policy
+							oil
+						mandatory
+							engine
+						mandatory
+							transmission
+				mandatory
+					rpm
+				mandatory
+					exhaust_level_temp
 		mandatory
-			Network
-				alternative
-					Wifi
-					Bluetooth
+			fuel_consumption
+				mandatory
+					measures
+						alternative
+							l_km
+							gallon_mile
+				mandatory
+					methods
+						or
+							distance
+							type_of_driving
+							drive
+
+Example:
+Programming stack
+
+You return:
+features
+	Stack
 		optional
-			GPS
-				optional
-					Built-In
+			Size
+				alternative
+					Fixed
+						mandatory
+							Value
+					Dynamic
+		mandatory
+			Element_Type
+				alternative
+					Integer
+					Float
+					String
+		optional
+			Optimization
+				alternative
+					Speed
+					Memory_Usage
+		optional
+			Counter
+		optional
+			Additional_Features
+				or
+					Thread_Safety
+					Bounds_Check
+					Type_Check
+
 Example:
 james cms
 
@@ -177,6 +123,48 @@ features
 					forum
 					congress_mngt
 					repository
+
+Example: 
+Sandwiches
+
+You return:
+features
+    Sandwich
+        mandatory
+            Bread
+        optional
+            Sauce
+                alternative
+                    Ketchup
+                    Mustard
+            Cheese
+
+Example:
+telecom
+
+You return:
+features
+	tecom
+		optional
+			ipvoice
+				mandatory
+					software
+						alternative
+							swpack1
+							swpack2
+		mandatory
+			rack
+				mandatory
+					sizes
+						alternative
+							large
+							medium
+							small
+		optional
+			messaging
+				optional
+					upgrade_swpack
+
 Example:
 Aircraft
 
@@ -201,64 +189,66 @@ features
 					Wood
 					Cloth
 					Plastic
+
 Example:
-Cellphone
+Graph operations
 
 You return:
 features
-	cellphone
-		optional
-			wireless
-				or
-					infrared
-					bluetooth
+	graph
 		mandatory
-			accu_cell
-				alternative
-					li_ion
-					ni_mh
-					ni_ca
-		mandatory
-			display
-				alternative
-					color
-					monochrome
-Example:
-Tex editor
-
-You return:
-features
-	editor_config
-		mandatory
-			backup
-				optional
-					autosave
+			services
+				mandatory
+					graph_manipulation
 						mandatory
-							minutes
-				optional
-					backup_onchange
-				mandatory
-					backup_extension
-						alternative
-							file_bak
-							file_bak_ext
-							file_ext_bak
-		optional
-			document_class
-				mandatory
-					associated_file_ext
-						optional
-							ext
-				mandatory
-					commands
-						optional
-							remove_blank_lines
-						optional
-							spell_check
-						optional
-							dos_unix_conversion
-				optional
-					syntax_highlighting
+							delete
 						mandatory
-							syntax_definition_file
+							select
+								mandatory
+									selection_mode
+										alternative
+											increment_selection
+											non_increment_selection
+						mandatory
+							add
+								mandatory
+									entity_add
+								mandatory
+									connector_add
+						mandatory
+							move
+								mandatory
+									moving_mode
+										alternative
+											outline_moving
+											content_moving
+								optional
+									moving_constraint
+										alternative
+											horizontal_constraint
+											vertical_constraint
+						optional
+							compose
+						optional
+							layer_adjust
+								mandatory
+									up_layer
+								mandatory
+									down_layer
+				optional
+					do_undo_redo
+						mandatory
+							select_do_undo_redo
+						mandatory
+							add_do_undo_redo
+						mandatory
+							delete__do_undo_redo
+						mandatory
+							move_do_undo_redo
+						optional
+							compose_do_undo_redo
+						optional
+							layer_adjust_do_undo_redo
+				optional
+					zoom_inout
 

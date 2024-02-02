@@ -3,67 +3,35 @@ In a feature model, there are features which are represented by a string
 and relationships. Relationships have 1 child feature if they are mandatory or optional
 , also they have 2 or more if they are alternative or or. Follow the grammar in the examples. 
 Please, generate maintaining the indentation schema but using items from the domain I tell you:
-Example:
-Graph operations
+
+Example
+CFDP Library
 
 You return:
 features
-	graph
-		mandatory
-			services
-				mandatory
-					graph_manipulation
-						mandatory
-							delete
-						mandatory
-							select
-								mandatory
-									selection_mode
-										alternative
-											increment_selection
-											non_increment_selection
-						mandatory
-							add
-								mandatory
-									entity_add
-								mandatory
-									connector_add
-						mandatory
-							move
-								mandatory
-									moving_mode
-										alternative
-											outline_moving
-											content_moving
-								optional
-									moving_constraint
-										alternative
-											horizontal_constraint
-											vertical_constraint
-						optional
-							compose
-						optional
-							layer_adjust
-								mandatory
-									up_layer
-								mandatory
-									down_layer
+	CFDP_Library
+		or
+			send
 				optional
-					do_undo_redo
-						mandatory
-							select_do_undo_redo
-						mandatory
-							add_do_undo_redo
-						mandatory
-							delete__do_undo_redo
-						mandatory
-							move_do_undo_redo
-						optional
-							compose_do_undo_redo
-						optional
-							layer_adjust_do_undo_redo
+					Send_Acknowledged_Mode
 				optional
-					zoom_inout
+					send_fs_operations
+			receive
+				optional
+					Receive_Acknowledged_Mode
+				optional
+					receive_fs_operations
+			pus
+				optional
+					pus_rename
+				optional
+					pus_copy
+			Reboot
+				optional
+					Reboot_Entity
+				optional
+					reboot_pus
+
 Example:
 Jplug
 
@@ -94,6 +62,60 @@ features
 					uml
 				optional
 					petri_net
+
+Example:
+Aircraft
+
+You return:
+features
+	Aircraft
+		mandatory
+			Wing
+				or
+					High
+					Shoulder
+					Low
+		optional
+			Engine
+				alternative
+					Jet
+					Piston
+		mandatory
+			Materials
+				or
+					Metal
+					Wood
+					Cloth
+					Plastic
+
+Example:
+james cms
+
+You return:
+features
+	james
+		mandatory
+			user_mngt
+				alternative
+					db
+					ldap
+		optional
+			ws_interface
+		mandatory
+			gui
+				or
+					pc
+					pda
+		mandatory
+			core
+		mandatory
+			modules
+				or
+					calendar
+					forum
+					congress_mngt
+					repository
+
 Example: 
 Sandwiches
 
@@ -108,6 +130,73 @@ features
                     Ketchup
                     Mustard
             Cheese
+
+Example:
+telecom
+
+You return:
+features
+	tecom
+		optional
+			ipvoice
+				mandatory
+					software
+						alternative
+							swpack1
+							swpack2
+		mandatory
+			rack
+				mandatory
+					sizes
+						alternative
+							large
+							medium
+							small
+		optional
+			messaging
+				optional
+					upgrade_swpack
+
+Example:
+Tex editor
+
+You return:
+features
+	editor_config
+		mandatory
+			backup
+				optional
+					autosave
+						mandatory
+							minutes
+				optional
+					backup_onchange
+				mandatory
+					backup_extension
+						alternative
+							file_bak
+							file_bak_ext
+							file_ext_bak
+		optional
+			document_class
+				mandatory
+					associated_file_ext
+						optional
+							ext
+				mandatory
+					commands
+						optional
+							remove_blank_lines
+						optional
+							spell_check
+						optional
+							dos_unix_conversion
+				optional
+					syntax_highlighting
+						mandatory
+							syntax_definition_file
+
+
 Example:
 Car
 
@@ -137,123 +226,72 @@ features
 					cd
 					mp3
 					video
+
 Example:
-james cms
+vof
 
 You return:
 features
-	james
+	vof
 		mandatory
-			user_mngt
-				alternative
-					db
-					ldap
-		optional
-			ws_interface
-		mandatory
-			gui
-				or
-					pc
-					pda
-		mandatory
-			core
-		mandatory
-			modules
-				or
-					calendar
-					forum
-					congress_mngt
-					repository
-Example:
-Cellphone
-
-You return:
-features
-	cellphone
-		optional
-			wireless
-				or
-					infrared
-					bluetooth
-		mandatory
-			accu_cell
-				alternative
-					li_ion
-					ni_mh
-					ni_ca
-		mandatory
-			display
-				alternative
-					color
-					monochrome
-Example:
-telecom
-
-You return:
-features
-	tecom
-		optional
-			ipvoice
+			follow_me
 				mandatory
-					software
-						alternative
-							swpack1
-							swpack2
-		mandatory
-			rack
-				mandatory
-					sizes
-						alternative
-							large
-							medium
-							small
-		optional
-			messaging
-				optional
-					upgrade_swpack
-Example:
-file compressor
-
-You return:
-features
-	kwic
-		mandatory
-			input_output
-				or
-					file
-					console
-		mandatory
-			circular_shift
-				mandatory
-					shift_data
-						alternative
-							implicit
-							explicit
-				optional
-					compression
+					user_localize
 						mandatory
-							shift_processing
-						alternative
-							each_line
-							all_lines
-						optional
-							noise_words
-		mandatory
-			alpha_sort
+							user_pos_method
+								alternative
+									access_point
+									rfid
 				mandatory
-					order
-						alternative
-							descendant
-							ascendant
+					logon
+		optional
+			virtual_printer
 				mandatory
-					case_sensitivity
-						alternative
-							sensitive
-							insensitive
+					printer_register
+				mandatory
+					file_upload
+				optional
+					file_converter
+
+Example:
+Data base management system
+
+You return:
+features
+	FAME-DBMS
 		mandatory
-			arch_style
+			OS
 				alternative
-					shared_data
-					adt
-					implicit_invocation
-					pipe_and_filter
+					Nut/OS
+					Win
+		mandatory
+			Buffer_Manager
+				alternative
+					Persistent
+						mandatory
+							Memory_Allocation
+								alternative
+									Static
+									Dynamic
+						mandatory
+							Page_Replication
+								alternative
+									LRU
+									LFU
+					In_Memory
+		optional
+			Debug_Logging
+		mandatory
+			Storage
+				mandatory
+					API
+						optional
+							Get
+						optional
+							Put
+						optional
+							Delete
+				alternative
+					B+_Tree
+					Unindexed
+

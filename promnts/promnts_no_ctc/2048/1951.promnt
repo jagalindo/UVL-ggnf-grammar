@@ -3,73 +3,48 @@ In a feature model, there are features which are represented by a string
 and relationships. Relationships have 1 child feature if they are mandatory or optional
 , also they have 2 or more if they are alternative or or. Follow the grammar in the examples. 
 Please, generate maintaining the indentation schema but using items from the domain I tell you:
+
 Example:
-Programming stack
+Weather station
 
 You return:
 features
-	Stack
-		optional
-			Size
-				alternative
-					Fixed
-						mandatory
-							Value
-					Dynamic
+	weather_station
 		mandatory
-			Element_Type
-				alternative
-					Integer
-					Float
-					String
-		optional
-			Optimization
-				alternative
-					Speed
-					Memory_Usage
-		optional
-			Counter
-		optional
-			Additional_Features
+			measurements
 				or
-					Thread_Safety
-					Bounds_Check
-					Type_Check
-Example:
-monitor engine system
-
-You return:
-features
-	monitor_engine_system
+					pressure
+					temperature
+					wind_speed
 		mandatory
-			engine_performance
-				mandatory
-					temperatures
-						optional
-							colant
-						mandatory
-							oil
-						mandatory
-							engine
-						mandatory
-							transmission
-				mandatory
-					rpm
-				mandatory
-					exhaust_level_temp
+			data_source
+				alternative
+					internet
+					demo
+					external_services
 		mandatory
-			fuel_consumption
+			output_format
+				alternative
+					text
+					web_server
+					file
 				mandatory
-					measures
+					format
 						alternative
-							l_km
-							gallon_mile
+							xml
+							html
+							plain_text
 				mandatory
-					methods
-						or
-							distance
-							type_of_driving
-							drive
+					language
+						alternative
+							english
+							german
+		optional
+			alarm
+				or
+					freeze_point
+					storm_alert
+
 Example:
 Jplug
 
@@ -100,47 +75,7 @@ features
 					uml
 				optional
 					petri_net
-Example: 
-Sandwiches
 
-You return:
-features
-    Sandwich
-        mandatory
-            Bread
-        optional
-            Sauce
-                alternative
-                    Ketchup
-                    Mustard
-            Cheese
-Example
-CFDP Library
-
-You return:
-features
-	CFDP_Library
-		or
-			send
-				optional
-					Send_Acknowledged_Mode
-				optional
-					send_fs_operations
-			receive
-				optional
-					Receive_Acknowledged_Mode
-				optional
-					receive_fs_operations
-			pus
-				optional
-					pus_rename
-				optional
-					pus_copy
-			Reboot
-				optional
-					Reboot_Entity
-				optional
-					reboot_pus
 Example:
 james cms
 
@@ -168,6 +103,62 @@ features
 					forum
 					congress_mngt
 					repository
+
+Example: 
+Sandwiches
+
+You return:
+features
+    Sandwich
+        mandatory
+            Bread
+        optional
+            Sauce
+                alternative
+                    Ketchup
+                    Mustard
+            Cheese
+
+Example:
+Tex editor
+
+You return:
+features
+	editor_config
+		mandatory
+			backup
+				optional
+					autosave
+						mandatory
+							minutes
+				optional
+					backup_onchange
+				mandatory
+					backup_extension
+						alternative
+							file_bak
+							file_bak_ext
+							file_ext_bak
+		optional
+			document_class
+				mandatory
+					associated_file_ext
+						optional
+							ext
+				mandatory
+					commands
+						optional
+							remove_blank_lines
+						optional
+							spell_check
+						optional
+							dos_unix_conversion
+				optional
+					syntax_highlighting
+						mandatory
+							syntax_definition_file
+
+
 Example:
 Insurance products
 
@@ -212,65 +203,72 @@ features
 				or
 					_person
 					payee_corporation
+
 Example:
-Connector
+Dell laptop
 
 You return:
 features
-	Connector
+	Dell_laptop
 		mandatory
-			Paradigm
+			productcategory
 				alternative
-					Client/Server
-						alternative
-							Synchronous
-								optional
-									Timeout
-							Asynchronous
-								alternative
-									Polling
-										alternative
-											Blocking
-											Non-blocking
-									Callback
-					Message-Based
-						mandatory
-							Sender
-						mandatory
-							Receiver
-								alternative
-									Pull
-										or
-											Queued
-											Non-Queued
-									Push
+					mininotebooks
+					inspironlaptops
+					studiolaptops
+					xpslaptops
+					adamo
+					studioxpslaptops
 		mandatory
-			Technology
+			operatingsystem
 				alternative
-					CAN
-					Local
-Example:
-telecom
+					windows10
+					windows11
+					ubuntu
+	
+		mandatory
+			harddrive
+				alternative
+					hd500gb
+					hd320gb
+					hd250gb
+					hd160gb
+					hd128gbsolidstate
+					hd120gb
+					hd80gb
+		optional
+			opticaldrive
+				alternative
+					cddvdrw
+					dvdromdriveanddvdrw
+					dvdrwandcdrwcombo
+					bluraydisc
+		mandatory
+			laptopweight
+				alternative
+					ultralight
+					light
+					desktopreplacement
+		mandatory
+			memory
+				alternative
+					morethan4g
+					mem4gb
+					mem3gb
+					mem2gb
+					mem1gb
+		mandatory
+			processor
+				alternative
+					intelcore2duo
+					intelpentiumdualcore
+					intelceleron
+					intelatom
+		mandatory
+			price
+				alternative
+					lessthanus400
+					us400us800
+					us800us1200
+					morethanus1200
 
-You return:
-features
-	tecom
-		optional
-			ipvoice
-				mandatory
-					software
-						alternative
-							swpack1
-							swpack2
-		mandatory
-			rack
-				mandatory
-					sizes
-						alternative
-							large
-							medium
-							small
-		optional
-			messaging
-				optional
-					upgrade_swpack

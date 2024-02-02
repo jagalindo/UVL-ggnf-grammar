@@ -3,76 +3,68 @@ In a feature model, there are features which are represented by a string
 and relationships. Relationships have 1 child feature if they are mandatory or optional
 , also they have 2 or more if they are alternative or or. Follow the grammar in the examples. 
 Please, generate maintaining the indentation schema but using items from the domain I tell you:
+
 Example:
-Weather station
+Cellphone
 
 You return:
 features
-	weather_station
-		mandatory
-			measurements
-				or
-					pressure
-					temperature
-					wind_speed
-		mandatory
-			data_source
-				alternative
-					internet
-					demo
-					external_services
-		mandatory
-			output_format
-				alternative
-					text
-					web_server
-					file
-				mandatory
-					format
-						alternative
-							xml
-							html
-							plain_text
-				mandatory
-					language
-						alternative
-							english
-							german
+	cellphone
 		optional
-			alarm
+			wireless
 				or
-					freeze_point
-					storm_alert
+					infrared
+					bluetooth
+		mandatory
+			accu_cell
+				alternative
+					li_ion
+					ni_mh
+					ni_ca
+		mandatory
+			display
+				alternative
+					color
+					monochrome
+
 Example:
-Jplug
+Connector
 
 You return:
 features
-	jplug
+	Connector
 		mandatory
-			interface
+			Paradigm
 				alternative
-					sdi
-					mdi
-		optional
-			gui_builder
-				mandatory
-					java
-				optional
-					qt
-		optional
-			model_code_synch
-		optional
-			compiler
-				or
-					javac
-					mvc
-		optional
-			diagram_builder
-				mandatory
-					uml
-				optional
-					petri_net
+					Client/Server
+						alternative
+							Synchronous
+								optional
+									Timeout
+							Asynchronous
+								alternative
+									Polling
+										alternative
+											Blocking
+											Non-blocking
+									Callback
+					Message-Based
+						mandatory
+							Sender
+						mandatory
+							Receiver
+								alternative
+									Pull
+										or
+											Queued
+											Non-Queued
+									Push
+		mandatory
+			Technology
+				alternative
+					CAN
+					Local
+
 Example: 
 Sandwiches
 
@@ -87,54 +79,49 @@ features
                     Ketchup
                     Mustard
             Cheese
+
 Example:
-james cms
+Insurance products
 
 You return:
 features
-	james
+	insurance_product
 		mandatory
-			user_mngt
+			insured_object
 				alternative
-					db
-					ldap
-		optional
-			ws_interface
+					corporation
+					realty
+					movable_property
+					person
 		mandatory
-			gui
+			coverage
 				or
-					pc
-					pda
+					illness
+					life
+					unemployment
+					damage
+					loss
 		mandatory
-			core
+			payment
+				alternative
+					service
+					ammount
+				optional
+					own_risk
 		mandatory
-			modules
+			conditions
+				mandatory
+					acceptance
+				mandatory
+					exception
+		mandatory
+			premium
+				alternative
+					direct
+					periodical
+		mandatory
+			payee
 				or
-					calendar
-					forum
-					congress_mngt
-					repository
-Example:
-Aircraft
+					_person
+					payee_corporation
 
-You return:
-features
-	Aircraft
-		mandatory
-			Wing
-				or
-					High
-					Shoulder
-					Low
-		optional
-			Engine
-				alternative
-					Jet
-					Piston
-		mandatory
-			Materials
-				or
-					Metal
-					Wood
-					Cloth
-					Plastic

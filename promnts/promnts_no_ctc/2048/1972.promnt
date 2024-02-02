@@ -3,206 +3,132 @@ In a feature model, there are features which are represented by a string
 and relationships. Relationships have 1 child feature if they are mandatory or optional
 , also they have 2 or more if they are alternative or or. Follow the grammar in the examples. 
 Please, generate maintaining the indentation schema but using items from the domain I tell you:
-Example: 
-Sandwiches
 
-You return:
-features
-    Sandwich
-        mandatory
-            Bread
-        optional
-            Sauce
-                alternative
-                    Ketchup
-                    Mustard
-            Cheese
 Example:
-Digital video system
+Weather station
 
 You return:
 features
-	dvs
+	weather_station
 		mandatory
-			control
+			measurements
+				or
+					pressure
+					temperature
+					wind_speed
+		mandatory
+			data_source
+				alternative
+					internet
+					demo
+					external_services
+		mandatory
+			output_format
+				alternative
+					text
+					web_server
+					file
 				mandatory
-					remote
-				optional
-					telephone
-						optional
-							sms
-				optional
-					net
-						optional
-							web
-						optional
-							wap
-						mandatory
-							email
-				optional
-					edit
-						optional
-							add_music
+					format
+						alternative
+							xml
+							html
+							plain_text
 				mandatory
-					play
-						optional
-							slides
-						optional
-							audio
-						mandatory
-							video
-		optional
-			network_hw
-				optional
-					modem
-				optional
-					ethernet
-		mandatory
-			server_pc
-				optional
-					network
-				optional
-					irda_port
-		mandatory
-			_play
-				optional
-					on_demand
-		optional
-			client_pc
-				optional
-					_network
-		optional
-			handheld
-Example:
-Document generator
-
-You return:
-features
-	doc_gen
-		mandatory
-			analysis
-				mandatory
-					language_analysis
-						or
-							cobol
-								alternative
-									ibm_cobol
-									microfocus_cobol
-							jcl
-							sql
-							delphi
-							progress
-				optional
-					version_mngt
-				optional
-					subsystems
-		mandatory
-			presentation
-				mandatory
-					localization
-						or
+					language
+						alternative
 							english
-							dutch
+							german
+		optional
+			alarm
+				or
+					freeze_point
+					storm_alert
+
+Example:
+Jplug
+
+You return:
+features
+	jplug
+		mandatory
+			interface
+				alternative
+					sdi
+					mdi
+		optional
+			gui_builder
 				mandatory
-					interaction
-						alternative
-							static
-							dynamic
+					java
+				optional
+					qt
+		optional
+			model_code_synch
+		optional
+			compiler
+				or
+					javac
+					mvc
+		optional
+			diagram_builder
 				mandatory
-					main_pages
-						or
-							program_page
-								or
-									annotation_section
-									activation_section
-									entities_section
-									parameters_section
-							copybook_page
-							statistics_page
+					uml
+				optional
+					petri_net
+
+Example:
+vof
+
+You return:
+features
+	vof
+		mandatory
+			follow_me
+				mandatory
+					user_localize
+						mandatory
+							user_pos_method
 								alternative
-									with_history
-									without_history
-							indexes
-							search_page
-							subsystem_page
-							source_page
-							source_difference
+									access_point
+									rfid
+				mandatory
+					logon
+		optional
+			virtual_printer
+				mandatory
+					printer_register
+				mandatory
+					file_upload
 				optional
-					visualizations
-						or
-							perform_graph
-							conditional_perform_graph
-							jcl_graph
-							subsystem_graph
-							overview_graph
-		mandatory
-			database
-				alternative
-					db2
-					oracle
-					mysql
+					file_converter
+
 Example:
-Aircraft
+james cms
 
 You return:
 features
-	Aircraft
+	james
 		mandatory
-			Wing
-				or
-					High
-					Shoulder
-					Low
-		optional
-			Engine
+			user_mngt
 				alternative
-					Jet
-					Piston
-		mandatory
-			Materials
-				or
-					Metal
-					Wood
-					Cloth
-					Plastic
-Example:
-Tex editor
-
-You return:
-features
-	editor_config
-		mandatory
-			backup
-				optional
-					autosave
-						mandatory
-							minutes
-				optional
-					backup_onchange
-				mandatory
-					backup_extension
-						alternative
-							file_bak
-							file_bak_ext
-							file_ext_bak
+					db
+					ldap
 		optional
-			document_class
-				mandatory
-					associated_file_ext
-						optional
-							ext
-				mandatory
-					commands
-						optional
-							remove_blank_lines
-						optional
-							spell_check
-						optional
-							dos_unix_conversion
-				optional
-					syntax_highlighting
-						mandatory
-							syntax_definition_file
+			ws_interface
+		mandatory
+			gui
+				or
+					pc
+					pda
+		mandatory
+			core
+		mandatory
+			modules
+				or
+					calendar
+					forum
+					congress_mngt
+					repository
 
 Example:
 file compressor
@@ -250,3 +176,116 @@ features
 					adt
 					implicit_invocation
 					pipe_and_filter
+
+Example: 
+Sandwiches
+
+You return:
+features
+    Sandwich
+        mandatory
+            Bread
+        optional
+            Sauce
+                alternative
+                    Ketchup
+                    Mustard
+            Cheese
+
+Example:
+Car
+
+You return:
+features
+	Car
+		optional
+			support
+				mandatory
+					avoidance
+						alternative
+							normal_avoidance
+							enhanced_avoidance
+				optional
+					parallel_parking
+		mandatory
+			range_finder
+				optional
+					lateral_range_finder
+				optional
+					forward_range_finder
+		optional
+			gps
+		optional
+			audio
+				alternative
+					cd
+					mp3
+					video
+
+Example:
+Aircraft
+
+You return:
+features
+	Aircraft
+		mandatory
+			Wing
+				or
+					High
+					Shoulder
+					Low
+		optional
+			Engine
+				alternative
+					Jet
+					Piston
+		mandatory
+			Materials
+				or
+					Metal
+					Wood
+					Cloth
+					Plastic
+
+Example:
+Data base management system
+
+You return:
+features
+	FAME-DBMS
+		mandatory
+			OS
+				alternative
+					Nut/OS
+					Win
+		mandatory
+			Buffer_Manager
+				alternative
+					Persistent
+						mandatory
+							Memory_Allocation
+								alternative
+									Static
+									Dynamic
+						mandatory
+							Page_Replication
+								alternative
+									LRU
+									LFU
+					In_Memory
+		optional
+			Debug_Logging
+		mandatory
+			Storage
+				mandatory
+					API
+						optional
+							Get
+						optional
+							Put
+						optional
+							Delete
+				alternative
+					B+_Tree
+					Unindexed
+

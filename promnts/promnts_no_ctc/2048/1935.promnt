@@ -3,71 +3,58 @@ In a feature model, there are features which are represented by a string
 and relationships. Relationships have 1 child feature if they are mandatory or optional
 , also they have 2 or more if they are alternative or or. Follow the grammar in the examples. 
 Please, generate maintaining the indentation schema but using items from the domain I tell you:
+
 Example:
-vof
+Movies App
 
 You return:
 features
-	vof
+	Movies_App
 		mandatory
-			follow_me
-				mandatory
-					user_localize
+			GUI
+				alternative
+					Thin
+					Rich
+		mandatory
+			DB
+				alternative
+					Local
+					Remote
 						mandatory
-							user_pos_method
-								alternative
-									access_point
-									rfid
-				mandatory
-					logon
+							Cache_Policy
+		mandatory
+			Network
+				alternative
+					Wifi
+					Bluetooth
 		optional
-			virtual_printer
-				mandatory
-					printer_register
-				mandatory
-					file_upload
+			GPS
 				optional
-					file_converter
+					Built-In
+
 Example:
-Weather station
+Cellphone
 
 You return:
 features
-	weather_station
-		mandatory
-			measurements
-				or
-					pressure
-					temperature
-					wind_speed
-		mandatory
-			data_source
-				alternative
-					internet
-					demo
-					external_services
-		mandatory
-			output_format
-				alternative
-					text
-					web_server
-					file
-				mandatory
-					format
-						alternative
-							xml
-							html
-							plain_text
-				mandatory
-					language
-						alternative
-							english
-							german
+	cellphone
 		optional
-			alarm
+			wireless
 				or
-					freeze_point
-					storm_alert
+					infrared
+					bluetooth
+		mandatory
+			accu_cell
+				alternative
+					li_ion
+					ni_mh
+					ni_ca
+		mandatory
+			display
+				alternative
+					color
+					monochrome
+
 Example:
 monitor engine system
 
@@ -103,36 +90,82 @@ features
 							distance
 							type_of_driving
 							drive
+
 Example:
-Jplug
+file compressor
 
 You return:
 features
-	jplug
+	kwic
 		mandatory
-			interface
-				alternative
-					sdi
-					mdi
-		optional
-			gui_builder
-				mandatory
-					java
-				optional
-					qt
-		optional
-			model_code_synch
-		optional
-			compiler
+			input_output
 				or
-					javac
-					mvc
-		optional
-			diagram_builder
+					file
+					console
+		mandatory
+			circular_shift
 				mandatory
-					uml
+					shift_data
+						alternative
+							implicit
+							explicit
 				optional
-					petri_net
+					compression
+						mandatory
+							shift_processing
+						alternative
+							each_line
+							all_lines
+						optional
+							noise_words
+		mandatory
+			alpha_sort
+				mandatory
+					order
+						alternative
+							descendant
+							ascendant
+				mandatory
+					case_sensitivity
+						alternative
+							sensitive
+							insensitive
+		mandatory
+			arch_style
+				alternative
+					shared_data
+					adt
+					implicit_invocation
+					pipe_and_filter
+
+Example:
+james cms
+
+You return:
+features
+	james
+		mandatory
+			user_mngt
+				alternative
+					db
+					ldap
+		optional
+			ws_interface
+		mandatory
+			gui
+				or
+					pc
+					pda
+		mandatory
+			core
+		mandatory
+			modules
+				or
+					calendar
+					forum
+					congress_mngt
+					repository
+
 Example: 
 Sandwiches
 
@@ -147,6 +180,7 @@ features
                     Ketchup
                     Mustard
             Cheese
+
 Example:
 Car
 
@@ -176,108 +210,75 @@ features
 					cd
 					mp3
 					video
-Example
-CFDP Library
 
-You return:
-features
-	CFDP_Library
-		or
-			send
-				optional
-					Send_Acknowledged_Mode
-				optional
-					send_fs_operations
-			receive
-				optional
-					Receive_Acknowledged_Mode
-				optional
-					receive_fs_operations
-			pus
-				optional
-					pus_rename
-				optional
-					pus_copy
-			Reboot
-				optional
-					Reboot_Entity
-				optional
-					reboot_pus
 Example:
-james cms
+vof
 
 You return:
 features
-	james
+	vof
 		mandatory
-			user_mngt
-				alternative
-					db
-					ldap
-		optional
-			ws_interface
-		mandatory
-			gui
-				or
-					pc
-					pda
-		mandatory
-			core
-		mandatory
-			modules
-				or
-					calendar
-					forum
-					congress_mngt
-					repository
-Example:
-Movies App
-
-You return:
-features
-	Movies_App
-		mandatory
-			GUI
-				alternative
-					Thin
-					Rich
-		mandatory
-			DB
-				alternative
-					Local
-					Remote
+			follow_me
+				mandatory
+					user_localize
 						mandatory
-							Cache_Policy
-		mandatory
-			Network
-				alternative
-					Wifi
-					Bluetooth
+							user_pos_method
+								alternative
+									access_point
+									rfid
+				mandatory
+					logon
 		optional
-			GPS
+			virtual_printer
+				mandatory
+					printer_register
+				mandatory
+					file_upload
 				optional
-					Built-In
+					file_converter
+
 Example:
-Aircraft
+Insurance products
 
 You return:
 features
-	Aircraft
+	insurance_product
 		mandatory
-			Wing
-				or
-					High
-					Shoulder
-					Low
-		optional
-			Engine
+			insured_object
 				alternative
-					Jet
-					Piston
+					corporation
+					realty
+					movable_property
+					person
 		mandatory
-			Materials
+			coverage
 				or
-					Metal
-					Wood
-					Cloth
-					Plastic
+					illness
+					life
+					unemployment
+					damage
+					loss
+		mandatory
+			payment
+				alternative
+					service
+					ammount
+				optional
+					own_risk
+		mandatory
+			conditions
+				mandatory
+					acceptance
+				mandatory
+					exception
+		mandatory
+			premium
+				alternative
+					direct
+					periodical
+		mandatory
+			payee
+				or
+					_person
+					payee_corporation
+

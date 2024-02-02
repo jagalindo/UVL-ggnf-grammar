@@ -3,140 +3,137 @@ In a feature model, there are features which are represented by a string
 and relationships. Relationships have 1 child feature if they are mandatory or optional
 , also they have 2 or more if they are alternative or or. Follow the grammar in the examples. 
 Please, generate maintaining the indentation schema but using items from the domain I tell you:
+
 Example:
-Weather station
+Cellphone
 
 You return:
 features
-	weather_station
-		mandatory
-			measurements
-				or
-					pressure
-					temperature
-					wind_speed
-		mandatory
-			data_source
-				alternative
-					internet
-					demo
-					external_services
-		mandatory
-			output_format
-				alternative
-					text
-					web_server
-					file
-				mandatory
-					format
-						alternative
-							xml
-							html
-							plain_text
-				mandatory
-					language
-						alternative
-							english
-							german
+	cellphone
 		optional
-			alarm
+			wireless
 				or
-					freeze_point
-					storm_alert
-Example: 
-Sandwiches
-
-You return:
-features
-    Sandwich
-        mandatory
-            Bread
-        optional
-            Sauce
-                alternative
-                    Ketchup
-                    Mustard
-            Cheese
-Example:
-Digital video system
-
-You return:
-features
-	dvs
+					infrared
+					bluetooth
 		mandatory
-			control
-				mandatory
-					remote
+			accu_cell
+				alternative
+					li_ion
+					ni_mh
+					ni_ca
+		mandatory
+			display
+				alternative
+					color
+					monochrome
+
+Example:
+Tex editor
+
+You return:
+features
+	editor_config
+		mandatory
+			backup
 				optional
-					telephone
-						optional
-							sms
-				optional
-					net
-						optional
-							web
-						optional
-							wap
+					autosave
 						mandatory
-							email
+							minutes
 				optional
-					edit
-						optional
-							add_music
+					backup_onchange
 				mandatory
-					play
+					backup_extension
+						alternative
+							file_bak
+							file_bak_ext
+							file_ext_bak
+		optional
+			document_class
+				mandatory
+					associated_file_ext
 						optional
-							slides
+							ext
+				mandatory
+					commands
 						optional
-							audio
+							remove_blank_lines
+						optional
+							spell_check
+						optional
+							dos_unix_conversion
+				optional
+					syntax_highlighting
 						mandatory
-							video
-		optional
-			network_hw
-				optional
-					modem
-				optional
-					ethernet
-		mandatory
-			server_pc
-				optional
-					network
-				optional
-					irda_port
-		mandatory
-			_play
-				optional
-					on_demand
-		optional
-			client_pc
-				optional
-					_network
-		optional
-			handheld
+							syntax_definition_file
+
+
 Example:
-james cms
+Aircraft
 
 You return:
 features
-	james
+	Aircraft
 		mandatory
-			user_mngt
-				alternative
-					db
-					ldap
+			Wing
+				or
+					High
+					Shoulder
+					Low
 		optional
-			ws_interface
+			Engine
+				alternative
+					Jet
+					Piston
 		mandatory
-			gui
+			Materials
 				or
-					pc
-					pda
+					Metal
+					Wood
+					Cloth
+					Plastic
+
+Example:
+Insurance products
+
+You return:
+features
+	insurance_product
 		mandatory
-			core
+			insured_object
+				alternative
+					corporation
+					realty
+					movable_property
+					person
 		mandatory
-			modules
+			coverage
 				or
-					calendar
-					forum
-					congress_mngt
-					repository
+					illness
+					life
+					unemployment
+					damage
+					loss
+		mandatory
+			payment
+				alternative
+					service
+					ammount
+				optional
+					own_risk
+		mandatory
+			conditions
+				mandatory
+					acceptance
+				mandatory
+					exception
+		mandatory
+			premium
+				alternative
+					direct
+					periodical
+		mandatory
+			payee
+				or
+					_person
+					payee_corporation
+

@@ -3,135 +3,134 @@ In a feature model, there are features which are represented by a string
 and relationships. Relationships have 1 child feature if they are mandatory or optional
 , also they have 2 or more if they are alternative or or. Follow the grammar in the examples. 
 Please, generate maintaining the indentation schema but using items from the domain I tell you:
+
 Example:
-Jplug
+Programming stack
 
 You return:
 features
-	jplug
-		mandatory
-			interface
+	Stack
+		optional
+			Size
 				alternative
-					sdi
-					mdi
-		optional
-			gui_builder
-				mandatory
-					java
-				optional
-					qt
-		optional
-			model_code_synch
-		optional
-			compiler
-				or
-					javac
-					mvc
-		optional
-			diagram_builder
-				mandatory
-					uml
-				optional
-					petri_net
-Example:
-Movies App
-
-You return:
-features
-	Movies_App
-		mandatory
-			GUI
-				alternative
-					Thin
-					Rich
-		mandatory
-			DB
-				alternative
-					Local
-					Remote
+					Fixed
 						mandatory
-							Cache_Policy
+							Value
+					Dynamic
 		mandatory
-			Network
+			Element_Type
 				alternative
-					Wifi
-					Bluetooth
+					Integer
+					Float
+					String
 		optional
-			GPS
-				optional
-					Built-In
-Example:
-Car
-
-You return:
-features
-	Car
-		optional
-			support
-				mandatory
-					avoidance
-						alternative
-							normal_avoidance
-							enhanced_avoidance
-				optional
-					parallel_parking
-		mandatory
-			range_finder
-				optional
-					lateral_range_finder
-				optional
-					forward_range_finder
-		optional
-			gps
-		optional
-			audio
+			Optimization
 				alternative
-					cd
-					mp3
-					video
-Example:
-file compressor
-
-You return:
-features
-	kwic
-		mandatory
-			input_output
+					Speed
+					Memory_Usage
+		optional
+			Counter
+		optional
+			Additional_Features
 				or
-					file
-					console
+					Thread_Safety
+					Bounds_Check
+					Type_Check
+
+Example:
+Digital video system
+
+You return:
+features
+	dvs
 		mandatory
-			circular_shift
+			control
 				mandatory
-					shift_data
-						alternative
-							implicit
-							explicit
+					remote
 				optional
-					compression
-						mandatory
-							shift_processing
-						alternative
-							each_line
-							all_lines
+					telephone
 						optional
-							noise_words
-		mandatory
-			alpha_sort
+							sms
+				optional
+					net
+						optional
+							web
+						optional
+							wap
+						mandatory
+							email
+				optional
+					edit
+						optional
+							add_music
 				mandatory
-					order
-						alternative
-							descendant
-							ascendant
-				mandatory
-					case_sensitivity
-						alternative
-							sensitive
-							insensitive
+					play
+						optional
+							slides
+						optional
+							audio
+						mandatory
+							video
+		optional
+			network_hw
+				optional
+					modem
+				optional
+					ethernet
 		mandatory
-			arch_style
-				alternative
-					shared_data
-					adt
-					implicit_invocation
-					pipe_and_filter
+			server_pc
+				optional
+					network
+				optional
+					irda_port
+		mandatory
+			_play
+				optional
+					on_demand
+		optional
+			client_pc
+				optional
+					_network
+		optional
+			handheld
+
+Example:
+Tex editor
+
+You return:
+features
+	editor_config
+		mandatory
+			backup
+				optional
+					autosave
+						mandatory
+							minutes
+				optional
+					backup_onchange
+				mandatory
+					backup_extension
+						alternative
+							file_bak
+							file_bak_ext
+							file_ext_bak
+		optional
+			document_class
+				mandatory
+					associated_file_ext
+						optional
+							ext
+				mandatory
+					commands
+						optional
+							remove_blank_lines
+						optional
+							spell_check
+						optional
+							dos_unix_conversion
+				optional
+					syntax_highlighting
+						mandatory
+							syntax_definition_file
+
+

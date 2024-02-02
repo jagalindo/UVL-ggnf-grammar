@@ -3,6 +3,102 @@ In a feature model, there are features which are represented by a string
 and relationships. Relationships have 1 child feature if they are mandatory or optional
 , also they have 2 or more if they are alternative or or. Follow the grammar in the examples. 
 Please, generate maintaining the indentation schema but using items from the domain I tell you:
+
+Example:
+Cellphone
+
+You return:
+features
+	cellphone
+		optional
+			wireless
+				or
+					infrared
+					bluetooth
+		mandatory
+			accu_cell
+				alternative
+					li_ion
+					ni_mh
+					ni_ca
+		mandatory
+			display
+				alternative
+					color
+					monochrome
+
+Example:
+Weather station
+
+You return:
+features
+	weather_station
+		mandatory
+			measurements
+				or
+					pressure
+					temperature
+					wind_speed
+		mandatory
+			data_source
+				alternative
+					internet
+					demo
+					external_services
+		mandatory
+			output_format
+				alternative
+					text
+					web_server
+					file
+				mandatory
+					format
+						alternative
+							xml
+							html
+							plain_text
+				mandatory
+					language
+						alternative
+							english
+							german
+		optional
+			alarm
+				or
+					freeze_point
+					storm_alert
+
+Example:
+Jplug
+
+You return:
+features
+	jplug
+		mandatory
+			interface
+				alternative
+					sdi
+					mdi
+		optional
+			gui_builder
+				mandatory
+					java
+				optional
+					qt
+		optional
+			model_code_synch
+		optional
+			compiler
+				or
+					javac
+					mvc
+		optional
+			diagram_builder
+				mandatory
+					uml
+				optional
+					petri_net
+
 Example:
 vof
 
@@ -28,6 +124,7 @@ features
 					file_upload
 				optional
 					file_converter
+
 Example: 
 Sandwiches
 
@@ -42,62 +139,33 @@ features
                     Ketchup
                     Mustard
             Cheese
+
 Example:
-Car
+telecom
 
 You return:
 features
-	Car
+	tecom
 		optional
-			support
+			ipvoice
 				mandatory
-					avoidance
+					software
 						alternative
-							normal_avoidance
-							enhanced_avoidance
-				optional
-					parallel_parking
+							swpack1
+							swpack2
 		mandatory
-			range_finder
-				optional
-					lateral_range_finder
-				optional
-					forward_range_finder
+			rack
+				mandatory
+					sizes
+						alternative
+							large
+							medium
+							small
 		optional
-			gps
-		optional
-			audio
-				alternative
-					cd
-					mp3
-					video
-Example:
-james cms
+			messaging
+				optional
+					upgrade_swpack
 
-You return:
-features
-	james
-		mandatory
-			user_mngt
-				alternative
-					db
-					ldap
-		optional
-			ws_interface
-		mandatory
-			gui
-				or
-					pc
-					pda
-		mandatory
-			core
-		mandatory
-			modules
-				or
-					calendar
-					forum
-					congress_mngt
-					repository
 Example:
 Aircraft
 
@@ -122,132 +190,66 @@ features
 					Wood
 					Cloth
 					Plastic
+
 Example:
-Cellphone
+Graph operations
 
 You return:
 features
-	cellphone
-		optional
-			wireless
-				or
-					infrared
-					bluetooth
+	graph
 		mandatory
-			accu_cell
-				alternative
-					li_ion
-					ni_mh
-					ni_ca
-		mandatory
-			display
-				alternative
-					color
-					monochrome
-Example:
-Tex editor
-
-You return:
-features
-	editor_config
-		mandatory
-			backup
-				optional
-					autosave
+			services
+				mandatory
+					graph_manipulation
 						mandatory
-							minutes
-				optional
-					backup_onchange
-				mandatory
-					backup_extension
-						alternative
-							file_bak
-							file_bak_ext
-							file_ext_bak
-		optional
-			document_class
-				mandatory
-					associated_file_ext
-						optional
-							ext
-				mandatory
-					commands
-						optional
-							remove_blank_lines
-						optional
-							spell_check
-						optional
-							dos_unix_conversion
-				optional
-					syntax_highlighting
+							delete
 						mandatory
-							syntax_definition_file
+							select
+								mandatory
+									selection_mode
+										alternative
+											increment_selection
+											non_increment_selection
+						mandatory
+							add
+								mandatory
+									entity_add
+								mandatory
+									connector_add
+						mandatory
+							move
+								mandatory
+									moving_mode
+										alternative
+											outline_moving
+											content_moving
+								optional
+									moving_constraint
+										alternative
+											horizontal_constraint
+											vertical_constraint
+						optional
+							compose
+						optional
+							layer_adjust
+								mandatory
+									up_layer
+								mandatory
+									down_layer
+				optional
+					do_undo_redo
+						mandatory
+							select_do_undo_redo
+						mandatory
+							add_do_undo_redo
+						mandatory
+							delete__do_undo_redo
+						mandatory
+							move_do_undo_redo
+						optional
+							compose_do_undo_redo
+						optional
+							layer_adjust_do_undo_redo
+				optional
+					zoom_inout
 
-Example:
-Document generator
-
-You return:
-features
-	doc_gen
-		mandatory
-			analysis
-				mandatory
-					language_analysis
-						or
-							cobol
-								alternative
-									ibm_cobol
-									microfocus_cobol
-							jcl
-							sql
-							delphi
-							progress
-				optional
-					version_mngt
-				optional
-					subsystems
-		mandatory
-			presentation
-				mandatory
-					localization
-						or
-							english
-							dutch
-				mandatory
-					interaction
-						alternative
-							static
-							dynamic
-				mandatory
-					main_pages
-						or
-							program_page
-								or
-									annotation_section
-									activation_section
-									entities_section
-									parameters_section
-							copybook_page
-							statistics_page
-								alternative
-									with_history
-									without_history
-							indexes
-							search_page
-							subsystem_page
-							source_page
-							source_difference
-				optional
-					visualizations
-						or
-							perform_graph
-							conditional_perform_graph
-							jcl_graph
-							subsystem_graph
-							overview_graph
-		mandatory
-			database
-				alternative
-					db2
-					oracle
-					mysql

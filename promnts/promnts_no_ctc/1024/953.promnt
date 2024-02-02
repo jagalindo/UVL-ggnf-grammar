@@ -3,38 +3,7 @@ In a feature model, there are features which are represented by a string
 and relationships. Relationships have 1 child feature if they are mandatory or optional
 , also they have 2 or more if they are alternative or or. Follow the grammar in the examples. 
 Please, generate maintaining the indentation schema but using items from the domain I tell you:
-Example:
-Programming stack
 
-You return:
-features
-	Stack
-		optional
-			Size
-				alternative
-					Fixed
-						mandatory
-							Value
-					Dynamic
-		mandatory
-			Element_Type
-				alternative
-					Integer
-					Float
-					String
-		optional
-			Optimization
-				alternative
-					Speed
-					Memory_Usage
-		optional
-			Counter
-		optional
-			Additional_Features
-				or
-					Thread_Safety
-					Bounds_Check
-					Type_Check
 Example: 
 Sandwiches
 
@@ -49,57 +18,75 @@ features
                     Ketchup
                     Mustard
             Cheese
+
 Example:
-Movies App
+vof
 
 You return:
 features
-	Movies_App
+	vof
 		mandatory
-			GUI
-				alternative
-					Thin
-					Rich
-		mandatory
-			DB
-				alternative
-					Local
-					Remote
+			follow_me
+				mandatory
+					user_localize
 						mandatory
-							Cache_Policy
-		mandatory
-			Network
-				alternative
-					Wifi
-					Bluetooth
+							user_pos_method
+								alternative
+									access_point
+									rfid
+				mandatory
+					logon
 		optional
-			GPS
+			virtual_printer
+				mandatory
+					printer_register
+				mandatory
+					file_upload
 				optional
-					Built-In
+					file_converter
+
 Example:
-Aircraft
+Data base management system
 
 You return:
 features
-	Aircraft
+	FAME-DBMS
 		mandatory
-			Wing
-				or
-					High
-					Shoulder
-					Low
-		optional
-			Engine
+			OS
 				alternative
-					Jet
-					Piston
+					Nut/OS
+					Win
 		mandatory
-			Materials
-				or
-					Metal
-					Wood
-					Cloth
-					Plastic
+			Buffer_Manager
+				alternative
+					Persistent
+						mandatory
+							Memory_Allocation
+								alternative
+									Static
+									Dynamic
+						mandatory
+							Page_Replication
+								alternative
+									LRU
+									LFU
+					In_Memory
+		optional
+			Debug_Logging
+		mandatory
+			Storage
+				mandatory
+					API
+						optional
+							Get
+						optional
+							Put
+						optional
+							Delete
+				alternative
+					B+_Tree
+					Unindexed
+
 Example:
 Insurance products
 
@@ -144,3 +131,4 @@ features
 				or
 					_person
 					payee_corporation
+

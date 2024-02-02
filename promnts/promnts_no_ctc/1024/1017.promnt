@@ -3,134 +3,136 @@ In a feature model, there are features which are represented by a string
 and relationships. Relationships have 1 child feature if they are mandatory or optional
 , also they have 2 or more if they are alternative or or. Follow the grammar in the examples. 
 Please, generate maintaining the indentation schema but using items from the domain I tell you:
+
 Example:
-Weather station
+Movies App
 
 You return:
 features
-	weather_station
+	Movies_App
 		mandatory
-			measurements
+			GUI
+				alternative
+					Thin
+					Rich
+		mandatory
+			DB
+				alternative
+					Local
+					Remote
+						mandatory
+							Cache_Policy
+		mandatory
+			Network
+				alternative
+					Wifi
+					Bluetooth
+		optional
+			GPS
+				optional
+					Built-In
+
+Example:
+file compressor
+
+You return:
+features
+	kwic
+		mandatory
+			input_output
 				or
-					pressure
-					temperature
-					wind_speed
-		mandatory
-			data_source
-				alternative
-					internet
-					demo
-					external_services
-		mandatory
-			output_format
-				alternative
-					text
-					web_server
 					file
-				mandatory
-					format
-						alternative
-							xml
-							html
-							plain_text
-				mandatory
-					language
-						alternative
-							english
-							german
-		optional
-			alarm
-				or
-					freeze_point
-					storm_alert
-Example:
-monitor engine system
-
-You return:
-features
-	monitor_engine_system
+					console
 		mandatory
-			engine_performance
+			circular_shift
 				mandatory
-					temperatures
+					shift_data
+						alternative
+							implicit
+							explicit
+				optional
+					compression
+						mandatory
+							shift_processing
+						alternative
+							each_line
+							all_lines
 						optional
-							colant
-						mandatory
-							oil
-						mandatory
-							engine
-						mandatory
-							transmission
-				mandatory
-					rpm
-				mandatory
-					exhaust_level_temp
+							noise_words
 		mandatory
-			fuel_consumption
+			alpha_sort
 				mandatory
-					measures
+					order
 						alternative
-							l_km
-							gallon_mile
+							descendant
+							ascendant
 				mandatory
-					methods
-						or
-							distance
-							type_of_driving
-							drive
+					case_sensitivity
+						alternative
+							sensitive
+							insensitive
+		mandatory
+			arch_style
+				alternative
+					shared_data
+					adt
+					implicit_invocation
+					pipe_and_filter
+
 Example:
-Car
+Digital video system
 
 You return:
 features
-	Car
-		optional
-			support
+	dvs
+		mandatory
+			control
 				mandatory
-					avoidance
-						alternative
-							normal_avoidance
-							enhanced_avoidance
+					remote
 				optional
-					parallel_parking
+					telephone
+						optional
+							sms
+				optional
+					net
+						optional
+							web
+						optional
+							wap
+						mandatory
+							email
+				optional
+					edit
+						optional
+							add_music
+				mandatory
+					play
+						optional
+							slides
+						optional
+							audio
+						mandatory
+							video
+		optional
+			network_hw
+				optional
+					modem
+				optional
+					ethernet
 		mandatory
-			range_finder
+			server_pc
 				optional
-					lateral_range_finder
+					network
 				optional
-					forward_range_finder
+					irda_port
+		mandatory
+			_play
+				optional
+					on_demand
 		optional
-			gps
+			client_pc
+				optional
+					_network
 		optional
-			audio
-				alternative
-					cd
-					mp3
-					video
-Example:
-james cms
+			handheld
 
-You return:
-features
-	james
-		mandatory
-			user_mngt
-				alternative
-					db
-					ldap
-		optional
-			ws_interface
-		mandatory
-			gui
-				or
-					pc
-					pda
-		mandatory
-			core
-		mandatory
-			modules
-				or
-					calendar
-					forum
-					congress_mngt
-					repository

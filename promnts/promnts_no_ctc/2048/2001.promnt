@@ -3,88 +3,149 @@ In a feature model, there are features which are represented by a string
 and relationships. Relationships have 1 child feature if they are mandatory or optional
 , also they have 2 or more if they are alternative or or. Follow the grammar in the examples. 
 Please, generate maintaining the indentation schema but using items from the domain I tell you:
+
 Example:
-Computer threads types
+monitor engine system
 
 You return:
 features
-	thread
+	monitor_engine_system
 		mandatory
-			thread_instance
-				alternative
-					multiple
+			engine_performance
+				mandatory
+					temperatures
 						optional
-							coroutine
-								optional
-									dispatching
-										mandatory
-											dispach_method
-												mandatory
-													global_life
-										optional
-											scheduling
-												optional
-													bundle_schedule
-														optional
-															bundle_preemption
-														mandatory
-															bundle_strategy
-																optional
-																	bundle_strategy_replugging
-																alternative
-																	bundle_fcfs
-																	bundle_lcfs
-												optional
-													idle_control
-														alternative
-															idle_guard
-															idle_panic
-															idle_user
-												optional
-													query_schedule
-												mandatory
-													thread_schedule
-														optional
-															thread_preemption
-																optional
-																	non_preemptable_threads
-																optional
-																	scheduler_lockable
-														mandatory
-															thread_strategy
-																alternative
-																	priority
-																		optional
-																			schedule_same_priority
-																		mandatory
-																			priority_behaviour
-																				alternative
-																					priority_cooperative
-																					priority_preemptive
-																		mandatory
-																			priority_count
-																				alternative
-																					priority_16
-																					priority_32
-																					priority_8
-																	thread_fcfs
-																	thread_lcfs
-																optional
-																	thread_strategy_replugging
-								mandatory
-									location
-										alternative
-											integrated
-											separated
-								mandatory
-									size
-										optional
-											float_set
-										optional
-											volatile_set
-										mandatory
-											minimal_set
-					single
+							colant
+						mandatory
+							oil
+						mandatory
+							engine
+						mandatory
+							transmission
+				mandatory
+					rpm
+				mandatory
+					exhaust_level_temp
+		mandatory
+			fuel_consumption
+				mandatory
+					measures
+						alternative
+							l_km
+							gallon_mile
+				mandatory
+					methods
+						or
+							distance
+							type_of_driving
+							drive
+
+Example
+CFDP Library
+
+You return:
+features
+	CFDP_Library
+		or
+			send
+				optional
+					Send_Acknowledged_Mode
+				optional
+					send_fs_operations
+			receive
+				optional
+					Receive_Acknowledged_Mode
+				optional
+					receive_fs_operations
+			pus
+				optional
+					pus_rename
+				optional
+					pus_copy
+			Reboot
+				optional
+					Reboot_Entity
+				optional
+					reboot_pus
+
+Example:
+Jplug
+
+You return:
+features
+	jplug
+		mandatory
+			interface
+				alternative
+					sdi
+					mdi
+		optional
+			gui_builder
+				mandatory
+					java
+				optional
+					qt
+		optional
+			model_code_synch
+		optional
+			compiler
+				or
+					javac
+					mvc
+		optional
+			diagram_builder
+				mandatory
+					uml
+				optional
+					petri_net
+
+Example:
+file compressor
+
+You return:
+features
+	kwic
+		mandatory
+			input_output
+				or
+					file
+					console
+		mandatory
+			circular_shift
+				mandatory
+					shift_data
+						alternative
+							implicit
+							explicit
+				optional
+					compression
+						mandatory
+							shift_processing
+						alternative
+							each_line
+							all_lines
+						optional
+							noise_words
+		mandatory
+			alpha_sort
+				mandatory
+					order
+						alternative
+							descendant
+							ascendant
+				mandatory
+					case_sensitivity
+						alternative
+							sensitive
+							insensitive
+		mandatory
+			arch_style
+				alternative
+					shared_data
+					adt
+					implicit_invocation
+					pipe_and_filter
+
 Example: 
 Sandwiches
 
@@ -99,43 +160,7 @@ features
                     Ketchup
                     Mustard
             Cheese
-Example:
-Connector
 
-You return:
-features
-	Connector
-		mandatory
-			Paradigm
-				alternative
-					Client/Server
-						alternative
-							Synchronous
-								optional
-									Timeout
-							Asynchronous
-								alternative
-									Polling
-										alternative
-											Blocking
-											Non-blocking
-									Callback
-					Message-Based
-						mandatory
-							Sender
-						mandatory
-							Receiver
-								alternative
-									Pull
-										or
-											Queued
-											Non-Queued
-									Push
-		mandatory
-			Technology
-				alternative
-					CAN
-					Local
 Example:
 telecom
 
@@ -161,3 +186,105 @@ features
 			messaging
 				optional
 					upgrade_swpack
+
+Example:
+Car
+
+You return:
+features
+	Car
+		optional
+			support
+				mandatory
+					avoidance
+						alternative
+							normal_avoidance
+							enhanced_avoidance
+				optional
+					parallel_parking
+		mandatory
+			range_finder
+				optional
+					lateral_range_finder
+				optional
+					forward_range_finder
+		optional
+			gps
+		optional
+			audio
+				alternative
+					cd
+					mp3
+					video
+
+Example:
+vof
+
+You return:
+features
+	vof
+		mandatory
+			follow_me
+				mandatory
+					user_localize
+						mandatory
+							user_pos_method
+								alternative
+									access_point
+									rfid
+				mandatory
+					logon
+		optional
+			virtual_printer
+				mandatory
+					printer_register
+				mandatory
+					file_upload
+				optional
+					file_converter
+
+Example:
+Insurance products
+
+You return:
+features
+	insurance_product
+		mandatory
+			insured_object
+				alternative
+					corporation
+					realty
+					movable_property
+					person
+		mandatory
+			coverage
+				or
+					illness
+					life
+					unemployment
+					damage
+					loss
+		mandatory
+			payment
+				alternative
+					service
+					ammount
+				optional
+					own_risk
+		mandatory
+			conditions
+				mandatory
+					acceptance
+				mandatory
+					exception
+		mandatory
+			premium
+				alternative
+					direct
+					periodical
+		mandatory
+			payee
+				or
+					_person
+					payee_corporation
+

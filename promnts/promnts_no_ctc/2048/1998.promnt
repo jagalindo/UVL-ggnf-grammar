@@ -3,87 +3,81 @@ In a feature model, there are features which are represented by a string
 and relationships. Relationships have 1 child feature if they are mandatory or optional
 , also they have 2 or more if they are alternative or or. Follow the grammar in the examples. 
 Please, generate maintaining the indentation schema but using items from the domain I tell you:
+
 Example:
-vof
+Weather station
 
 You return:
 features
-	vof
+	weather_station
 		mandatory
-			follow_me
+			measurements
+				or
+					pressure
+					temperature
+					wind_speed
+		mandatory
+			data_source
+				alternative
+					internet
+					demo
+					external_services
+		mandatory
+			output_format
+				alternative
+					text
+					web_server
+					file
 				mandatory
-					user_localize
-						mandatory
-							user_pos_method
-								alternative
-									access_point
-									rfid
+					format
+						alternative
+							xml
+							html
+							plain_text
 				mandatory
-					logon
+					language
+						alternative
+							english
+							german
 		optional
-			virtual_printer
-				mandatory
-					printer_register
-				mandatory
-					file_upload
-				optional
-					file_converter
+			alarm
+				or
+					freeze_point
+					storm_alert
+
 Example:
-Digital video system
+Programming stack
 
 You return:
 features
-	dvs
-		mandatory
-			control
-				mandatory
-					remote
-				optional
-					telephone
-						optional
-							sms
-				optional
-					net
-						optional
-							web
-						optional
-							wap
+	Stack
+		optional
+			Size
+				alternative
+					Fixed
 						mandatory
-							email
-				optional
-					edit
-						optional
-							add_music
-				mandatory
-					play
-						optional
-							slides
-						optional
-							audio
-						mandatory
-							video
-		optional
-			network_hw
-				optional
-					modem
-				optional
-					ethernet
+							Value
+					Dynamic
 		mandatory
-			server_pc
-				optional
-					network
-				optional
-					irda_port
-		mandatory
-			_play
-				optional
-					on_demand
+			Element_Type
+				alternative
+					Integer
+					Float
+					String
 		optional
-			client_pc
-				optional
-					_network
+			Optimization
+				alternative
+					Speed
+					Memory_Usage
 		optional
-			handheld
+			Counter
+		optional
+			Additional_Features
+				or
+					Thread_Safety
+					Bounds_Check
+					Type_Check
+
 Example
 CFDP Library
 
@@ -111,142 +105,149 @@ features
 					Reboot_Entity
 				optional
 					reboot_pus
+
 Example:
-Document generator
+Connector
 
 You return:
 features
-	doc_gen
+	Connector
 		mandatory
-			analysis
-				mandatory
-					language_analysis
-						or
-							cobol
-								alternative
-									ibm_cobol
-									microfocus_cobol
-							jcl
-							sql
-							delphi
-							progress
-				optional
-					version_mngt
-				optional
-					subsystems
-		mandatory
-			presentation
-				mandatory
-					localization
-						or
-							english
-							dutch
-				mandatory
-					interaction
-						alternative
-							static
-							dynamic
-				mandatory
-					main_pages
-						or
-							program_page
-								or
-									annotation_section
-									activation_section
-									entities_section
-									parameters_section
-							copybook_page
-							statistics_page
-								alternative
-									with_history
-									without_history
-							indexes
-							search_page
-							subsystem_page
-							source_page
-							source_difference
-				optional
-					visualizations
-						or
-							perform_graph
-							conditional_perform_graph
-							jcl_graph
-							subsystem_graph
-							overview_graph
-		mandatory
-			database
+			Paradigm
 				alternative
-					db2
-					oracle
-					mysql
-Example:
-telecom
-
-You return:
-features
-	tecom
-		optional
-			ipvoice
-				mandatory
-					software
+					Client/Server
 						alternative
-							swpack1
-							swpack2
-		mandatory
-			rack
-				mandatory
-					sizes
-						alternative
-							large
-							medium
-							small
-		optional
-			messaging
-				optional
-					upgrade_swpack
-Example:
-file compressor
-
-You return:
-features
-	kwic
-		mandatory
-			input_output
-				or
-					file
-					console
-		mandatory
-			circular_shift
-				mandatory
-					shift_data
-						alternative
-							implicit
-							explicit
-				optional
-					compression
+							Synchronous
+								optional
+									Timeout
+							Asynchronous
+								alternative
+									Polling
+										alternative
+											Blocking
+											Non-blocking
+									Callback
+					Message-Based
 						mandatory
-							shift_processing
-						alternative
-							each_line
-							all_lines
-						optional
-							noise_words
+							Sender
+						mandatory
+							Receiver
+								alternative
+									Pull
+										or
+											Queued
+											Non-Queued
+									Push
 		mandatory
-			alpha_sort
-				mandatory
-					order
-						alternative
-							descendant
-							ascendant
-				mandatory
-					case_sensitivity
-						alternative
-							sensitive
-							insensitive
-		mandatory
-			arch_style
+			Technology
 				alternative
-					shared_data
-					adt
-					implicit_invocation
-					pipe_and_filter
+					CAN
+					Local
+
+Example: 
+Sandwiches
+
+You return:
+features
+    Sandwich
+        mandatory
+            Bread
+        optional
+            Sauce
+                alternative
+                    Ketchup
+                    Mustard
+            Cheese
+
+Example:
+Car
+
+You return:
+features
+	Car
+		optional
+			support
+				mandatory
+					avoidance
+						alternative
+							normal_avoidance
+							enhanced_avoidance
+				optional
+					parallel_parking
+		mandatory
+			range_finder
+				optional
+					lateral_range_finder
+				optional
+					forward_range_finder
+		optional
+			gps
+		optional
+			audio
+				alternative
+					cd
+					mp3
+					video
+
+Example:
+Graph operations
+
+You return:
+features
+	graph
+		mandatory
+			services
+				mandatory
+					graph_manipulation
+						mandatory
+							delete
+						mandatory
+							select
+								mandatory
+									selection_mode
+										alternative
+											increment_selection
+											non_increment_selection
+						mandatory
+							add
+								mandatory
+									entity_add
+								mandatory
+									connector_add
+						mandatory
+							move
+								mandatory
+									moving_mode
+										alternative
+											outline_moving
+											content_moving
+								optional
+									moving_constraint
+										alternative
+											horizontal_constraint
+											vertical_constraint
+						optional
+							compose
+						optional
+							layer_adjust
+								mandatory
+									up_layer
+								mandatory
+									down_layer
+				optional
+					do_undo_redo
+						mandatory
+							select_do_undo_redo
+						mandatory
+							add_do_undo_redo
+						mandatory
+							delete__do_undo_redo
+						mandatory
+							move_do_undo_redo
+						optional
+							compose_do_undo_redo
+						optional
+							layer_adjust_do_undo_redo
+				optional
+					zoom_inout
+

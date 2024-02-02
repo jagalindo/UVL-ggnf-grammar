@@ -3,6 +3,35 @@ In a feature model, there are features which are represented by a string
 and relationships. Relationships have 1 child feature if they are mandatory or optional
 , also they have 2 or more if they are alternative or or. Follow the grammar in the examples. 
 Please, generate maintaining the indentation schema but using items from the domain I tell you:
+
+Example
+CFDP Library
+
+You return:
+features
+	CFDP_Library
+		or
+			send
+				optional
+					Send_Acknowledged_Mode
+				optional
+					send_fs_operations
+			receive
+				optional
+					Receive_Acknowledged_Mode
+				optional
+					receive_fs_operations
+			pus
+				optional
+					pus_rename
+				optional
+					pus_copy
+			Reboot
+				optional
+					Reboot_Entity
+				optional
+					reboot_pus
+
 Example:
 Programming stack
 
@@ -35,183 +64,7 @@ features
 					Thread_Safety
 					Bounds_Check
 					Type_Check
-Example:
-Digital video system
 
-You return:
-features
-	dvs
-		mandatory
-			control
-				mandatory
-					remote
-				optional
-					telephone
-						optional
-							sms
-				optional
-					net
-						optional
-							web
-						optional
-							wap
-						mandatory
-							email
-				optional
-					edit
-						optional
-							add_music
-				mandatory
-					play
-						optional
-							slides
-						optional
-							audio
-						mandatory
-							video
-		optional
-			network_hw
-				optional
-					modem
-				optional
-					ethernet
-		mandatory
-			server_pc
-				optional
-					network
-				optional
-					irda_port
-		mandatory
-			_play
-				optional
-					on_demand
-		optional
-			client_pc
-				optional
-					_network
-		optional
-			handheld
-Example:
-Movies App
-
-You return:
-features
-	Movies_App
-		mandatory
-			GUI
-				alternative
-					Thin
-					Rich
-		mandatory
-			DB
-				alternative
-					Local
-					Remote
-						mandatory
-							Cache_Policy
-		mandatory
-			Network
-				alternative
-					Wifi
-					Bluetooth
-		optional
-			GPS
-				optional
-					Built-In
-Example:
-james cms
-
-You return:
-features
-	james
-		mandatory
-			user_mngt
-				alternative
-					db
-					ldap
-		optional
-			ws_interface
-		mandatory
-			gui
-				or
-					pc
-					pda
-		mandatory
-			core
-		mandatory
-			modules
-				or
-					calendar
-					forum
-					congress_mngt
-					repository
-Example:
-Dell laptop
-
-You return:
-features
-	Dell_laptop
-		mandatory
-			productcategory
-				alternative
-					mininotebooks
-					inspironlaptops
-					studiolaptops
-					xpslaptops
-					adamo
-					studioxpslaptops
-		mandatory
-			operatingsystem
-				alternative
-					windows10
-					windows11
-					ubuntu
-	
-		mandatory
-			harddrive
-				alternative
-					hd500gb
-					hd320gb
-					hd250gb
-					hd160gb
-					hd128gbsolidstate
-					hd120gb
-					hd80gb
-		optional
-			opticaldrive
-				alternative
-					cddvdrw
-					dvdromdriveanddvdrw
-					dvdrwandcdrwcombo
-					bluraydisc
-		mandatory
-			laptopweight
-				alternative
-					ultralight
-					light
-					desktopreplacement
-		mandatory
-			memory
-				alternative
-					morethan4g
-					mem4gb
-					mem3gb
-					mem2gb
-					mem1gb
-		mandatory
-			processor
-				alternative
-					intelcore2duo
-					intelpentiumdualcore
-					intelceleron
-					intelatom
-		mandatory
-			price
-				alternative
-					lessthanus400
-					us400us800
-					us800us1200
-					morethanus1200
 Example:
 Aircraft
 
@@ -236,47 +89,143 @@ features
 					Wood
 					Cloth
 					Plastic
+
 Example:
-Insurance products
+Tex editor
 
 You return:
 features
-	insurance_product
+	editor_config
 		mandatory
-			insured_object
-				alternative
-					corporation
-					realty
-					movable_property
-					person
-		mandatory
-			coverage
-				or
-					illness
-					life
-					unemployment
-					damage
-					loss
-		mandatory
-			payment
-				alternative
-					service
-					ammount
+			backup
 				optional
-					own_risk
-		mandatory
-			conditions
+					autosave
+						mandatory
+							minutes
+				optional
+					backup_onchange
 				mandatory
-					acceptance
+					backup_extension
+						alternative
+							file_bak
+							file_bak_ext
+							file_ext_bak
+		optional
+			document_class
 				mandatory
-					exception
+					associated_file_ext
+						optional
+							ext
+				mandatory
+					commands
+						optional
+							remove_blank_lines
+						optional
+							spell_check
+						optional
+							dos_unix_conversion
+				optional
+					syntax_highlighting
+						mandatory
+							syntax_definition_file
+
+
+Example:
+Arcade_Game
+
+You return:
+features
+	Arcade_Game
 		mandatory
-			premium
-				alternative
-					direct
-					periodical
+			Use_Cases
+				optional
+					check_previous_best_score
+				optional
+					save_score
+				mandatory
+					Save_Game
+				mandatory
+					Exit_Game
+				mandatory
+					Install_Game
+				mandatory
+					Uninstall_Game
+				mandatory
+					List_Game
+				mandatory
+					Play_Game
+						or
+							play_brickles
+							play_pong
+							play_bowling
+						mandatory
+							Initialization
+								mandatory
+									Animation_Loop
 		mandatory
-			payee
-				or
-					_person
-					payee_corporation
+			Class_Diagram
+				mandatory
+					game_sprite
+						optional
+							sprite_pair
+						mandatory
+							Rectangle
+								mandatory
+									Size
+								mandatory
+									Point
+						or
+							Movable_Sprite
+								mandatory
+									Velocity
+								or
+									Paddle
+										or
+											top_paddle_pong
+											bottom_paddle_pong
+									puck_core_assets
+									ball_bowling
+									pin_bowling
+							Stationary_Sprite
+								optional
+									Wall
+										or
+											left_wall_pong
+											right_wall_pong
+											left_brickles
+											right_brickles
+								or
+									brick_brickles
+									brick_pile_brickles
+									ceiling_brickles
+									floor_brickles
+									lane_bowling
+									gutter_bowling
+									edge_bowling
+									alley_bowling
+									rack_pins_bowling
+									score_board_pong
+									floor_pong
+									ceiling_pong
+									dividing_line_pong
+				optional
+					puck_supply_brickles
+				mandatory
+					Board
+						or
+							board_pong
+							board_brickles
+							board_bowling
+				mandatory
+					Menu
+						or
+							menu_pong
+							menu_brickles
+							menu_bowling
+				mandatory
+					Game_Menu
+						or
+							pong_game_menu
+							brickles_game_menu
+							bowling_game_menu
+
