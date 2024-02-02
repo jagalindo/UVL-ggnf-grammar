@@ -4,7 +4,7 @@ and relationships. Relationships have 1 child feature if they are mandatory or o
 , also they have 2 or more if they are alternative or or. Follow the grammar in the examples. 
 Please, generate maintaining the indentation schema but using items from the domain I tell you:
 Example:
-Stack
+Programming stack
 
 You return:
 features
@@ -147,7 +147,7 @@ features
 					implicit_invocation
 					pipe_and_filter
 Example:
-Insurance product
+Insurance products
 
 You return:
 features

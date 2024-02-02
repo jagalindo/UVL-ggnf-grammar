@@ -44,7 +44,7 @@ features
 					freeze_point
 					storm_alert
 Example:
-Stack
+Programming stack
 
 You return:
 features
@@ -176,7 +176,7 @@ features
 				optional
 					Built-In
 Example:
-Insurance product
+Insurance products
 
 You return:
 features

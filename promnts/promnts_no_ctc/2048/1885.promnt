@@ -29,7 +29,7 @@ features
 				optional
 					file_converter
 Example:
-Stack
+Programming stack
 
 You return:
 features
@@ -91,7 +91,7 @@ features
 				optional
 					petri_net
 Example:
-Digutal video system
+Digital video system
 
 You return:
 features

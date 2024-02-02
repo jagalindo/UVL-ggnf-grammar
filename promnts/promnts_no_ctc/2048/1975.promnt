@@ -29,7 +29,7 @@ features
 				optional
 					file_converter
 Example:
-Stack
+Programming stack
 
 You return:
 features
@@ -153,7 +153,7 @@ features
 					Cloth
 					Plastic
 Example:
-Insurance product
+Insurance products
 
 You return:
 features
