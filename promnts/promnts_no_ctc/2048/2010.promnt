@@ -1,0 +1,265 @@
+Output some text similar to this, the output represents a feature model. 
+In a feature model, there are features which are represented by a string
+and relationships. Relationships have 1 child feature if they are mandatory or optional
+, also they have 2 or more if they are alternative or or. Follow the grammar in the examples. 
+Please, generate maintaining the indentation schema but using items from the domain I tell you:
+Example:
+vof
+
+You return:
+features
+	vof
+		mandatory
+			follow_me
+				mandatory
+					user_localize
+						mandatory
+							user_pos_method
+								alternative
+									access_point
+									rfid
+				mandatory
+					logon
+		optional
+			virtual_printer
+				mandatory
+					printer_register
+				mandatory
+					file_upload
+				optional
+					file_converter
+Example:
+Web portal
+
+You return:
+features
+	web_portal
+		optional
+			add_services
+				optional
+					site_stats
+						mandatory
+							basic
+						optional
+							advanced
+				optional
+					site_search
+						optional
+							images
+						optional
+							text
+								mandatory
+									html
+								optional
+									dynamic
+				optional
+					ad_server
+						mandatory
+							reports
+						optional
+							popups
+						mandatory
+							banners
+								mandatory
+									ban_img
+								optional
+									ban_flash
+						optional
+							keyword
+		mandatory
+			web_server
+				optional
+					logging
+						alternative
+							db
+							file
+				optional
+					protocol
+						or
+							nttp
+							ftp
+							https
+				mandatory
+					cont
+						mandatory
+							static
+						optional
+							active
+								or
+									asp
+									php
+									jsp
+									cgi
+		optional
+			persistence
+				alternative
+					xml
+					database
+		optional
+			ri
+				or
+					data_storage
+					data_transfer
+					user_auth
+		optional
+			performance
+				alternative
+					ms
+					sec
+					min
+Example:
+Digutal video system
+
+You return:
+features
+	dvs
+		mandatory
+			control
+				mandatory
+					remote
+				optional
+					telephone
+						optional
+							sms
+				optional
+					net
+						optional
+							web
+						optional
+							wap
+						mandatory
+							email
+				optional
+					edit
+						optional
+							add_music
+				mandatory
+					play
+						optional
+							slides
+						optional
+							audio
+						mandatory
+							video
+		optional
+			network_hw
+				optional
+					modem
+				optional
+					ethernet
+		mandatory
+			server_pc
+				optional
+					network
+				optional
+					irda_port
+		mandatory
+			_play
+				optional
+					on_demand
+		optional
+			client_pc
+				optional
+					_network
+		optional
+			handheld
+Example
+CFDP Library
+
+You return:
+features
+	CFDP_Library
+		or
+			send
+				optional
+					Send_Acknowledged_Mode
+				optional
+					send_fs_operations
+			receive
+				optional
+					Receive_Acknowledged_Mode
+				optional
+					receive_fs_operations
+			pus
+				optional
+					pus_rename
+				optional
+					pus_copy
+			Reboot
+				optional
+					Reboot_Entity
+				optional
+					reboot_pus
+Example:
+james cms
+
+You return:
+features
+	james
+		mandatory
+			user_mngt
+				alternative
+					db
+					ldap
+		optional
+			ws_interface
+		mandatory
+			gui
+				or
+					pc
+					pda
+		mandatory
+			core
+		mandatory
+			modules
+				or
+					calendar
+					forum
+					congress_mngt
+					repository
+Example:
+file compressor
+
+You return:
+features
+	kwic
+		mandatory
+			input_output
+				or
+					file
+					console
+		mandatory
+			circular_shift
+				mandatory
+					shift_data
+						alternative
+							implicit
+							explicit
+				optional
+					compression
+						mandatory
+							shift_processing
+						alternative
+							each_line
+							all_lines
+						optional
+							noise_words
+		mandatory
+			alpha_sort
+				mandatory
+					order
+						alternative
+							descendant
+							ascendant
+				mandatory
+					case_sensitivity
+						alternative
+							sensitive
+							insensitive
+		mandatory
+			arch_style
+				alternative
+					shared_data
+					adt
+					implicit_invocation
+					pipe_and_filter

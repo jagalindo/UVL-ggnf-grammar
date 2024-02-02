@@ -1,0 +1,270 @@
+Output some text similar to this, the output represents a feature model. 
+In a feature model, there are features which are represented by a string
+and relationships. Relationships have 1 child feature if they are mandatory or optional
+, also they have 2 or more if they are alternative or or. Follow the grammar in the examples. 
+Please, generate maintaining the indentation schema but using items from the domain I tell you:
+Example:
+Data base management system
+
+You return:
+features
+	FAME-DBMS
+		mandatory
+			OS
+				alternative
+					Nut/OS
+					Win
+		mandatory
+			Buffer_Manager
+				alternative
+					Persistent
+						mandatory
+							Memory_Allocation
+								alternative
+									Static
+									Dynamic
+						mandatory
+							Page_Replication
+								alternative
+									LRU
+									LFU
+					In_Memory
+		optional
+			Debug_Logging
+		mandatory
+			Storage
+				mandatory
+					API
+						optional
+							Get
+						optional
+							Put
+						optional
+							Delete
+				alternative
+					B+_Tree
+					Unindexed
+Example:
+Jplug
+
+You return:
+features
+	jplug
+		mandatory
+			interface
+				alternative
+					sdi
+					mdi
+		optional
+			gui_builder
+				mandatory
+					java
+				optional
+					qt
+		optional
+			model_code_synch
+		optional
+			compiler
+				or
+					javac
+					mvc
+		optional
+			diagram_builder
+				mandatory
+					uml
+				optional
+					petri_net
+Example: 
+Sandwiches
+
+You return:
+features
+    Sandwich
+        mandatory
+            Bread
+        optional
+            Sauce
+                alternative
+                    Ketchup
+                    Mustard
+            Cheese
+Example:
+james cms
+
+You return:
+features
+	james
+		mandatory
+			user_mngt
+				alternative
+					db
+					ldap
+		optional
+			ws_interface
+		mandatory
+			gui
+				or
+					pc
+					pda
+		mandatory
+			core
+		mandatory
+			modules
+				or
+					calendar
+					forum
+					congress_mngt
+					repository
+Example:
+Aircraft
+
+You return:
+features
+	Aircraft
+		mandatory
+			Wing
+				or
+					High
+					Shoulder
+					Low
+		optional
+			Engine
+				alternative
+					Jet
+					Piston
+		mandatory
+			Materials
+				or
+					Metal
+					Wood
+					Cloth
+					Plastic
+Example:
+Cellphone
+
+You return:
+features
+	cellphone
+		optional
+			wireless
+				or
+					infrared
+					bluetooth
+		mandatory
+			accu_cell
+				alternative
+					li_ion
+					ni_mh
+					ni_ca
+		mandatory
+			display
+				alternative
+					color
+					monochrome
+Example:
+Tex editor
+
+You return:
+features
+	editor_config
+		mandatory
+			backup
+				optional
+					autosave
+						mandatory
+							minutes
+				optional
+					backup_onchange
+				mandatory
+					backup_extension
+						alternative
+							file_bak
+							file_bak_ext
+							file_ext_bak
+		optional
+			document_class
+				mandatory
+					associated_file_ext
+						optional
+							ext
+				mandatory
+					commands
+						optional
+							remove_blank_lines
+						optional
+							spell_check
+						optional
+							dos_unix_conversion
+				optional
+					syntax_highlighting
+						mandatory
+							syntax_definition_file
+
+Example:
+Document generator
+
+You return:
+features
+	doc_gen
+		mandatory
+			analysis
+				mandatory
+					language_analysis
+						or
+							cobol
+								alternative
+									ibm_cobol
+									microfocus_cobol
+							jcl
+							sql
+							delphi
+							progress
+				optional
+					version_mngt
+				optional
+					subsystems
+		mandatory
+			presentation
+				mandatory
+					localization
+						or
+							english
+							dutch
+				mandatory
+					interaction
+						alternative
+							static
+							dynamic
+				mandatory
+					main_pages
+						or
+							program_page
+								or
+									annotation_section
+									activation_section
+									entities_section
+									parameters_section
+							copybook_page
+							statistics_page
+								alternative
+									with_history
+									without_history
+							indexes
+							search_page
+							subsystem_page
+							source_page
+							source_difference
+				optional
+					visualizations
+						or
+							perform_graph
+							conditional_perform_graph
+							jcl_graph
+							subsystem_graph
+							overview_graph
+		mandatory
+			database
+				alternative
+					db2
+					oracle
+					mysql

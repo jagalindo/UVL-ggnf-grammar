@@ -1,0 +1,262 @@
+Output some text similar to this, the output represents a feature model. 
+In a feature model, there are features which are represented by a string
+and relationships. Relationships have 1 child feature if they are mandatory or optional
+, also they have 2 or more if they are alternative or or. Follow the grammar in the examples. 
+Please, generate maintaining the indentation schema but using items from the domain I tell you:
+Example:
+Stack
+
+You return:
+features
+	Stack
+		optional
+			Size
+				alternative
+					Fixed
+						mandatory
+							Value
+					Dynamic
+		mandatory
+			Element_Type
+				alternative
+					Integer
+					Float
+					String
+		optional
+			Optimization
+				alternative
+					Speed
+					Memory_Usage
+		optional
+			Counter
+		optional
+			Additional_Features
+				or
+					Thread_Safety
+					Bounds_Check
+					Type_Check
+Example:
+monitor engine system
+
+You return:
+features
+	monitor_engine_system
+		mandatory
+			engine_performance
+				mandatory
+					temperatures
+						optional
+							colant
+						mandatory
+							oil
+						mandatory
+							engine
+						mandatory
+							transmission
+				mandatory
+					rpm
+				mandatory
+					exhaust_level_temp
+		mandatory
+			fuel_consumption
+				mandatory
+					measures
+						alternative
+							l_km
+							gallon_mile
+				mandatory
+					methods
+						or
+							distance
+							type_of_driving
+							drive
+Example:
+Jplug
+
+You return:
+features
+	jplug
+		mandatory
+			interface
+				alternative
+					sdi
+					mdi
+		optional
+			gui_builder
+				mandatory
+					java
+				optional
+					qt
+		optional
+			model_code_synch
+		optional
+			compiler
+				or
+					javac
+					mvc
+		optional
+			diagram_builder
+				mandatory
+					uml
+				optional
+					petri_net
+Example: 
+Sandwiches
+
+You return:
+features
+    Sandwich
+        mandatory
+            Bread
+        optional
+            Sauce
+                alternative
+                    Ketchup
+                    Mustard
+            Cheese
+Example:
+Car
+
+You return:
+features
+	Car
+		optional
+			support
+				mandatory
+					avoidance
+						alternative
+							normal_avoidance
+							enhanced_avoidance
+				optional
+					parallel_parking
+		mandatory
+			range_finder
+				optional
+					lateral_range_finder
+				optional
+					forward_range_finder
+		optional
+			gps
+		optional
+			audio
+				alternative
+					cd
+					mp3
+					video
+Example
+CFDP Library
+
+You return:
+features
+	CFDP_Library
+		or
+			send
+				optional
+					Send_Acknowledged_Mode
+				optional
+					send_fs_operations
+			receive
+				optional
+					Receive_Acknowledged_Mode
+				optional
+					receive_fs_operations
+			pus
+				optional
+					pus_rename
+				optional
+					pus_copy
+			Reboot
+				optional
+					Reboot_Entity
+				optional
+					reboot_pus
+Example:
+Cellphone
+
+You return:
+features
+	cellphone
+		optional
+			wireless
+				or
+					infrared
+					bluetooth
+		mandatory
+			accu_cell
+				alternative
+					li_ion
+					ni_mh
+					ni_ca
+		mandatory
+			display
+				alternative
+					color
+					monochrome
+Example:
+Document generator
+
+You return:
+features
+	doc_gen
+		mandatory
+			analysis
+				mandatory
+					language_analysis
+						or
+							cobol
+								alternative
+									ibm_cobol
+									microfocus_cobol
+							jcl
+							sql
+							delphi
+							progress
+				optional
+					version_mngt
+				optional
+					subsystems
+		mandatory
+			presentation
+				mandatory
+					localization
+						or
+							english
+							dutch
+				mandatory
+					interaction
+						alternative
+							static
+							dynamic
+				mandatory
+					main_pages
+						or
+							program_page
+								or
+									annotation_section
+									activation_section
+									entities_section
+									parameters_section
+							copybook_page
+							statistics_page
+								alternative
+									with_history
+									without_history
+							indexes
+							search_page
+							subsystem_page
+							source_page
+							source_difference
+				optional
+					visualizations
+						or
+							perform_graph
+							conditional_perform_graph
+							jcl_graph
+							subsystem_graph
+							overview_graph
+		mandatory
+			database
+				alternative
+					db2
+					oracle
+					mysql

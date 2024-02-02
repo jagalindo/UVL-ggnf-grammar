@@ -1,0 +1,249 @@
+Output some text similar to this, the output represents a feature model. 
+In a feature model, there are features which are represented by a string
+and relationships. Relationships have 1 child feature if they are mandatory or optional
+, also they have 2 or more if they are alternative or or. Follow the grammar in the examples. 
+Please, generate maintaining the indentation schema but using items from the domain I tell you:
+Example:
+Weather station
+
+You return:
+features
+	weather_station
+		mandatory
+			measurements
+				or
+					pressure
+					temperature
+					wind_speed
+		mandatory
+			data_source
+				alternative
+					internet
+					demo
+					external_services
+		mandatory
+			output_format
+				alternative
+					text
+					web_server
+					file
+				mandatory
+					format
+						alternative
+							xml
+							html
+							plain_text
+				mandatory
+					language
+						alternative
+							english
+							german
+		optional
+			alarm
+				or
+					freeze_point
+					storm_alert
+Example:
+monitor engine system
+
+You return:
+features
+	monitor_engine_system
+		mandatory
+			engine_performance
+				mandatory
+					temperatures
+						optional
+							colant
+						mandatory
+							oil
+						mandatory
+							engine
+						mandatory
+							transmission
+				mandatory
+					rpm
+				mandatory
+					exhaust_level_temp
+		mandatory
+			fuel_consumption
+				mandatory
+					measures
+						alternative
+							l_km
+							gallon_mile
+				mandatory
+					methods
+						or
+							distance
+							type_of_driving
+							drive
+Example:
+Graph operations
+
+You return:
+features
+	graph
+		mandatory
+			services
+				mandatory
+					graph_manipulation
+						mandatory
+							delete
+						mandatory
+							select
+								mandatory
+									selection_mode
+										alternative
+											increment_selection
+											non_increment_selection
+						mandatory
+							add
+								mandatory
+									entity_add
+								mandatory
+									connector_add
+						mandatory
+							move
+								mandatory
+									moving_mode
+										alternative
+											outline_moving
+											content_moving
+								optional
+									moving_constraint
+										alternative
+											horizontal_constraint
+											vertical_constraint
+						optional
+							compose
+						optional
+							layer_adjust
+								mandatory
+									up_layer
+								mandatory
+									down_layer
+				optional
+					do_undo_redo
+						mandatory
+							select_do_undo_redo
+						mandatory
+							add_do_undo_redo
+						mandatory
+							delete__do_undo_redo
+						mandatory
+							move_do_undo_redo
+						optional
+							compose_do_undo_redo
+						optional
+							layer_adjust_do_undo_redo
+				optional
+					zoom_inout
+Example:
+Car
+
+You return:
+features
+	Car
+		optional
+			support
+				mandatory
+					avoidance
+						alternative
+							normal_avoidance
+							enhanced_avoidance
+				optional
+					parallel_parking
+		mandatory
+			range_finder
+				optional
+					lateral_range_finder
+				optional
+					forward_range_finder
+		optional
+			gps
+		optional
+			audio
+				alternative
+					cd
+					mp3
+					video
+Example
+CFDP Library
+
+You return:
+features
+	CFDP_Library
+		or
+			send
+				optional
+					Send_Acknowledged_Mode
+				optional
+					send_fs_operations
+			receive
+				optional
+					Receive_Acknowledged_Mode
+				optional
+					receive_fs_operations
+			pus
+				optional
+					pus_rename
+				optional
+					pus_copy
+			Reboot
+				optional
+					Reboot_Entity
+				optional
+					reboot_pus
+Example:
+james cms
+
+You return:
+features
+	james
+		mandatory
+			user_mngt
+				alternative
+					db
+					ldap
+		optional
+			ws_interface
+		mandatory
+			gui
+				or
+					pc
+					pda
+		mandatory
+			core
+		mandatory
+			modules
+				or
+					calendar
+					forum
+					congress_mngt
+					repository
+Example:
+telecom
+
+You return:
+features
+	tecom
+		optional
+			ipvoice
+				mandatory
+					software
+						alternative
+							swpack1
+							swpack2
+		mandatory
+			rack
+				mandatory
+					sizes
+						alternative
+							large
+							medium
+							small
+		optional
+			messaging
+				optional
+					upgrade_swpack

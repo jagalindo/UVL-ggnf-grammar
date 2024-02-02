@@ -1,0 +1,273 @@
+Output some text similar to this, the output represents a feature model. 
+In a feature model, there are features which are represented by a string
+and relationships. Relationships have 1 child feature if they are mandatory or optional
+, also they have 2 or more if they are alternative or or. Follow the grammar in the examples. 
+Please, generate maintaining the indentation schema but using items from the domain I tell you:
+Example:
+Weather station
+
+You return:
+features
+	weather_station
+		mandatory
+			measurements
+				or
+					pressure
+					temperature
+					wind_speed
+		mandatory
+			data_source
+				alternative
+					internet
+					demo
+					external_services
+		mandatory
+			output_format
+				alternative
+					text
+					web_server
+					file
+				mandatory
+					format
+						alternative
+							xml
+							html
+							plain_text
+				mandatory
+					language
+						alternative
+							english
+							german
+		optional
+			alarm
+				or
+					freeze_point
+					storm_alert
+Example:
+Jplug
+
+You return:
+features
+	jplug
+		mandatory
+			interface
+				alternative
+					sdi
+					mdi
+		optional
+			gui_builder
+				mandatory
+					java
+				optional
+					qt
+		optional
+			model_code_synch
+		optional
+			compiler
+				or
+					javac
+					mvc
+		optional
+			diagram_builder
+				mandatory
+					uml
+				optional
+					petri_net
+Example:
+Web portal
+
+You return:
+features
+	web_portal
+		optional
+			add_services
+				optional
+					site_stats
+						mandatory
+							basic
+						optional
+							advanced
+				optional
+					site_search
+						optional
+							images
+						optional
+							text
+								mandatory
+									html
+								optional
+									dynamic
+				optional
+					ad_server
+						mandatory
+							reports
+						optional
+							popups
+						mandatory
+							banners
+								mandatory
+									ban_img
+								optional
+									ban_flash
+						optional
+							keyword
+		mandatory
+			web_server
+				optional
+					logging
+						alternative
+							db
+							file
+				optional
+					protocol
+						or
+							nttp
+							ftp
+							https
+				mandatory
+					cont
+						mandatory
+							static
+						optional
+							active
+								or
+									asp
+									php
+									jsp
+									cgi
+		optional
+			persistence
+				alternative
+					xml
+					database
+		optional
+			ri
+				or
+					data_storage
+					data_transfer
+					user_auth
+		optional
+			performance
+				alternative
+					ms
+					sec
+					min
+Example:
+Car
+
+You return:
+features
+	Car
+		optional
+			support
+				mandatory
+					avoidance
+						alternative
+							normal_avoidance
+							enhanced_avoidance
+				optional
+					parallel_parking
+		mandatory
+			range_finder
+				optional
+					lateral_range_finder
+				optional
+					forward_range_finder
+		optional
+			gps
+		optional
+			audio
+				alternative
+					cd
+					mp3
+					video
+Example
+CFDP Library
+
+You return:
+features
+	CFDP_Library
+		or
+			send
+				optional
+					Send_Acknowledged_Mode
+				optional
+					send_fs_operations
+			receive
+				optional
+					Receive_Acknowledged_Mode
+				optional
+					receive_fs_operations
+			pus
+				optional
+					pus_rename
+				optional
+					pus_copy
+			Reboot
+				optional
+					Reboot_Entity
+				optional
+					reboot_pus
+Example:
+Aircraft
+
+You return:
+features
+	Aircraft
+		mandatory
+			Wing
+				or
+					High
+					Shoulder
+					Low
+		optional
+			Engine
+				alternative
+					Jet
+					Piston
+		mandatory
+			Materials
+				or
+					Metal
+					Wood
+					Cloth
+					Plastic
+Example:
+Tex editor
+
+You return:
+features
+	editor_config
+		mandatory
+			backup
+				optional
+					autosave
+						mandatory
+							minutes
+				optional
+					backup_onchange
+				mandatory
+					backup_extension
+						alternative
+							file_bak
+							file_bak_ext
+							file_ext_bak
+		optional
+			document_class
+				mandatory
+					associated_file_ext
+						optional
+							ext
+				mandatory
+					commands
+						optional
+							remove_blank_lines
+						optional
+							spell_check
+						optional
+							dos_unix_conversion
+				optional
+					syntax_highlighting
+						mandatory
+							syntax_definition_file
+

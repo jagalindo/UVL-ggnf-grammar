@@ -1,0 +1,119 @@
+Output some text similar to this, the output represents a feature model. 
+In a feature model, there are features which are represented by a string
+and relationships. Relationships have 1 child feature if they are mandatory or optional
+, also they have 2 or more if they are alternative or or. Follow the grammar in the examples. 
+Please, generate maintaining the indentation schema but using items from the domain I tell you:
+Example:
+Stack
+
+You return:
+features
+	Stack
+		optional
+			Size
+				alternative
+					Fixed
+						mandatory
+							Value
+					Dynamic
+		mandatory
+			Element_Type
+				alternative
+					Integer
+					Float
+					String
+		optional
+			Optimization
+				alternative
+					Speed
+					Memory_Usage
+		optional
+			Counter
+		optional
+			Additional_Features
+				or
+					Thread_Safety
+					Bounds_Check
+					Type_Check
+Example:
+Document generator
+
+You return:
+features
+	doc_gen
+		mandatory
+			analysis
+				mandatory
+					language_analysis
+						or
+							cobol
+								alternative
+									ibm_cobol
+									microfocus_cobol
+							jcl
+							sql
+							delphi
+							progress
+				optional
+					version_mngt
+				optional
+					subsystems
+		mandatory
+			presentation
+				mandatory
+					localization
+						or
+							english
+							dutch
+				mandatory
+					interaction
+						alternative
+							static
+							dynamic
+				mandatory
+					main_pages
+						or
+							program_page
+								or
+									annotation_section
+									activation_section
+									entities_section
+									parameters_section
+							copybook_page
+							statistics_page
+								alternative
+									with_history
+									without_history
+							indexes
+							search_page
+							subsystem_page
+							source_page
+							source_difference
+				optional
+					visualizations
+						or
+							perform_graph
+							conditional_perform_graph
+							jcl_graph
+							subsystem_graph
+							overview_graph
+		mandatory
+			database
+				alternative
+					db2
+					oracle
+					mysql
+Example: 
+Sandwiches
+
+You return:
+features
+    Sandwich
+        mandatory
+            Bread
+        optional
+            Sauce
+                alternative
+                    Ketchup
+                    Mustard
+            Cheese

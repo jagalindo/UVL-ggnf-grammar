@@ -1,0 +1,127 @@
+Output some text similar to this, the output represents a feature model. 
+In a feature model, there are features which are represented by a string
+and relationships. Relationships have 1 child feature if they are mandatory or optional
+, also they have 2 or more if they are alternative or or. Follow the grammar in the examples. 
+Please, generate maintaining the indentation schema but using items from the domain I tell you:
+Example:
+Weather station
+
+You return:
+features
+	weather_station
+		mandatory
+			measurements
+				or
+					pressure
+					temperature
+					wind_speed
+		mandatory
+			data_source
+				alternative
+					internet
+					demo
+					external_services
+		mandatory
+			output_format
+				alternative
+					text
+					web_server
+					file
+				mandatory
+					format
+						alternative
+							xml
+							html
+							plain_text
+				mandatory
+					language
+						alternative
+							english
+							german
+		optional
+			alarm
+				or
+					freeze_point
+					storm_alert
+Example:
+Data base management system
+
+You return:
+features
+	FAME-DBMS
+		mandatory
+			OS
+				alternative
+					Nut/OS
+					Win
+		mandatory
+			Buffer_Manager
+				alternative
+					Persistent
+						mandatory
+							Memory_Allocation
+								alternative
+									Static
+									Dynamic
+						mandatory
+							Page_Replication
+								alternative
+									LRU
+									LFU
+					In_Memory
+		optional
+			Debug_Logging
+		mandatory
+			Storage
+				mandatory
+					API
+						optional
+							Get
+						optional
+							Put
+						optional
+							Delete
+				alternative
+					B+_Tree
+					Unindexed
+Example: 
+Sandwiches
+
+You return:
+features
+    Sandwich
+        mandatory
+            Bread
+        optional
+            Sauce
+                alternative
+                    Ketchup
+                    Mustard
+            Cheese
+Example:
+james cms
+
+You return:
+features
+	james
+		mandatory
+			user_mngt
+				alternative
+					db
+					ldap
+		optional
+			ws_interface
+		mandatory
+			gui
+				or
+					pc
+					pda
+		mandatory
+			core
+		mandatory
+			modules
+				or
+					calendar
+					forum
+					congress_mngt
+					repository

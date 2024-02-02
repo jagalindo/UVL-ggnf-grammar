@@ -1,0 +1,137 @@
+Output some text similar to this, the output represents a feature model. 
+In a feature model, there are features which are represented by a string
+and relationships. Relationships have 1 child feature if they are mandatory or optional
+, also they have 2 or more if they are alternative or or. Follow the grammar in the examples. 
+Please, generate maintaining the indentation schema but using items from the domain I tell you:
+Example:
+vof
+
+You return:
+features
+	vof
+		mandatory
+			follow_me
+				mandatory
+					user_localize
+						mandatory
+							user_pos_method
+								alternative
+									access_point
+									rfid
+				mandatory
+					logon
+		optional
+			virtual_printer
+				mandatory
+					printer_register
+				mandatory
+					file_upload
+				optional
+					file_converter
+Example:
+Movies App
+
+You return:
+features
+	Movies_App
+		mandatory
+			GUI
+				alternative
+					Thin
+					Rich
+		mandatory
+			DB
+				alternative
+					Local
+					Remote
+						mandatory
+							Cache_Policy
+		mandatory
+			Network
+				alternative
+					Wifi
+					Bluetooth
+		optional
+			GPS
+				optional
+					Built-In
+Example:
+Digutal video system
+
+You return:
+features
+	dvs
+		mandatory
+			control
+				mandatory
+					remote
+				optional
+					telephone
+						optional
+							sms
+				optional
+					net
+						optional
+							web
+						optional
+							wap
+						mandatory
+							email
+				optional
+					edit
+						optional
+							add_music
+				mandatory
+					play
+						optional
+							slides
+						optional
+							audio
+						mandatory
+							video
+		optional
+			network_hw
+				optional
+					modem
+				optional
+					ethernet
+		mandatory
+			server_pc
+				optional
+					network
+				optional
+					irda_port
+		mandatory
+			_play
+				optional
+					on_demand
+		optional
+			client_pc
+				optional
+					_network
+		optional
+			handheld
+Example:
+Aircraft
+
+You return:
+features
+	Aircraft
+		mandatory
+			Wing
+				or
+					High
+					Shoulder
+					Low
+		optional
+			Engine
+				alternative
+					Jet
+					Piston
+		mandatory
+			Materials
+				or
+					Metal
+					Wood
+					Cloth
+					Plastic

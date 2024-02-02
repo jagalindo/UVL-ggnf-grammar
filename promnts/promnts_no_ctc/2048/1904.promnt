@@ -1,0 +1,270 @@
+Output some text similar to this, the output represents a feature model. 
+In a feature model, there are features which are represented by a string
+and relationships. Relationships have 1 child feature if they are mandatory or optional
+, also they have 2 or more if they are alternative or or. Follow the grammar in the examples. 
+Please, generate maintaining the indentation schema but using items from the domain I tell you:
+Example:
+vof
+
+You return:
+features
+	vof
+		mandatory
+			follow_me
+				mandatory
+					user_localize
+						mandatory
+							user_pos_method
+								alternative
+									access_point
+									rfid
+				mandatory
+					logon
+		optional
+			virtual_printer
+				mandatory
+					printer_register
+				mandatory
+					file_upload
+				optional
+					file_converter
+Example:
+Weather station
+
+You return:
+features
+	weather_station
+		mandatory
+			measurements
+				or
+					pressure
+					temperature
+					wind_speed
+		mandatory
+			data_source
+				alternative
+					internet
+					demo
+					external_services
+		mandatory
+			output_format
+				alternative
+					text
+					web_server
+					file
+				mandatory
+					format
+						alternative
+							xml
+							html
+							plain_text
+				mandatory
+					language
+						alternative
+							english
+							german
+		optional
+			alarm
+				or
+					freeze_point
+					storm_alert
+Example:
+Stack
+
+You return:
+features
+	Stack
+		optional
+			Size
+				alternative
+					Fixed
+						mandatory
+							Value
+					Dynamic
+		mandatory
+			Element_Type
+				alternative
+					Integer
+					Float
+					String
+		optional
+			Optimization
+				alternative
+					Speed
+					Memory_Usage
+		optional
+			Counter
+		optional
+			Additional_Features
+				or
+					Thread_Safety
+					Bounds_Check
+					Type_Check
+Example: 
+Sandwiches
+
+You return:
+features
+    Sandwich
+        mandatory
+            Bread
+        optional
+            Sauce
+                alternative
+                    Ketchup
+                    Mustard
+            Cheese
+Example
+CFDP Library
+
+You return:
+features
+	CFDP_Library
+		or
+			send
+				optional
+					Send_Acknowledged_Mode
+				optional
+					send_fs_operations
+			receive
+				optional
+					Receive_Acknowledged_Mode
+				optional
+					receive_fs_operations
+			pus
+				optional
+					pus_rename
+				optional
+					pus_copy
+			Reboot
+				optional
+					Reboot_Entity
+				optional
+					reboot_pus
+Example:
+Aircraft
+
+You return:
+features
+	Aircraft
+		mandatory
+			Wing
+				or
+					High
+					Shoulder
+					Low
+		optional
+			Engine
+				alternative
+					Jet
+					Piston
+		mandatory
+			Materials
+				or
+					Metal
+					Wood
+					Cloth
+					Plastic
+Example:
+Insurance product
+
+You return:
+features
+	insurance_product
+		mandatory
+			insured_object
+				alternative
+					corporation
+					realty
+					movable_property
+					person
+		mandatory
+			coverage
+				or
+					illness
+					life
+					unemployment
+					damage
+					loss
+		mandatory
+			payment
+				alternative
+					service
+					ammount
+				optional
+					own_risk
+		mandatory
+			conditions
+				mandatory
+					acceptance
+				mandatory
+					exception
+		mandatory
+			premium
+				alternative
+					direct
+					periodical
+		mandatory
+			payee
+				or
+					_person
+					payee_corporation
+Example:
+Connector
+
+You return:
+features
+	Connector
+		mandatory
+			Paradigm
+				alternative
+					Client/Server
+						alternative
+							Synchronous
+								optional
+									Timeout
+							Asynchronous
+								alternative
+									Polling
+										alternative
+											Blocking
+											Non-blocking
+									Callback
+					Message-Based
+						mandatory
+							Sender
+						mandatory
+							Receiver
+								alternative
+									Pull
+										or
+											Queued
+											Non-Queued
+									Push
+		mandatory
+			Technology
+				alternative
+					CAN
+					Local
+Example:
+Cellphone
+
+You return:
+features
+	cellphone
+		optional
+			wireless
+				or
+					infrared
+					bluetooth
+		mandatory
+			accu_cell
+				alternative
+					li_ion
+					ni_mh
+					ni_ca
+		mandatory
+			display
+				alternative
+					color
+					monochrome

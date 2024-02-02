@@ -1,0 +1,270 @@
+Output some text similar to this, the output represents a feature model. 
+In a feature model, there are features which are represented by a string
+and relationships. Relationships have 1 child feature if they are mandatory or optional
+, also they have 2 or more if they are alternative or or. Follow the grammar in the examples. 
+Please, generate maintaining the indentation schema but using items from the domain I tell you:
+Example:
+Stack
+
+You return:
+features
+	Stack
+		optional
+			Size
+				alternative
+					Fixed
+						mandatory
+							Value
+					Dynamic
+		mandatory
+			Element_Type
+				alternative
+					Integer
+					Float
+					String
+		optional
+			Optimization
+				alternative
+					Speed
+					Memory_Usage
+		optional
+			Counter
+		optional
+			Additional_Features
+				or
+					Thread_Safety
+					Bounds_Check
+					Type_Check
+Example:
+monitor engine system
+
+You return:
+features
+	monitor_engine_system
+		mandatory
+			engine_performance
+				mandatory
+					temperatures
+						optional
+							colant
+						mandatory
+							oil
+						mandatory
+							engine
+						mandatory
+							transmission
+				mandatory
+					rpm
+				mandatory
+					exhaust_level_temp
+		mandatory
+			fuel_consumption
+				mandatory
+					measures
+						alternative
+							l_km
+							gallon_mile
+				mandatory
+					methods
+						or
+							distance
+							type_of_driving
+							drive
+Example:
+Jplug
+
+You return:
+features
+	jplug
+		mandatory
+			interface
+				alternative
+					sdi
+					mdi
+		optional
+			gui_builder
+				mandatory
+					java
+				optional
+					qt
+		optional
+			model_code_synch
+		optional
+			compiler
+				or
+					javac
+					mvc
+		optional
+			diagram_builder
+				mandatory
+					uml
+				optional
+					petri_net
+Example:
+Web portal
+
+You return:
+features
+	web_portal
+		optional
+			add_services
+				optional
+					site_stats
+						mandatory
+							basic
+						optional
+							advanced
+				optional
+					site_search
+						optional
+							images
+						optional
+							text
+								mandatory
+									html
+								optional
+									dynamic
+				optional
+					ad_server
+						mandatory
+							reports
+						optional
+							popups
+						mandatory
+							banners
+								mandatory
+									ban_img
+								optional
+									ban_flash
+						optional
+							keyword
+		mandatory
+			web_server
+				optional
+					logging
+						alternative
+							db
+							file
+				optional
+					protocol
+						or
+							nttp
+							ftp
+							https
+				mandatory
+					cont
+						mandatory
+							static
+						optional
+							active
+								or
+									asp
+									php
+									jsp
+									cgi
+		optional
+			persistence
+				alternative
+					xml
+					database
+		optional
+			ri
+				or
+					data_storage
+					data_transfer
+					user_auth
+		optional
+			performance
+				alternative
+					ms
+					sec
+					min
+Example:
+Car
+
+You return:
+features
+	Car
+		optional
+			support
+				mandatory
+					avoidance
+						alternative
+							normal_avoidance
+							enhanced_avoidance
+				optional
+					parallel_parking
+		mandatory
+			range_finder
+				optional
+					lateral_range_finder
+				optional
+					forward_range_finder
+		optional
+			gps
+		optional
+			audio
+				alternative
+					cd
+					mp3
+					video
+Example: 
+Sandwiches
+
+You return:
+features
+    Sandwich
+        mandatory
+            Bread
+        optional
+            Sauce
+                alternative
+                    Ketchup
+                    Mustard
+            Cheese
+Example:
+Aircraft
+
+You return:
+features
+	Aircraft
+		mandatory
+			Wing
+				or
+					High
+					Shoulder
+					Low
+		optional
+			Engine
+				alternative
+					Jet
+					Piston
+		mandatory
+			Materials
+				or
+					Metal
+					Wood
+					Cloth
+					Plastic
+Example:
+Cellphone
+
+You return:
+features
+	cellphone
+		optional
+			wireless
+				or
+					infrared
+					bluetooth
+		mandatory
+			accu_cell
+				alternative
+					li_ion
+					ni_mh
+					ni_ca
+		mandatory
+			display
+				alternative
+					color
+					monochrome
